@@ -20,7 +20,7 @@ following parameters:
         1. Title [Name of the movie]
         2. Genre [Action, Sci-Fi, Horror, Comedy] 
         3. Movie release year [user can search a period between 2 dates]
-The user?s search results should be displayed on the ?index? page itself. The results should
+The user?s search results should be displayed on the  ?index? page itself. The results should
 be generated as data-centric XML.
 Results displayed on the index page should be selectable or clickable (only available movies
 are selectable). A user should be able to select a movie. The selection action using (Button or
