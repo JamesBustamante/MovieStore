@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<users>
+    <user>
+        <ID>1023</ID>
+        <email>robb@uts.com</email>
+        <password>Apple33</password>
+        <fullName>Robbie Marsh</fullName>
+        <phone>0412394532</phone>
+        <gender>male</gender>
+        <address>32 Stoney Drive Sydney NSW 2343</address>
+    </user>
+    <user>
+        <ID>2133</ID>
+        <email>nathan22@gmail.com</email>
+        <password>Qwerty123</password>
+        <fullName>Nathan Ross</fullName>
+        <phone>0294578385</phone>
+        <gender>male</gender>
+        <address>66 Spring Farm cir Brisbane QLD 2011</address>
+    </user>
+    <user>
+        <ID>1922</ID>
+        <email>33Bob@yahoo.com</email>
+        <password>ThisIsPassword3</password>
+        <fullName>Bobby Jones</fullName>
+        <phone>04202339443</phone>
+        <gender>male</gender>
+        <address>44 Robberston drive Melbourne VIC 3002</address>
+    </user>
+    <user>
+        <ID>3433</ID>
+        <email>sara12k@uts.com</email>
+        <password>sazzy123</password>
+        <fullName>Sarah Roach</fullName>
+        <phone>0412844821</phone>
+        <gender>female</gender>
+        <address>23 Camden South drive Sydney NSW 2567</address>
+    </user>
+    <user>
+        <ID>1044</ID>
+        <email>DamoDoggo12@gmail.com</email>
+        <password>Bulldog19269</password>
+        <fullName>Damon Spedd</fullName>
+        <phone>0433465366</phone>
+        <gender>male</gender>
+        <address>56 green valley way Sydney NSW 2400</address>
+    </user>
+</users>

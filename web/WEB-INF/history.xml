@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="cd2.xsl"?>
+
+<history>
+    <order>
+        <orderID>122</orderID>
+        <movies>
+            <movie>
+                <title>28 days later</title>
+                <genre>Horror</genre>
+                <releaseDate>2002</releaseDate>
+                <price>19.96</price>
+                <NoCopies>1</NoCopies>
+            </movie>
+        </movies>
+        <email>robb@uts.com</email>
+        <fullName>Robbie Marsh</fullName>
+        <paymentMethod>Paypal</paymentMethod>
+        <salesTotal>19.96</salesTotal>
+        <orderStatus>Submitted</orderStatus>
+    </order>
+    <order>
+        <orderID>321</orderID>
+        <movies>
+            <movie>
+                <title>28 days later</title>
+                <genre>Horror</genre>
+                <releaseDate>2002</releaseDate>
+                <price>19.96</price>
+                <NoCopies>3</NoCopies>
+            </movie>
+            <movie>
+                <title>Alien vs Predator</title>
+                <genre>Sci-Fi</genre>
+                <releaseDate>2004</releaseDate>
+                <price>10.00</price>
+                <NoCopies>1</NoCopies>
+            </movie>
+        </movies>
+        <email>nathan22@gmail.com</email>
+        <fullName>Nathan Ross</fullName>
+        <paymentMethod>Card</paymentMethod>
+        <salesTotal>69.88</salesTotal>
+        <orderStatus>Submitted</orderStatus>
+    </order>
+    <order>
+        <orderID>299</orderID>
+        <movies>
+            <movie>
+                <title>Despicable Me</title>
+                <genre>Family</genre>
+                <releaseDate>2010</releaseDate>
+                <price>9.00</price>
+                <NoCopies>5</NoCopies>
+            </movie>
+            <movie>
+                <title>Home alone</title>
+                <genre>Family</genre>
+                <releaseDate>1990</releaseDate>
+                <price>7.99</price>
+                <NoCopies>3</NoCopies>
+            </movie>
+        </movies>
+        <email>nathan22@gmail.com</email>
+        <fullName>Nathan Ross</fullName>
+        <paymentMethod>Card</paymentMethod>
+        <salesTotal>45.00</salesTotal>
+        <orderStatus>Submitted</orderStatus>
+    </order>
+</history>

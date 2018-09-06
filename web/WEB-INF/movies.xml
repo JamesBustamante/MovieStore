@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 12 Movies-->
+<movies>
+    <movie>
+        <title>28 days later</title>
+        <genre>Horror</genre>
+        <releaseDate>2002</releaseDate>
+        <price>19.96</price>
+        <availableCopies>21</availableCopies>
+    </movie>
+    <movie>
+        <title>Alien vs Predator</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>2004</releaseDate>
+        <price>10.00</price>
+        <availableCopies>2</availableCopies>
+    </movie>
+    <movie>
+        <title>Anchorman</title>
+        <genre>Comedy</genre>
+        <releaseDate>2004</releaseDate>
+        <price>11.50</price>
+        <availableCopies>6</availableCopies>
+    </movie>
+    <movie>
+        <title>Baby Driver</title>
+        <genre>Action</genre>
+        <releaseDate>2017</releaseDate>
+        <price>22.99</price>
+        <availableCopies>1</availableCopies>
+    </movie>
+    <movie>
+        <title>Back to the future</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>1985</releaseDate>
+        <price>12.99</price>
+        <availableCopies>0</availableCopies>
+    </movie>
+    <movie>
+        <title>Batman - Begins</title>
+        <genre>Fantasy</genre>
+        <releaseDate>2005</releaseDate>
+        <price>17.10</price>
+        <availableCopies>4</availableCopies>
+    </movie>
+    <movie>
+        <title>Beetlejuice </title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>1988</releaseDate>
+        <price>9.99</price>
+        <availableCopies>6</availableCopies>
+    </movie>
+    <movie>
+        <title>Despicable Me</title>
+        <genre>Family</genre>
+        <releaseDate>2010</releaseDate>
+        <price>9.00</price>
+        <availableCopies>32</availableCopies>
+    </movie>
+    <movie>
+        <title>Die Hard</title>
+        <genre>Action</genre>
+        <releaseDate>1988</releaseDate>
+        <price>4.99</price>
+        <availableCopies>4</availableCopies>
+    </movie>
+    <movie>
+        <title>Home alone</title>
+        <genre>Family</genre>
+        <releaseDate>1990</releaseDate>
+        <price>7.99</price>
+        <availableCopies>7</availableCopies>
+    </movie>
+    <movie>
+        <title>I Robot</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>2004</releaseDate>
+        <price>11.49</price>
+        <availableCopies>8</availableCopies>
+    </movie>
+    <movie>
+        <title>Land of the Dead</title>
+        <genre>Horror</genre>
+        <releaseDate>2005</releaseDate>
+        <price>3.99</price>
+        <availableCopies>1</availableCopies>
+    </movie>
+</movies>
