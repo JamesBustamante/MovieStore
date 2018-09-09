@@ -12,7 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Login</h1>
+        <jsp:include page="header.jsp" />
+        <h2>Login</h2>
         <form action="loginAction.jsp" method="post"><table>
             <tr>
             <td>Email</td>

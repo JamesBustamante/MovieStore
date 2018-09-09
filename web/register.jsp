@@ -12,7 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Register</h1>
+        <jsp:include page="header.jsp" />
+        <h2>Register</h2>
         <form action="registerAction.jsp" method="post">
         <table>
                 <tr><td>Email</td><td><input size="16" type="text" name="email"></td></tr>

@@ -20,7 +20,7 @@ public class User implements Serializable {
     private String email;
     @XmlElement(name = "password")
     private String password;
-    @XmlElement(name = "fullname")
+    @XmlElement(name = "fullName")
     private String fullName;
     @XmlElement(name = "phone")
     private String phone;
@@ -66,7 +66,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getFullName() {
+    public String getfullName() {
         return fullName;
     }
 

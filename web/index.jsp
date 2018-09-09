@@ -13,24 +13,14 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div><h1>Movie Store Main Page</h1></div> 
+        
         <% String filePath = application.getRealPath("WEB-INF/users.xml"); %>
         <jsp:useBean id="movieStoreApp" class="uts.wsd.MovieStoreApplication" scope="application">
         <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=filePath%>"/>
             </jsp:useBean>
-
+        
+        <jsp:include page="header.jsp" /> <!-- Every Page MUST Have this header. We can customise this later on -->
            
-            <% User user = (User)session.getAttribute("user"); 
-                if (user != null) { 
-        %>
-        <div style="background: #eee; border: solid 1px #333; text-align: right; width: 100%;"> 
-            You are logged in as <%= user.getfullName() %>  &#60;<%= user.getEmail() %>&#62;  </div>
-           <p style ="text-align: right;"> My Account</p> <!-- This is the link that takes the user to their main page-->
-         <% } else { %>
-         <div style="background: #eee; border: solid 1px #333; text-align: right; width: 100%;"> 
-            You are not logged in  </div>
-            <p style ="text-align: right;"><a href="login.jsp">Login</a> | <a href="register.jsp"> Register </a> </p>
-            <% } %>   
             
             <h2 style ="text-align: center;">Search for Movies</h2>
              <form action="loginAction.jsp" method="get">
