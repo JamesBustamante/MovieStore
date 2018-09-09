@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.uts.edu.au/31284/wsd-students"
+    xmlns="http://www.uts.edu.au/31284/wsd-students"
+    elementFormDefault="qualified">
+ 
+     <!-- Insert your type declarations here -->
+     
+     
+  
+ <!-- Insert your element declarations here -->
+    
+    
+
+</xs:schema>
