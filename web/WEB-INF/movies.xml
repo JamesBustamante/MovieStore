@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 12 Movies-->
-<movies>
+<movies 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:SchemaLocation="movies.xsd">
     <movie>
         <title>28 days later</title>
         <genre>Horror</genre>
         <releaseDate>2002</releaseDate>
         <price>19.96</price>
+        <picture></picture>
+        <description>The naive activists ignore the pleas of a scientist to keep the cages locked, with disastrous results. 
+            Twenty-eight days later, our protagonist, Jim (Alex Palmer), wakes up from a coma, alone, in an abandoned hospital. 
+            He begins to seek out anyone else to find London is deserted, apparently without a living soul.</description>
         <availableCopies>21</availableCopies>
     </movie>
     <movie>
@@ -13,6 +19,10 @@
         <genre>Sci-Fi</genre>
         <releaseDate>2004</releaseDate>
         <price>10.00</price>
+        <picture></picture>
+        <description>Directed by Paul W.S. Anderson, Alien vs. Predator follows billionaire Charles Bishop Weyland (Lance Henriksen) 
+            and his team of drillers, scientists, and archaeologists, to an obscure pyramid site in Antarctica. 
+            Among the icy ruins, allegedly, lies the proof of an empire predating humankind.</description>
         <availableCopies>2</availableCopies>
     </movie>
     <movie>
@@ -20,6 +30,10 @@
         <genre>Comedy</genre>
         <releaseDate>2004</releaseDate>
         <price>11.50</price>
+        <picture></picture>
+        <description>Ron Burgundy is the top-rated anchorman in San Diego in the '70s. When feminism marches into the 
+            newsroom in the form of ambitious newswoman Veronica Corningstone, Ron is willing to play along at first-as long as 
+            Veronica stays in her place, covering cat fashion shows, cooking, and other "female" interests.</description>
         <availableCopies>6</availableCopies>
     </movie>
     <movie>
@@ -27,6 +41,9 @@
         <genre>Action</genre>
         <releaseDate>2017</releaseDate>
         <price>22.99</price>
+        <picture></picture>
+        <description>Baby Driver is a 2017 crime film written and directed by Edgar Wright. The plot follows Baby (Ansel Elgort), 
+            a music lover who is coerced to work as a getaway driver for kingpin Doc (Kevin Spacey).</description>
         <availableCopies>1</availableCopies>
     </movie>
     <movie>
@@ -34,13 +51,21 @@
         <genre>Sci-Fi</genre>
         <releaseDate>1985</releaseDate>
         <price>12.99</price>
+        <picture></picture>
+        <description>Marty accidentally activates the time machine, sending him back to 1955 where he accidentally gets in the way of 
+            his teenage parents meeting. Marty must find a way to convince Doc that he is from the future, reunite his parents, 
+            and ultimately get back to the future.</description>
         <availableCopies>0</availableCopies>
     </movie>
     <movie>
-        <title>Batman - Begins</title>
+        <title>Batman Begins</title>
         <genre>Sci-Fi</genre>
         <releaseDate>2005</releaseDate>
         <price>17.10</price>
+        <picture></picture>
+        <description>A young Bruce Wayne (Christian Bale) travels to the Far East, where he's trained in the martial arts by Henri Ducard (Liam Neeson),
+            a member of the mysterious League of Shadows. When Ducard reveals the League's true purpose -- the complete destruction of Gotham City -- 
+            Wayne returns to Gotham intent on cleaning up the city without resorting to murder. </description>
         <availableCopies>4</availableCopies>
     </movie>
     <movie>
@@ -48,6 +73,9 @@
         <genre>Sci-Fi</genre>
         <releaseDate>1988</releaseDate>
         <price>9.99</price>
+        <picture></picture>
+        <description>The plot revolves around a recently deceased young couple (Alec Baldwin and Geena Davis) who become 
+            ghosts haunting their former home, and an obnoxious, devious ghost named Betelgeuse (pronounced "Beetlejuice", portrayed by Michael Keaton)</description>
         <availableCopies>6</availableCopies>
     </movie>
     <movie>
@@ -55,6 +83,9 @@
         <genre>Family</genre>
         <releaseDate>2010</releaseDate>
         <price>9.00</price>
+        <picture></picture>
+        <description>It follows the story of Gru, a super-villain who adopts three girls from an orphanage; and Vector, a rival of Gru who steals the 
+            Great Pyramid of Giza. When Gru learns of Vector's heist, he plans an even greater heist: to shrink and steal the Earth's moon.</description>
         <availableCopies>32</availableCopies>
     </movie>
     <movie>
@@ -62,6 +93,10 @@
         <genre>Action</genre>
         <releaseDate>1988</releaseDate>
         <price>4.99</price>
+        <picture></picture>
+        <description>John McClane, a detective with the New York City Police Department, arrives in Los Angeles to attempt a 
+            Christmas reunion and reconciliation with his estranged wife Holly (Bonnie Bedelia), who is attending a party thrown by 
+            her employer, the Nakatomi Corporation, at its still-unfinished American branch office</description>
         <availableCopies>4</availableCopies>
     </movie>
     <movie>
@@ -69,6 +104,10 @@
         <genre>Family</genre>
         <releaseDate>1990</releaseDate>
         <price>7.99</price>
+        <picture></picture>
+        <description>The film stars Macaulay Culkin as Kevin McCallister, a boy who is mistakenly left behind when his family flies to Paris for 
+            their Christmas vacation. Kevin initially relishes being home alone, but soon has to contend with two 
+            burglars played by Joe Pesci and Daniel Stern.</description>
         <availableCopies>7</availableCopies>
     </movie>
     <movie>
@@ -76,6 +115,10 @@
         <genre>Sci-Fi</genre>
         <releaseDate>2004</releaseDate>
         <price>11.49</price>
+        <picture></picture>
+        <description>Set in a future Earth (2035 A.D.) where robots are common assistants and workers for their human owners,
+            this is the story of "robotophobic" Chicago Police Detective Del Spooner's investigation into the murder of Dr. Alfred Lanning, 
+            who works at U.S. Robotics, in which a robot, Sonny , appears to be implicated</description>
         <availableCopies>8</availableCopies>
     </movie>
     <movie>
@@ -83,6 +126,11 @@
         <genre>Horror</genre>
         <releaseDate>2005</releaseDate>
         <price>3.99</price>
+        <picture></picture>
+        <description>In a world where zombies form the majority of the population, the remaining humans build a feudal 
+            society away from the undead. Ruthless Paul Kaufman (Dennis Hopper) rules and protects this microcosm but enforces 
+            painful class distinctions. Second-in-command Cholo DeMora (John Leguizamo) attempts to lead a secret rebellion against 
+            Kaufman's tyranny</description>
         <availableCopies>1</availableCopies>
     </movie>
 </movies>
