@@ -6,10 +6,63 @@
  
      <!-- Insert your type declarations here -->
      
+     <xs:simpleType name="ID">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+[0-9]+[0-9]+[0-9]"/> 
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="password">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])"/> <!-- Minimum 1 uppercase, Minimum 1 number, rest lowercase--> 
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="fullName">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Z][a-z]+[\s])+[A-Z][a-z]*"/> 
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="phone">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]+[0-9]"/> 
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="gender">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="male|female"/> 
+        </xs:restriction>
+    </xs:simpleType>
      
   
  <!-- Insert your element declarations here -->
     
-    
+    <xs:element name="users">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ID" type="ID"/>
+                            <xs:element name="email" type="email"/>
+                            <xs:element name="password" type="password"/>
+                            <xs:element name="fullName" type="fullName"/>
+                           <xs:element name="phone" type="phone"/>
+                             <xs:element name="gender" type="gender"/>   
+                             <xs:element name="address" type="xs:string"/>   
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+    </xs:sequence>
+    </xs:complexType>
+    </xs:element>
 
 </xs:schema>
