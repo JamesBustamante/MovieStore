@@ -1,3 +1,4 @@
+<%@page import="uts.wsd.Movies"%>
 <%@page import="uts.wsd.User"%>
 <%@page import="uts.wsd.Users"%>
 <!DOCTYPE html>
@@ -17,6 +18,11 @@ and open the template in the editor.
         <% String filePath = application.getRealPath("WEB-INF/users.xml"); %>
         <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
         <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
+            </jsp:useBean>
+        
+        <% String filePath1 = application.getRealPath("WEB-INF/movies.xml"); %>
+        <jsp:useBean id="movieApp" class="uts.wsd.MovieApplication" scope="application">
+        <jsp:setProperty name="movieApp" property="filePath" value="<%=filePath1%>"/>
             </jsp:useBean>
         
         <jsp:include page="header.jsp" /> <!-- Every Page MUST Have this header. We can customise this later on -->
@@ -40,6 +46,8 @@ and open the template in the editor.
                 </tr>
             </table>
         </form>  
+            
+
             
     </body>
 </html>

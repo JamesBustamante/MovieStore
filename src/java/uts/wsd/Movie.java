@@ -31,6 +31,7 @@ public class Movie implements Serializable {
     private String availableCopies;
 
     public Movie() {
+    super();
     }
 
     public Movie(String title, String genre, String releaseDate, String price, String picture, String description, String availableCopies) {

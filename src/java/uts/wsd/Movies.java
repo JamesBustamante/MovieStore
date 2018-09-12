@@ -18,8 +18,13 @@ import javax.xml.bind.annotation.*;
 public class Movies implements Serializable {
     
     @XmlElement(name = "movie")
-    private ArrayList<Movie> list = new ArrayList<Movie>();
+    private ArrayList<Movie> movies = new ArrayList<Movie>();
     
+    public Movies() {
+    }
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
     
     
 }
