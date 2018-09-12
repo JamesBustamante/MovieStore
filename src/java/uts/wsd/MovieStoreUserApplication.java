@@ -11,7 +11,7 @@ import javax.xml.bind.*;
  *
  * @author james
  */
-public class MovieStoreApplication {
+public class MovieStoreUserApplication {
         private String filePath;
         private Users users;
 

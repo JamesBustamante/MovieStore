@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<users  xmlns="http://www.uts.edu.au/31284/wsd-students"
+<!--<users  xmlns="http://www.uts.edu.au/31284/wsd-studensts"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-students users.xsd">
+    xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-students users.xsd">-->
+<users>    
     <user>
         <ID>1023</ID>
         <email>robb@uts.com</email>

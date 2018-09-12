@@ -15,8 +15,8 @@ and open the template in the editor.
     <body>
         
         <% String filePath = application.getRealPath("WEB-INF/users.xml"); %>
-        <jsp:useBean id="movieStoreApp" class="uts.wsd.MovieStoreApplication" scope="application">
-        <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=filePath%>"/>
+        <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
+        <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
             </jsp:useBean>
         
         <jsp:include page="header.jsp" /> <!-- Every Page MUST Have this header. We can customise this later on -->

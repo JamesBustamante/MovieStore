@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.Random"%>
-<%@page import="uts.wsd.MovieStoreApplication"%>
+<%@page import="uts.wsd.MovieStoreUserApplication"%>
 <%@page import="uts.wsd.User"%>
 <%@page import="uts.wsd.Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,12 +19,12 @@
 
            
            <% String filePath = application.getRealPath("WEB-INF/users.xml"); %>
-        <jsp:useBean id="movieStoreApp" class="uts.wsd.MovieStoreApplication" scope="application">
-        <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=filePath%>"/>
+        <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
+        <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
             </jsp:useBean>
         
          <%!  boolean unique = false; %>
-         <%  Users users = movieStoreApp.getUsers();
+         <%  Users users = movieStoreUserApp.getUsers();
         User user = (User) session.getAttribute("user");
         String tos = (String) session.getAttribute("tos");
                    
@@ -33,8 +33,8 @@
                     unique = false;
                     } else {
                         users.addUser(user);
-                        movieStoreApp.updateXML(movieStoreApp.getUsers(), filePath);
-                        movieStoreApp.saveUsers();
+                        movieStoreUserApp.updateXML(movieStoreUserApp.getUsers(), filePath);
+                        movieStoreUserApp.saveUsers();
                         unique = true; 
                         out.print(users.getList());
                         //diaryApp.setFilePath(filePath);

@@ -13,12 +13,12 @@
     </head>
     <body>
         <% String filePath = application.getRealPath("WEB-INF/users.xml"); %>
-        <jsp:useBean id="movieStoreApp" class="uts.wsd.MovieStoreApplication" scope="application">
-        <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=filePath%>"/>
+        <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
+        <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
             </jsp:useBean>
 
         <% 
-            Users users = movieStoreApp.getUsers();
+            Users users = movieStoreUserApp.getUsers();
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             User user = users.login(email, password);
