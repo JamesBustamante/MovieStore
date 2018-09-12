@@ -21,7 +21,9 @@
             </head>
             <body>
                 <h1>HQ's Collection</h1>
+                <div style = "text-align: center;">
                 <xsl:apply-templates select="movies"/>  
+                </div>
             </body>
         </html>
     </xsl:template>
@@ -33,6 +35,9 @@
                     <th>Title</th>
                     <th>Genre</th>
                     <th>Release Date</th>
+                    <th>Price</th>
+                    <th>Available Copies</th>
+                    <th>Selection</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,6 +56,18 @@
             </td>
             <td>
                 <xsl:value-of select="releaseDate"/>
+            </td>
+            <td>
+                $<xsl:value-of select="price"/>
+            </td>
+            <td>
+                <xsl:value-of select="availableCopies"/>
+            </td>
+            <td>
+                <form action="checkout.jsp" method="get">   <!--Creates the button to reserve books.-->
+                        <input type="hidden" name="id" value="{title}"/>
+                        <input type="submit" value="Select" name="select"/>
+                </form>
             </td>
         </tr>
     </xsl:template>

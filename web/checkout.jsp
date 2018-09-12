@@ -18,8 +18,10 @@
     <%String releaseDate = request.getParameter("releaseDate");%>
     <%String price = request.getParameter("price");%>
     <%String NoCopies = request.getParameter("NoCopies");%>
+    <%String id = request.getParameter("id");%>
     
     <body>
+        <%=id%>
         <% String filePath = application.getRealPath("WEB-INF/users.xml"); %>
         <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
         <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>

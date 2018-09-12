@@ -9,6 +9,7 @@ public class Validator implements Serializable{
     private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";    
     private String passwordPattern = "[a-z]{6,}[0-9]+";   
     private String IDPattern = "[0-9]{5,6}"; 
+    private String yearPattern = "([12]+[0-9]+[0-9]+[0-9])";
    
     public Validator(){}
     
@@ -31,5 +32,8 @@ public class Validator implements Serializable{
     }    
     public boolean validatePassword(String password){        
         return validate(passwordPattern,password);
+    }
+    public boolean validateYear(String year){        
+        return validate(yearPattern,year);
     }     
 }
