@@ -18,7 +18,9 @@
     <%String releaseDate = request.getParameter("releaseDate");%>
     <%String price = request.getParameter("price");%>
     <%String NoCopies = request.getParameter("NoCopies");%>
-    <%String id = request.getParameter("id");%>
+   
+    <%String id = request.getParameter("id"); //This give the name of the movie selected. You can then find all the other info
+        // associated with that movie by doing a for loop that matches the movie title%>
     
     <body>
         <%=id%>

@@ -4,7 +4,7 @@
     Author     : james
 --%>
 
-<%@page import="uts.wsd.YearsCalc"%>
+<%@page import="uts.wsd.SearchParam"%>
 <%@page import="uts.controller.Validator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,37 +14,67 @@
         <title>Search Action Page</title>
     </head>
     <body>
-        <jsp:useBean id="yearsCalc" 
-                     class="uts.wsd.YearsCalc" scope="application">
+        <jsp:useBean id="searchParam" 
+                     class="uts.wsd.SearchParam" scope="application">
                      </jsp:useBean>
         <%
+            searchParam.emptyYears();
+            searchParam.emptyGenre();
+            searchParam.emptyGenre();
+            searchParam.setTitle("");
+            searchParam.setGenre("");
+            String title = request.getParameter("title");
             String year1 = request.getParameter("year1");
             String year2 = request.getParameter("year2");
+            String genre = request.getParameter("genre");
             Validator v = new Validator();
-            try {
-                if (!v.validateYear(year1)) {
+            boolean valid = true;
+            boolean emptyYears = false;
+            boolean emptyYear = false;
+            if ((year1.trim().isEmpty() && year2.trim().isEmpty())) {
+                emptyYears = true;
+            } else if (v.validateYear(year1) && year2.trim().isEmpty()) {
+                emptyYear= true;
+            }
+            else if (!v.validateYear(year1)) {
                     session.setAttribute("year1Err", "Year is invalid");
                     response.sendRedirect("index.jsp");
+                    valid = false;
                 } else if (!v.validateYear(year2)) {
                     session.setAttribute("year2Err", "Year is invalid");
                     response.sendRedirect("index.jsp");
-                } else if (Integer.parseInt(year1) > Integer.parseInt(year2)) {
+                    valid = false;
+                } else if (Integer.parseInt(year1) > Integer.parseInt(year2) || (year1.equals("") && year2.equals(""))) {
                     session.setAttribute("year1Err", "Format is incorrect");
                     response.sendRedirect("index.jsp");
+                    valid = false;
                 }
-            } catch (Exception e) {
-                session.setAttribute("year1Err", "Format is incorrect");
-                response.sendRedirect("index.jsp");
-            }
-            int min = Integer.parseInt(year1);
-            int max = Integer.parseInt(year2);
-            yearsCalc.emptyYears();
+              
+            int min = 0;
+            int max = 0;
+                if (valid) {
+           if (!emptyYears && !emptyYear) {
+                min = Integer.parseInt(year1);
+                max = Integer.parseInt(year2);
+           }
             
-            for (; min <= max; min++) {
-                yearsCalc.addYear(String.valueOf(min));
+            if (title != null) {
+                searchParam.setTitle(title);
             }
-                response.sendRedirect("index.jsp");
-
+            if (genre != null){
+                searchParam.setGenre(genre);
+            }
+            if (!emptyYears && !emptyYear) {
+            for (; min <= max; min++) {
+                searchParam.addYear(String.valueOf(min));
+            } 
+            } else if (emptyYear) {
+                searchParam.addYear(year1);
+            }
+            response.sendRedirect("index.jsp");
+                }
+                
+                
         %>
     </body>
 </html>

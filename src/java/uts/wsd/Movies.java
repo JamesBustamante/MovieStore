@@ -25,6 +25,13 @@ public class Movies implements Serializable {
     public ArrayList<Movie> getMovies() {
         return movies;
     }
+    public ArrayList<Movie> getMatches(String genre){
+        ArrayList<Movie> matches = new ArrayList<>();
+        for(Movie movie:movies)
+            if(movie.matchGenre(genre))
+                matches.add(movie);
+        return matches;
+    }
     
     
 }

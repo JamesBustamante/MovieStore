@@ -10,10 +10,18 @@
         <jsp:setProperty name="movieApp" property="filePath" value="<%=filePath1%>"/>
             </jsp:useBean>
         
+        <jsp:useBean id="searchParam" 
+                     class="uts.wsd.SearchParam" scope="application">
+                     </jsp:useBean>
+        
                     <% Movies movies = movieApp.getMovies();
                     ArrayList<Movie> matches = movies.getMovies();
                     
             %>
+            <%= searchParam.getGenre() %>
+            <%= searchParam.getTitle() %>
+            <%= searchParam.getYears().toString() %>
+            
             <c:set var = "xmltext"> 
             <movies> 
                     <% for (Movie movie: matches) { %>

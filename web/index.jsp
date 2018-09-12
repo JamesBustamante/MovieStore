@@ -18,8 +18,8 @@ and open the template in the editor.
         <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
             </jsp:useBean>
         
-        <jsp:useBean id="yearsCalc" 
-                     class="uts.wsd.YearsCalc" scope="application"> <!-- This bean calculates all the  years between what the user inputs -->
+        <jsp:useBean id="searchParam" 
+                     class="uts.wsd.SearchParam" scope="application"> <!-- This bean calculates all the  years between what the user inputs -->
                      </jsp:useBean>
        
         
@@ -37,6 +37,7 @@ and open the template in the editor.
             <table>                
                 <tr><td>Movie Title</td><td><input type="text" name="title"/></td></tr>
                 <tr><td>Genre</td><td><select name="genre">
+                         <option value="Any">Any</option>
                          <option value="Sci-Fi">Sci-Fi</option>
                         <option value="Action">Action</option>
                         <option value="Horror">Horror</option>
@@ -57,8 +58,6 @@ and open the template in the editor.
             }
             session.removeAttribute("year1Err"); //Invalidate Indivdual attributes rather than the enitre session
             session.removeAttribute("year2Err");
-            try {
-            out.print(yearsCalc.getYears().get(2));}  catch (Exception e) {out.print("none");}
         %>
             
             <div style = "text-align: center;">

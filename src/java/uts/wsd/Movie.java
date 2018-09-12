@@ -100,5 +100,17 @@ public class Movie implements Serializable {
         this.availableCopies = availableCopies;
     }
     
+    public boolean matchGenre(String genre){
+        return this.genre.equalsIgnoreCase(genre.toLowerCase().trim());
+    }
+    
+    public boolean matchTitle(String title){
+        return this.title.equals(title.toLowerCase().trim());
+    }
+    
+    public boolean matchYear(String year){
+        return this.releaseDate.equals(year.toLowerCase().trim());
+    }
+    
     
 }
