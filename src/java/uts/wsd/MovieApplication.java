@@ -21,6 +21,15 @@ public class MovieApplication {
         return filePath;
     }
 
+    public MovieApplication(String filePath, Movies movies) {
+        super();
+        this.filePath = filePath;
+        this.movies = movies;
+    }
+        
+        public MovieApplication() {
+    }
+
     public void setFilePath(String filePath) throws Exception {
         // Create the unmarshaller
         JAXBContext jc = JAXBContext.newInstance(Movies.class);

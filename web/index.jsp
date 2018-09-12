@@ -45,7 +45,9 @@ and open the template in the editor.
                     </td>
                 </tr>
             </table>
-        </form>  
+        </form>
+            
+            <jsp:include page="displayMovies.jsp" />
             
 
             

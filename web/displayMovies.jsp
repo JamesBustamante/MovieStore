@@ -1,5 +1,5 @@
 <%@page contentType="application/xml"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="WEB-INF/movies.xsl"?>
+<?xml-stylesheet type="text/xsl" href="movies.xsl"?>
 
 <%@page import="uts.wsd.Movies"%>
 <%@page import="uts.wsd.Movie"%>
@@ -18,13 +18,13 @@
             <movies> 
                     <% for (Movie movie: matches) { %>
                     <movie>
-                        <title><% movie.getTitle(); out.println(movie.getGenre()); %></title>
-                        <genre><% movie.getGenre(); %></genre>
-                        <releaseDate><% movie.getReleaseDate();%></releaseDate>
-                        <price><% movie.getPrice();%></price>
-                        <picture><% movie.getPicture(); %></picture>
-                        <description><% movie.getDescription(); %></description>
-                        <availableCopies><% movie.getAvailableCopies(); %></availableCopies>
+                        <title><%= movie.getTitle() %></title>
+                        <genre><%= movie.getGenre() %></genre>
+                        <releaseDate><%= movie.getReleaseDate()%></releaseDate>
+                        <price><%= movie.getPrice()%></price>
+                        <picture><%= movie.getPicture() %></picture>
+                        <description><%= movie.getDescription() %></description>
+                        <availableCopies><%= movie.getAvailableCopies() %></availableCopies>
                     </movie>
                     <%}%>
             </movies>

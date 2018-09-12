@@ -18,6 +18,17 @@ public class MovieStoreUserApplication {
     public String getFilePath() {
         return filePath;
     }
+    
+    public MovieStoreUserApplication() {
+    }
+
+    public MovieStoreUserApplication(String filePath, Users users) {
+        super();
+        this.filePath = filePath;
+        this.users = users;
+    }
+    
+    
 
     public void setFilePath(String filePath) throws Exception {
         // Create the unmarshaller
