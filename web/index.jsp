@@ -17,16 +17,22 @@ and open the template in the editor.
         <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
         <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
             </jsp:useBean>
+        
+        <jsp:useBean id="yearsCalc" 
+                     class="uts.wsd.YearsCalc" scope="application"> <!-- This bean calculates all the  years between what the user inputs -->
+                     </jsp:useBean>
        
         
         <jsp:include page="header.jsp"  flush="true"/> <!-- Every Page MUST Have this header. We can customise this later on -->
            
             <%
-            String year1Err = (String) session.getAttribute("IDErr");
-            String year2Err = (String) session.getAttribute("passErr");
+            String year1Err = (String) session.getAttribute("year1Err");
+            String year2Err = (String) session.getAttribute("year2Err");
+            String exist = (String) session.getAttribute("existErr");
         %>
         
             <h2 style ="text-align: center;">Search for Movies</h2>
+            <span><%=(exist != null ? exist : "")%></span>
              <form action="searchAction.jsp" method="get">
             <table>                
                 <tr><td>Movie Title</td><td><input type="text" name="title"/></td></tr>
@@ -44,6 +50,16 @@ and open the template in the editor.
                 </tr>
             </table>
         </form>
+                 <%
+            if (request.getParameter("submitted") != null) {
+                exist = year1Err = year2Err = null;
+
+            }
+            session.removeAttribute("year1Err"); //Invalidate Indivdual attributes rather than the enitre session
+            session.removeAttribute("year2Err");
+            try {
+            out.print(yearsCalc.getYears().get(2));}  catch (Exception e) {out.print("none");}
+        %>
             
             <div style = "text-align: center;">
             <jsp:include page="displayMovies.jsp" flush="true" />
