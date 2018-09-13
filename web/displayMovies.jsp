@@ -46,6 +46,16 @@
                             matches = calcYears.getYearMatches(matches,searchParam.getYears(), movies);
                             out.print(matches.toString());
                 }
+                
+                if (genreHasInput && titleHasInput && yearsHasInput) {
+                    matches = movies.getAllMatches(searchParam.getYears().get(0), searchParam.getTitle(), searchParam.getGenre());
+                } 
+
+                if (genreHasInput && !titleHasInput && yearsHasInput) {
+                    CalcYears calcYears1 = new CalcYears(); 
+                            matches = calcYears1.getYearMatches(matches,searchParam.getYears(), movies);
+                            matches = movies.getGenreAndYearMatches(matches, searchParam.getGenre());
+                }
                
                 
             %>

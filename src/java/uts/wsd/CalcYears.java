@@ -32,6 +32,34 @@ public class CalcYears {
         return matches;
     }
     
+//    public ArrayList<Movie> getAllMatches(ArrayList<Movie> moviesList,ArrayList<String> years, String title, String genre, Movies movies){
+//        boolean genreHasInput = false;
+//                boolean titleHasInput = false;
+//                boolean yearsHasInput = false;
+//                if (!genre.equals(""))
+//                    genreHasInput = true;
+//                if (!title.equals(""))
+//                    titleHasInput = true;
+//                if (!years.isEmpty())
+//                    yearsHasInput = true;
+//                
+//                if (genreHasInput && titleHasInput && yearsHasInput) {
+//                
+//                } else if (genreHasInput && titleHasInput && !yearsHasInput) {
+//                
+//                } else if (genreHasInput && !titleHasInput && !yearsHasInput) {
+//                
+//                } else if (genreHasInput && !titleHasInput && yearsHasInput) {
+//                
+//                } else if (!genreHasInput && titleHasInput && !yearsHasInput) {
+//                
+//                } else if (!genreHasInput && !titleHasInput && !yearsHasInput) {
+//                
+//                } else if (!genreHasInput && !titleHasInput && yearsHasInput) {
+//                
+//                }
+//    }
+    
     
 }
 

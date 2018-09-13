@@ -112,5 +112,17 @@ public class Movie implements Serializable {
         return this.releaseDate.equals(year.trim());
     }
     
+    public boolean matchAll(String title, String year, String genre){        
+        return matchTitle(title)&&matchYear(year)&&matchGenre(genre);
+    }
+    
+    public boolean matchGenreAndYear(String genre, String year){        
+        return matchYear(year)&&matchGenre(genre);
+    }
+    
+    public boolean matchAny(String title, String year, String genre){ 
+        return matchTitle(title)||matchYear(year)||matchGenre(genre);
+    }
+    
     
 }
