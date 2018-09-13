@@ -57,27 +57,4 @@ public class OrderApplication {
         return orders;
     }
         
-
-    /**
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setUsers(Users users) {
-        this.users = users;
-    }
-    
-    
-    * 
-    //Checks if book is reserved.
-    public boolean checkReservations(String ISBN) {
-        for (reserved reserved : reservations.getList()) {
-            if (reserved.getISBN().equals(ISBN)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    */
 }
