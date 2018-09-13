@@ -109,7 +109,7 @@ public class Movie implements Serializable {
     }
     
     public boolean matchYear(String year){
-        return this.releaseDate.equals(year.toLowerCase().trim());
+        return this.releaseDate.equals(year.trim());
     }
     
     

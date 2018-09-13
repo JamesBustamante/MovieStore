@@ -1,3 +1,4 @@
+<%@page import="uts.wsd.CalcYears"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 
@@ -39,16 +40,13 @@
                 
                 if (titleHasInput)
                     matches = movies.getTitleMatches(searchParam.getTitle());
-                //out.print(yearsHasInput);
-                if (yearsHasInput) {
-                    matches.clear();
-                    for (String year : searchParam.getYears()) {
-                        ArrayList<Movie> match = new ArrayList<>();
-                        match = movies.getYearMatches(year);
-                        matches.addAll(match);
-                        out.print(year);
-                    }
+               
+                if (yearsHasInput){
+                     CalcYears calcYears = new CalcYears(); 
+                            matches = calcYears.getYearMatches(matches,searchParam.getYears(), movies);
+                            out.print(matches.toString());
                 }
+               
                 
             %>
             
