@@ -17,6 +17,8 @@ public class SearchParam {
     String title;
 
     public SearchParam() {
+        genre = "";
+        title = "";
     }
  
     public ArrayList<String> getYears() {

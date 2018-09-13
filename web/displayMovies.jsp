@@ -22,6 +22,36 @@
             <%= searchParam.getTitle() %>
             <%= searchParam.getYears().toString() %>
             
+            <% 
+                boolean genreHasInput = false;
+                boolean titleHasInput = false;
+                boolean yearsHasInput = false;
+                if (!searchParam.getGenre().equals(""))
+                    genreHasInput = true;
+                if (!searchParam.getTitle().equals(""))
+                    titleHasInput = true;
+                if (!searchParam.getYears().isEmpty())
+                    yearsHasInput = true;
+                        
+                if (searchParam.getGenre().equals("Any") || !genreHasInput) {     
+                        matches = movies.getMovies();
+                }   else {matches = movies.getGenreMatches(searchParam.getGenre()); }
+                
+                if (titleHasInput)
+                    matches = movies.getTitleMatches(searchParam.getTitle());
+                //out.print(yearsHasInput);
+                if (yearsHasInput) {
+                    matches.clear();
+                    for (String year : searchParam.getYears()) {
+                        ArrayList<Movie> match = new ArrayList<>();
+                        match = movies.getYearMatches(year);
+                        matches.addAll(match);
+                        out.print(year);
+                    }
+                }
+                
+            %>
+            
             <c:set var = "xmltext"> 
             <movies> 
                     <% for (Movie movie: matches) { %>
