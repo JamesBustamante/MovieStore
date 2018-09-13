@@ -9,9 +9,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Main Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:include page="header.jsp"  flush="true"/>
+        
+        <form>
+            <table>
+                <tr><td><h1>Order History</h1></td>
+                <td><h1><a href="cancel.jsp">Click here to cancel an order</a></h1></td></tr>
+                <tr>
+                    <td>
+                        <div style = "text-align: center;">
+                            <jsp:include page="displayOrder.jsp" flush="true" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>

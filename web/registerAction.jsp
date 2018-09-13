@@ -15,8 +15,11 @@
         <title>Register Action Page</title>
     </head>
     <body>
+        
+        
 
         <%
+            
              int key = (new Random()).nextInt(9999);
             String id = "" + key;
            String fullName = request.getParameter("fullName");
@@ -27,7 +30,7 @@
            String address = request.getParameter("address");
            String tos = request.getParameter("tos");
 
-            Validator v = new Validator();
+//            Validator v = new Validator();
 
 //            if (!v.validateName(fullName)) {
 //                session.setAttribute("nameErr", "Name format is incorrect!");

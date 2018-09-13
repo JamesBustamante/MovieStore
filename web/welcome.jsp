@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Welcome Page</title>
     </head>
     <body>
 
@@ -50,7 +50,7 @@
                 </body>
             </body>
             <% } else if (unique == true) { %>
-            <p>  Click <a href="index.jsp"> here </a> to proceed to the main page. </p>
+            <p>  Click <a href="main.jsp">here</a> to proceed to the main page. </p>
             </body>
                 <%
                     } else {

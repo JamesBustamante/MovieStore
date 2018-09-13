@@ -42,6 +42,9 @@ public class Order implements Serializable {
     public String getTitle() {
         return title;
     }
+    public String getOrderID(){
+        return orderID + "";
+    }
     public String getGenre() {
         return genre;
     }
