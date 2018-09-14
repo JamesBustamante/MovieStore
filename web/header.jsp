@@ -19,7 +19,7 @@
         %>
         <div style="background: #eee; border: solid 1px #333; text-align: right; width: 100%;"> 
             You are logged in as <%= user.getfullName() %>  &#60;<%= user.getEmail() %>&#62;  </div>
-           <p style ="text-align: right;"> My Account</p> <!-- This is the link that takes the user to their main page-->
+           <p style ="text-align: right;"> <a href="main.jsp">My Account</a><!-- This is the link that takes the user to their main page-->
          <% } else { %>
          <div style="background: #eee; border: solid 1px #333; text-align: right; width: 100%;"> 
             You are not logged in  </div>
