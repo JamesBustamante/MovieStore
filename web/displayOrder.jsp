@@ -3,7 +3,7 @@
     Created on : 14/09/2018, 2:49:30 AM
     Author     : Ciaran
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 
 <%@page import="uts.wsd.*"%>
@@ -25,6 +25,6 @@ ArrayList<Order> matches = orders.getList();%>
 <!--        More information about the order needs to go here.
         Do we display the orders by User ID? or are we displaying the ID based off user id?-->
     </order>
-</c:set>
+</c:set>--%>
 
 <!--Need to do XSLT--> 

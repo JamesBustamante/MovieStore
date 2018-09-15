@@ -19,9 +19,9 @@
                     ArrayList<Movie> matches = movies.getMovies();
                     
             %>
-            <%= searchParam.getGenre() %>
-            <%= searchParam.getTitle() %>
-            <%= searchParam.getYears().toString() %>
+            <%//= searchParam.getGenre() %>
+            <%//= searchParam.getTitle() %>
+            <%//= searchParam.getYears().toString() %>
             
             <% 
                 boolean genreHasInput = false;

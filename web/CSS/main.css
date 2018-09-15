@@ -19,36 +19,77 @@ h2 {
 	margin-top: 10px;
 }
 
+.logincontent {
+background: #3c3d60;
+	background: #88E4FF;
+	font-weight: 500; /* #88E4FF*/
+	width: 100%;
+	height: auto;
+    max-width: 970px;
+    position: relative;
+    margin: auto;
+    border: 1px solid #ccc;
+    color: #3c3d60;
+}
+
+.logincontent table {
+    margin-left: 690px;
+    
+}
+
+
 .header {
 	background: #3c3d60;
 	color: #f1f1f1;
 	font-weight: 500; /* */
 	width: 100%;
 	height: 45px;
-    max-width: 940px;
+    max-width: 970px;
     position: relative;
     margin: auto;
-    border-bottom: 10px solid #88E4FF;
-    
+
+}
+
 .content {
-	max-width: 940px;
-    min-width: 300px;
-	margin: 0 auto;
-	margin-top: 10px;
-	background: #fff;
-	border: 1px solid #ccc;
-    margin-top: auto;   
-    color: #f1f1f1;
-}
-
-p {
-    margin-left: 200px;
-    padding-right: 20px;
-    /*color: #2e2f47;*/
-    color: #7FFF00;
+background: #fff;
+	font-weight: 500; /* #88E4FF*/
+	width: 100%;
+	height: auto;
+    max-width: 970px;
     position: relative;
-    top: -15px; 
-    font-family: Helvetica;
+    margin: auto;
+    border: 1px solid #ccc;
+    color: #3c3d60;
 }
 
+.content p table {
+    margin-left: 20px;
+    padding-right: 20px;
+    
+}
+
+.content input[name="year1"] {
+    width: 40px;
+}
+
+.content input[name="year2"] {
+    width: 40px;
+}
+
+.content select[name="genre"] {
+    width: 100px;
+}
+
+.Endnote {
+    text-align: center;
+    background-color: #3c3d60;
+    color: #88E4FF;
+    max-width: 970px;
+    min-width: 300px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    font-size: 14px; 
+    font-weight: 100;
 }

@@ -23,20 +23,21 @@ and open the template in the editor.
                      class="uts.wsd.SearchParam" scope="application"> <!-- This bean calculates all the  years between what the user inputs -->
                      </jsp:useBean>
        
-        
+    
         <jsp:include page="header.jsp"  flush="true"/> <!-- Every Page MUST Have this header. We can customise this later on -->
-           
+
             <%
             String year1Err = (String) session.getAttribute("year1Err");
             String year2Err = (String) session.getAttribute("year2Err");
             String exist = (String) session.getAttribute("existErr");
         %>
-        <p>TESTING</p>
-        <div class="content"><p>TESTING</p></div>
+        
+
+        <div class="content">
             <h2 style ="text-align: center;">Search for Movies</h2>
-            <span><%=(exist != null ? exist : "")%></span>
              <form action="searchAction.jsp" method="get">
-            <table>                
+            <table align="center">         
+                <%=(exist != null ? exist : "")%>
                 <tr><td>Movie Title</td><td><input type="text" name="title"/></td></tr>
                 <tr><td>Genre</td><td><select name="genre">
                          <option value="Any">Any</option>
@@ -53,6 +54,8 @@ and open the template in the editor.
                 </tr>
             </table>
         </form>
+                
+             
                  <%
             if (request.getParameter("submitted") != null) {
                 exist = year1Err = year2Err = null;
@@ -64,6 +67,9 @@ and open the template in the editor.
 
 
             <jsp:include page="displayMovies.jsp" flush="true" />
+            <p></p>
+</div>
+            <jsp:include page="endNote.jsp" />
 
     </body>
 </html>

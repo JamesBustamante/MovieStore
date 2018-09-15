@@ -14,18 +14,23 @@
         <title>Import</title>
     </head>
     <body>
-        <div class="header"><h1>Movie Store HQ</h1>
+        <div class="header"><h1>Movie Store HQ</h1></div>
         <% User user = (User)session.getAttribute("user"); 
                 if (user != null) { 
         %>
-        <div> 
-            You are logged in as <%= user.getfullName() %>  &#60;<%= user.getEmail() %>&#62;  </div>
-            <p style ="text-align: right;"> <a href="main.jsp">My Account</a><!-- This is the link that takes the user to their main page-->
-         <% } else { %>
-         <div > 
-             <p style ="text-align: right; color: #ffffff">You are not logged in</p>  </div>
-            <p style ="text-align: right;"><a href="login.jsp">Login</a> | <a href="register.jsp"> Register </a> </p>
-            <% } %>   
-            </div> 
+        <div class="logincontent"> 
+            <span style="text-align: center">You are logged in as <%= user.getfullName() %>  &#60;<%= user.getEmail() %>&#62;  <a href="main.jsp">My Account</a></span>
+        </div><!-- This is the link that takes the user to their main page-->
+         <% } else { %> 
+            <div class="logincontent">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>You are not logged in </td><td><a href="login.jsp">Login</a> | <a href="register.jsp"> Register </a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+                 <% } %>   
     </body>
 </html>
