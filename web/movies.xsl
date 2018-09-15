@@ -29,7 +29,7 @@
     </xsl:template>
     
      <xsl:template match="movies">
-        <table>
+        <table align="center">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -64,7 +64,7 @@
                 <xsl:value-of select="availableCopies"/>
             </td>
             <td>
-                <form action="checkout.jsp" method="get">   <!--Creates the button to reserve books.-->
+                <form action="checkout.jsp" method="get">   <!--Creates the button to reserve movies.-->
                         <input type="hidden" name="id" value="{title}"/>
                         <input type="submit" value="Select" name="select"/>
                 </form>
