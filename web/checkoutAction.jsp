@@ -3,8 +3,9 @@
     Created on : 11/09/2018, 9:37:07 PM
     Author     : WILL
 --%>
+<%@page import="java.util.Random"%>
 <%@page import="uts.wsd.Order"%>
-<%@page import="uts.wsd.Orders"%>
+<%@page import="uts.wsd.History"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,23 +14,27 @@
     </head>    
     <body>
         <!--Grabs parameters from previous page-->
-        <%String title = request.getParameter("title");%>
-        <%String genre = request.getParameter("genre");%>
-        <%String releaseDate = request.getParameter("releaseDate");%>
-        <%String price = request.getParameter("price");%>
-        <%String NoCopies = request.getParameter("NoCopies");%>
+        <%
+        String title = request.getParameter("title");
+        String genre = request.getParameter("genre");
+        String releaseDate = request.getParameter("releaseDate");
+        String price = request.getParameter("price");
+        String NoCopies = request.getParameter("NoCopies");
+        String id = request.getParameter("id");
+        %>
 
         <% String filePath = application.getRealPath("WEB-INF/history.xml");%>
-        <jsp:useBean id="orderApp" class="uts.wsd.OrderApplication" scope="application">
-            <jsp:setProperty name="orderApp" property="filePath" value="<%=filePath%>"/>
+        <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
+            <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
         
         <%  
-            int rndOrderID = 0; /**Random 3 digit number, to be coded still**/ 
-            Order newOrder = new Order(rndOrderID, title, genre, releaseDate, price, NoCopies);
-            Orders orders = orderApp.getOrder();
-            orders.addOrder(newOrder); //Uses addOrder function to add new order.
-            orderApp.updateXML(orders, filePath); //Saves the order in XML.
+            int rndOrderID = (new Random()).nextInt(999);           
+            
+            Order newOrder = new order();
+            History history = historyApp.getHistory();
+            history.addOrder(newOrder); //Uses addOrder function to add new order.
+            historyApp.updateXML(history, filePath); //Saves the order in XML.
         %>
         
         

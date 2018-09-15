@@ -32,6 +32,11 @@ public class History implements Serializable {
         return history;
     }
     
+    public void addOrder(Order newOrder)
+    {
+        history.add(newOrder);
+    }
+    
     public ArrayList<Order> getOrdersEmailMatches(String email) {
   
         ArrayList<Order> matches = new ArrayList<>();
@@ -65,12 +70,12 @@ public class History implements Serializable {
     }
     
      public ArrayList<Order> getOrdersMovieMatches(String title) {
-         MoviePurchase moviePurchase; 
+        MoviePurchase moviePurchase; 
         ArrayList<Order> matches = new ArrayList<>();
         for (Order order : history) {
-            for (int i = order.getPurchases().size(); i>0; i--) { //Gets Number of pruchases
-                moviePurchase = order.getPurchases().get(i-1); //Set a single movie pruchase
-                if (moviePurchase.matchTitle(title)) { //Match movie pruchase to a title
+            for (int i = order.getPurchases().size(); i>0; i--) { //Gets Number of purchases
+                moviePurchase = order.getPurchases().get(i-1); //Set a single movie purchase
+                if (moviePurchase.matchTitle(title)) { //Match movie purchase to a title
                     matches.add(order); 
             }
             }
