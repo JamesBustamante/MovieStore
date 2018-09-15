@@ -10,20 +10,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="/MovieStore/CSS/main.css"> 
         <title>Import</title>
     </head>
     <body>
-        <div><h1>Movie Store HQ</h1></div> 
+        <div class="header"><h1>Movie Store HQ</h1>
         <% User user = (User)session.getAttribute("user"); 
                 if (user != null) { 
         %>
-        <div style="background: #eee; border: solid 1px #333; text-align: right; width: 100%;"> 
+        <div> 
             You are logged in as <%= user.getfullName() %>  &#60;<%= user.getEmail() %>&#62;  </div>
-           <p style ="text-align: right;"> <a href="main.jsp">My Account</a><!-- This is the link that takes the user to their main page-->
+            <p style ="text-align: right;"> <a href="main.jsp">My Account</a><!-- This is the link that takes the user to their main page-->
          <% } else { %>
-         <div style="background: #eee; border: solid 1px #333; text-align: right; width: 100%;"> 
-            You are not logged in  </div>
+         <div > 
+             <p style ="text-align: right; color: #ffffff">You are not logged in</p>  </div>
             <p style ="text-align: right;"><a href="login.jsp">Login</a> | <a href="register.jsp"> Register </a> </p>
             <% } %>   
+            </div> 
     </body>
 </html>

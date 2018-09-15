@@ -20,7 +20,7 @@
                 <title>movie.xsl</title>
             </head>
             <body>
-                <h1>HQ's Collection</h1>
+                <h1 style = "text-align: center;">HQ's Collection</h1>
                 <div style = "text-align: center;">
                 <xsl:apply-templates select="movies"/>  
                 </div>

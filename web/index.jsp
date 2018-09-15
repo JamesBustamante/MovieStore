@@ -31,7 +31,8 @@ and open the template in the editor.
             String year2Err = (String) session.getAttribute("year2Err");
             String exist = (String) session.getAttribute("existErr");
         %>
-        
+        <p>TESTING</p>
+        <div class="content"><p>TESTING</p></div>
             <h2 style ="text-align: center;">Search for Movies</h2>
             <span><%=(exist != null ? exist : "")%></span>
              <form action="searchAction.jsp" method="get">
@@ -60,10 +61,9 @@ and open the template in the editor.
             session.removeAttribute("year1Err"); //Invalidate Indivdual attributes rather than the enitre session
             session.removeAttribute("year2Err");
         %>
-            
-            <div style = "text-align: center;">
+
+
             <jsp:include page="displayMovies.jsp" flush="true" />
-            </div>
-            
+
     </body>
 </html>

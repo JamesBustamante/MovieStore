@@ -18,3 +18,37 @@ h2 {
 	margin-left: 20px;
 	margin-top: 10px;
 }
+
+.header {
+	background: #3c3d60;
+	color: #f1f1f1;
+	font-weight: 500; /* */
+	width: 100%;
+	height: 45px;
+    max-width: 940px;
+    position: relative;
+    margin: auto;
+    border-bottom: 10px solid #88E4FF;
+    
+.content {
+	max-width: 940px;
+    min-width: 300px;
+	margin: 0 auto;
+	margin-top: 10px;
+	background: #fff;
+	border: 1px solid #ccc;
+    margin-top: auto;   
+    color: #f1f1f1;
+}
+
+p {
+    margin-left: 200px;
+    padding-right: 20px;
+    /*color: #2e2f47;*/
+    color: #7FFF00;
+    position: relative;
+    top: -15px; 
+    font-family: Helvetica;
+}
+
+}
