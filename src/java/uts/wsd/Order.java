@@ -18,15 +18,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "order")
-public class Order
-{
-    
+public class Order {
+
     @XmlElement(name = "orderID")
     private String orderID;
     @XmlElementWrapper(name = "purchases")
     @XmlElement(name = "moviePurchase")
     private ArrayList<MoviePurchase> purchases;
-    @XmlElement(name = "ID")
+    @XmlElement(name = "ID") //USER ID
     private String ID;
     @XmlElement(name = "email")
     private String email;
@@ -38,8 +37,6 @@ public class Order
     private String salesTotal;
     @XmlElement(name = "orderStatus")
     private String orderStatus;
-
-    
 
     public Order() {
     }
@@ -63,76 +60,72 @@ public class Order
         this.purchases = purchases;
     }
 
-
-    public String getOrderID ()
-    {
+    public String getOrderID() {
         return orderID;
     }
 
-    public void setOrderID (String orderID)
-    {
+    public void setOrderID(String orderID) {
         this.orderID = orderID;
     }
 
-    public String getEmail ()
-    {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail (String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getID ()
-    {
+    public String getID() {
         return ID;
     }
 
-    public void setID (String ID)
-    {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
-    public String getFullName ()
-    {
+    public String getFullName() {
         return fullName;
     }
 
-    public void setFullName (String fullName)
-    {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    public String getSalesTotal ()
-    {
+    public String getSalesTotal() {
         return salesTotal;
     }
 
-    public void setSalesTotal (String salesTotal)
-    {
+    public void setSalesTotal(String salesTotal) {
         this.salesTotal = salesTotal;
     }
 
-    public String getOrderStatus ()
-    {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus (String orderStatus)
-    {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public String getPaymentMethod ()
-    {
+    public String getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod (String paymentMethod)
-    {
+    public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
+    public boolean matchEmail(String email) {
+        return this.email.equals(email.trim());
+    }
+
+    public boolean matchOrderID(String orderID) {
+        return this.orderID.equals(orderID.trim());
+    }
+
+    public boolean matchOrderStatus(String orderStatus) {
+        return this.orderStatus.equals(orderStatus.trim());
+    }
+
 }
-			

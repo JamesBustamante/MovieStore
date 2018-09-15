@@ -70,6 +70,6 @@
         <fullName>Nathan Ross</fullName>
         <paymentMethod>Card</paymentMethod>
         <salesTotal>45.00</salesTotal>
-        <orderStatus>Submitted</orderStatus>
+        <orderStatus>Cancelled</orderStatus>
     </order>
 </history>

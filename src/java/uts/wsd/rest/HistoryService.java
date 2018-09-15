@@ -6,15 +6,18 @@
 package uts.wsd.rest;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBException;
 import uts.wsd.History;
 import uts.wsd.HistoryApplication;
+import uts.wsd.Order;
 
 /**
  *
@@ -45,12 +48,44 @@ public class HistoryService {
             return HistoryApp;
         }
     }
-        
+        //http://localhost:8080/MovieStore/rest/historyApp/history
+        //If no parameters are given, all available orders should be returned.
     @Path("history")
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public History getUsers() throws JAXBException, IOException, Exception {
+    public History getHistory() throws JAXBException, IOException, Exception {
         return getHistoryApp().getHistory();
     }
+    
+    //http://localhost:8080/MovieStore/rest/historyApp/history/email/"EMAIL"
+    //Search via user email
+    @Path("history/email/{email}")
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    public  ArrayList<Order> getHistory(@PathParam("email") String email) throws JAXBException, IOException, Exception {
+            //email = "nathan22@gmail.com";
+        return getHistoryApp().getHistory().getOrdersEmailMatches(email);
+    }
+    
+    //http://localhost:8080/MovieStore/rest/historyApp/history/orderID/"ID"
+    //Search via order ID
+    @Path("history/orderID/{orderID}")
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    public Order getHistoryID(@PathParam("orderID") String orderID) throws JAXBException, IOException, Exception {
+            //email = "nathan22@gmail.com";
+        return getHistoryApp().getHistory().getOrderIDMatch(orderID);
+    }
+    
+    //http://localhost:8080/MovieStore/rest/historyApp/history/orderStatus/"Cancelled||Submitted"
+    //Search via order Status
+    @Path("history/orderStatus/{orderStatus}")
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    public ArrayList<Order> getHistoryStatus(@PathParam("orderStatus") String orderStatus) throws JAXBException, IOException, Exception {
+            //email = "nathan22@gmail.com";
+        return getHistoryApp().getHistory().getOrdersStatusMatches(orderStatus);
+    }
+    
     
 }
