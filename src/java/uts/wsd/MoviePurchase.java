@@ -68,5 +68,10 @@ public class MoviePurchase {
     public void setPrice(String price) {
         this.price = price;
     }
+    
+    public boolean matchTitle(String title) {
+        return this.title.equalsIgnoreCase(title.toLowerCase().trim());
+    }
+
 
 }

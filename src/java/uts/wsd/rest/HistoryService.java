@@ -87,5 +87,15 @@ public class HistoryService {
         return getHistoryApp().getHistory().getOrdersStatusMatches(orderStatus);
     }
     
+    //http://localhost:8080/MovieStore/rest/historyApp/history/movieTitle/"title"
+    //Search via movie title ordered
+    @Path("history/movieTitle/{title}")
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    public ArrayList<Order> getHistoryMovieTitle(@PathParam("title") String title) throws JAXBException, IOException, Exception {
+            //email = "nathan22@gmail.com";
+        return getHistoryApp().getHistory().getOrdersMovieMatches(title);
+    }
+    
     
 }

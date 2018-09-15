@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "history")
 public class History implements Serializable {
+    Purchases purchases;
     
     @XmlElement(name = "order")
     private ArrayList<Order> history= new ArrayList<Order>();
@@ -27,7 +28,7 @@ public class History implements Serializable {
     public History() {
     }
 
-    public ArrayList<Order> getMovies() {
+    public ArrayList<Order> getHistory() {
         return history;
     }
     
@@ -47,7 +48,7 @@ public class History implements Serializable {
         ArrayList<Order> matches = new ArrayList<>();
         for (Order order : history) {
             if (order.matchOrderStatus(orderStatus)) {
-                matches.add(order);
+                matches.add(order); 
             }
         }
         return matches;
@@ -61,6 +62,20 @@ public class History implements Serializable {
             }
         }
         return null;
+    }
+    
+     public ArrayList<Order> getOrdersMovieMatches(String title) {
+         MoviePurchase moviePurchase; 
+        ArrayList<Order> matches = new ArrayList<>();
+        for (Order order : history) {
+            for (int i = order.getPurchases().size(); i>0; i--) { //Gets Number of pruchases
+                moviePurchase = order.getPurchases().get(i-1); //Set a single movie pruchase
+                if (moviePurchase.matchTitle(title)) { //Match movie pruchase to a title
+                    matches.add(order); 
+            }
+            }
+        }
+        return matches;
     }
 
 }
