@@ -31,7 +31,7 @@
         <%  
             int rndOrderID = (new Random()).nextInt(999);           
             
-            Order newOrder = new order();
+            Order newOrder = new Order();
             History history = historyApp.getHistory();
             history.addOrder(newOrder); //Uses addOrder function to add new order.
             historyApp.updateXML(history, filePath); //Saves the order in XML.
