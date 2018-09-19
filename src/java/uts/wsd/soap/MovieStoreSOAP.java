@@ -20,6 +20,7 @@ import uts.wsd.Movie;
 import uts.wsd.MovieApplication;
 import uts.wsd.MovieStoreUserApplication;
 import uts.wsd.Movies;
+import uts.wsd.Order;
 import uts.wsd.User;
 import uts.wsd.Users;
 
@@ -117,7 +118,23 @@ private WebServiceContext context;
     }
     
     @WebMethod
-    public void RemoveUser() throws IOException, Exception, NullPointerException {
-        
+    public void removeUser(User user) throws IOException, Exception, NullPointerException {
+        MovieStoreUserApplication userApp = getUserApp();
+        userApp.getUsers().removeUser(user);
+        userApp.saveUsers();
+    }
+    
+    @WebMethod
+    public Order matchOrderID(String OrderID) throws IOException, Exception, NullPointerException {
+        HistoryApplication historyApp = getHistoryApp();
+        Order order = historyApp.getHistory().getOrderIDMatch(OrderID);
+        return order;
+    }
+    
+    @WebMethod
+    public void cancelOrder(String OrderID) throws IOException, Exception, NullPointerException {
+        HistoryApplication historyApp = getHistoryApp();
+        historyApp.getHistory().getOrderIDMatch(OrderID).setOrderStatus("Cancelled");
+        historyApp.saveHistory();
     }
 }

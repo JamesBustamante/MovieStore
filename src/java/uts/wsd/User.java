@@ -14,8 +14,8 @@ import java.io.Serializable;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "user")
 public class User implements Serializable {
-    @XmlElement(name = "id")
-    private String id;
+    @XmlElement(name = "ID")
+    private String ID;
     @XmlElement(name = "email")
     private String email;
     @XmlElement(name = "password")
@@ -29,8 +29,8 @@ public class User implements Serializable {
     @XmlElement(name = "gender")
     private String gender;
 
-    public User(String id, String email, String password, String fullName, String phone, String address, String gender) {
-        this.id = id;
+    public User(String ID, String email, String password, String fullName, String phone, String address, String gender) {
+        this.ID = ID;
         this.email = email;
         this.password = password;
         this.fullName = fullName;
@@ -42,12 +42,12 @@ public class User implements Serializable {
       public User() {}
       
 
-    public String getId() {
-        return id;
+    public String getID() {
+        return ID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String ID) {
+        this.ID = ID;
     }
 
     public String getEmail() {

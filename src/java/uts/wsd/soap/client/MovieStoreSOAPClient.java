@@ -52,6 +52,11 @@ public class MovieStoreSOAPClient {
         System.out.print("Enter your Password: ");
         return In.nextLine();
     }
+    
+    private String readOrderID() {
+        System.out.print("Enter your Order ID you would like to cancel: ");
+        return In.nextLine();
+    }
 
     private char readMenuChoice() {
         System.out.println("Select from the following: ");
@@ -90,7 +95,7 @@ public class MovieStoreSOAPClient {
          return null;
     }
 
-    private void useMenu(MovieStoreSOAPClient client, User user) throws Exception_Exception  {
+    private void useMenu(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception  {
         char choice;
         while ((choice = client.readMenuChoice()) != '6') {
             switch (choice) {
@@ -108,8 +113,16 @@ public class MovieStoreSOAPClient {
                 case '3':
                     break;
                 case '4':
+                    cancelOrder(client, user);
                     break;
                 case '5':
+            {
+                try {
+                    cancelAccount(client, user);
+                } catch (IOException_Exception ex) {
+                    Logger.getLogger(MovieStoreSOAPClient.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
                     break;
                 default:
                     System.out.println("Input is invalid. Try again ");
@@ -131,19 +144,35 @@ public class MovieStoreSOAPClient {
 
     }
 
-    private void cancelOrder(MovieStoreSOAPClient client, User user) {
-
+    private void cancelOrder(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
+        MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
+        MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
+        
+        String orderID = readOrderID();
+        Order order = movieStore.matchOrderID(orderID);
+        System.out.println(order.getOrderID());
+        if (order != null) {
+            System.out.println(order.getID());
+            System.out.println(user.getID());
+            if (order.getID().equals(user.getID()) &&  order.getOrderStatus().equals("Submitted")) {   
+                System.out.print("Order " + orderID + " has been cancelled.");
+                movieStore.cancelOrder(orderID);
+        } else {System.out.print("Invalid Order ID. Returning to Menu.");}
+    }
     }
 
-    private void cancelAccount(MovieStoreSOAPClient client, User user) {
-        
+    private void cancelAccount(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
         
         System.out.println("Are to you sure you want to close/cancel your account? (enter: 'YES') ");
         String choice = In.nextLine();
         if (choice.endsWith("YES")){
-            
+            System.out.print(user.getFullName());
+           movieStore.removeUser(user);
+           System.out.println("Account has been deleted. Restarting Program");
+           String[] args = {};
+            client.main(args);
         
         } else {System.out.println("Invalid input. Returning you to menu");}
 
