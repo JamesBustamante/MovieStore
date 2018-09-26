@@ -27,40 +27,68 @@
         </html>
     </xsl:template>
     
-    <xsl:template match="movies">
+    <xsl:template match="history">
         <table align="center">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Genre</th>
-                    <th>Release Date</th>
-                    <th>Price</th>
-                    <th>Available Copies</th>
-                    <th>Selection</th>
+                    <th>orderID</th>
+                    <xsl:template match="moviePurchase">
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Release Date</th>
+                        <th>Price</th>
+                        <th>NoCopies</th>
+                    </xsl:template>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Payment Method</th>
+                    <th>Sales Total</th>
+                    <th>Submitted</th>
                 </tr>
             </thead>
             <tbody>
-                <xsl:apply-templates select="movie"/>
+                <xsl:apply-templates select="history"/>
             </tbody>
         </table>
     </xsl:template>
     
-    <xsl:template match="movie">
+    <xsl:template match="order">
         <tr>
             <td>
-                <xsl:value-of select="title"/>
+                <xsl:value-of select="orderID"/>
+            </td>
+            <xsl:template match="moviePurchase">
+                <td>
+                    <xsl:value-of select="title"/>
+                </td>
+                <td>
+                    <xsl:value-of select="genre"/>
+                </td>
+                <td>
+                    <xsl:value-of select="releaseDate"/>
+                </td>
+                <td>
+                    <xsl:value-of select="price"/>
+                </td>
+                <td>
+                    <xsl:value-of select="NoCopies"/>
+                </td>
+            </xsl:template>
+            <td>
+                <xsl:value-of select="ID"/>
             </td>
             <td>
-                <xsl:value-of select="genre"/>
+                <xsl:value-of select="fullName"/>
             </td>
             <td>
-                <xsl:value-of select="releaseDate"/>
+                $<xsl:value-of select="paymentMethod"/>
             </td>
             <td>
-                $<xsl:value-of select="price"/>
+                <xsl:value-of select="salesTotal"/>
             </td>
             <td>
-                <xsl:value-of select="availableCopies"/>
+                <xsl:value-of select="orderStatus"/>
             </td>
             <td>
                 <form action="checkout.jsp" method="get"> <!--Creates the button to remove the movie.-->

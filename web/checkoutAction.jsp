@@ -13,28 +13,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>    
     <body>
-        <!--Grabs parameters from previous page-->
-        <%
-        String title = request.getParameter("title");
-        String genre = request.getParameter("genre");
-        String releaseDate = request.getParameter("releaseDate");
-        String price = request.getParameter("price");
-        String NoCopies = request.getParameter("NoCopies");
-        String id = request.getParameter("id");
-        %>
-
         <% String filePath = application.getRealPath("WEB-INF/history.xml");%>
         <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
             <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
         
         <%  
-            int rndOrderID = (new Random()).nextInt(999);           
+           //int rndOrderID = (new Random()).nextInt(999); 
             
-            Order newOrder = new order();
-            History history = historyApp.getHistory();
-            history.addOrder(newOrder); //Uses addOrder function to add new order.
-            historyApp.updateXML(history, filePath); //Saves the order in XML.
+            
+            
+            //Order newOrder = new order();
+            //History history = historyApp.getHistory();
+            //history.addOrder(newOrder); //Uses addOrder function to add new order.
+            //historyApp.updateXML(history, filePath); //Saves the order in XML.
         %>
         
         

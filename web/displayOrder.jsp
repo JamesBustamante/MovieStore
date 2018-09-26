@@ -10,24 +10,43 @@
 <%@page import="java.util.*"%>
 
 <% String filePath1 = application.getRealPath("WEB-INF/history.xml");%>
-
     <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
         <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath1%>"/>
     </jsp:useBean>
 
-    <% History history = historyApp.getHistory();
-    ArrayList<Order> matches = history.getHistory();%>
+    <% 
+    History history = historyApp.getHistory();
+    String id = request.getParameter("id");
+    ArrayList<Order> matches = history.getHistory();
 
+    int rndOrderID = (new Random()).nextInt(999); 
+    %>
+    
     <c:set var="xmltext">
-        <%for (Order order : matches) {%>
-            <order>
-                <orderID><%=order.getOrderID()%></orderID>
-                <purchases><%=order.getPurchases()%></purchases>
-
-
-                <!--More information about the order needs to go here.
-                Do we display the orders by User ID? or are we displaying the ID based off user id?-->
-            </order>
+        <%for (Order order : matches) { %>
+                <order>
+                    <orderID><%=rndOrderID%></orderID>
+                    <purchases>
+                        <moviePurchase>
+                            <title><%=id%></title>
+                            <genre>genre</genre>
+                            <releaseDate>2002</releaseDate>
+                            <price>19.96</price>
+                            <NoCopies>1</NoCopies>
+                        </moviePurchase>
+                    </purchases>
+                    <ID><%=order.getID()%></ID>
+                    <email><%=order.getEmail()%></email>
+                    <fullName><%=order.getFullName()%></fullName>
+                    <paymentMethod><%=order.getPaymentMethod()%></paymentMethod>
+                    <salesTotal><%=order.getSalesTotal()%></salesTotal>
+                    <orderStatus><%=order.getOrderStatus()%></orderstatus>                    
+                    
+                    <!--More information about the order needs to go here.
+                    Do we display the orders by User ID? or are we 
+                    displaying the ID based off user id?-->
+                </order>
+            <%}%>      
         <%}%>
     </c:set>
 <c:import url = "history.xsl" var = "xslt"/>

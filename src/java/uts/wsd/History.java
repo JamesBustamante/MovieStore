@@ -69,7 +69,7 @@ public class History implements Serializable {
         return null;
     }
     
-     public ArrayList<Order> getOrdersMovieMatches(String title) {
+    public ArrayList<Order> getOrdersMovieMatches(String title) {
         MoviePurchase moviePurchase; 
         ArrayList<Order> matches = new ArrayList<>();
         for (Order order : history) {
@@ -82,5 +82,4 @@ public class History implements Serializable {
         }
         return matches;
     }
-
 }
