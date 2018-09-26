@@ -15,18 +15,19 @@
         <jsp:include page="header.jsp" />
         <h2>Login</h2>
         <form action="loginAction.jsp" method="post"><table>
-            <tr>
-            <td>Email</td>
-            <td><input name="email" type="text" value=""></td>
-              </tr>
-       <tr>
-            <td>Password</td>
-            <td><input name="password" type="password" value=""></td>
-        </tr>
-       <tr>
-        <td></td>
-        <td><input value="Login" type="submit"></td>
-        </tr>   
-      </table></form>
+                <tr>
+                    <td>Email</td>
+                    <td><input name="email" type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input name="password" type="password" value=""></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input value="Login" type="submit"></td>
+                </tr>   
+            </table>
+        </form>
     </body>
 </html>

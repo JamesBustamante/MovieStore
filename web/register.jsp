@@ -15,17 +15,17 @@
         <jsp:include page="header.jsp" />
         <h2>Register</h2>
         <form action="registerAction.jsp" method="post">
-        <table>
+            <table>
                 <tr><td>Email</td><td><input size="16" type="text" name="email"></td></tr>
-                 <tr><td>Full Name</td><td><input size="16" type="text" name="fullName"></td></tr>
+                <tr><td>Full Name</td><td><input size="16" type="text" name="fullName"></td></tr>
                 <tr><td>Password</td><td><input type="password" name="password"></td></tr>
                 <tr><td>Gender</td><td><input type="radio" name="gender" value="male" checked> Male<br>
-                <input type="radio" name="gender" value="female"> Female<br> </td></tr>
-                  <tr><td>Phone Number</td><td><input size="16" type="text" name="phone"></td></tr>
-                  <tr><td>Address</td><td><input size="16" type="text" name="address"></td></tr>
+                        <input type="radio" name="gender" value="female"> Female<br> </td></tr>
+                <tr><td>Phone Number</td><td><input size="16" type="text" name="phone"></td></tr>
+                <tr><td>Address</td><td><input size="16" type="text" name="address"></td></tr>
                 <tr><td>Agree to TOS</td><td><input type="checkbox" name="tos" value="check"><br></td></tr>
                 <tr><td></td><td><input type="submit" value="Register"> </td></tr>
-        </table>   
+            </table>   
     </form>
     </body>
 </html>
