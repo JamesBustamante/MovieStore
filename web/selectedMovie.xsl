@@ -73,15 +73,16 @@
                     <input type="reset" value="X" name="removeMovie"/>
                 </form>
             </td>
-        </tr>
+        </tr>        
         <tr>
             <td>
-                <form action="purchaseOrder.jsp" method="get">   <!--Creates the button to purchase the order.-->
+                <form action="purchaseOrder.jsp" method="get"> <!--Creates the button to purchase the order.-->
                     <input type="hidden" name="id" value="{title}"/>
                     <input type="submit" value="Purchase Order" name="purchaseOrder"/>
                 </form>
             </td>
         </tr>
+        
     </xsl:template>
 
 </xsl:stylesheet>

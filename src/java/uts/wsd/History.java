@@ -23,7 +23,7 @@ public class History implements Serializable {
     Purchases purchases;
     
     @XmlElement(name = "order")
-    private ArrayList<Order> history= new ArrayList<Order>();
+    private ArrayList<Order> history = new ArrayList<Order>(); 
     
     public History() {
     }

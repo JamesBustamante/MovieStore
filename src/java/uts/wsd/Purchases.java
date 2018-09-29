@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "purchases")
-class Purchases implements Serializable {
+public class Purchases implements Serializable {
     
     @XmlElement(name = "moviePurchase")
     private ArrayList<MoviePurchase> purchases = new ArrayList<MoviePurchase>();

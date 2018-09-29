@@ -38,8 +38,7 @@ public class Order {
     @XmlElement(name = "orderStatus")
     private String orderStatus;
 
-    public Order() {
-    }
+    public Order() {}
 
     public Order(String orderID, ArrayList<MoviePurchase> purchases, String ID, String email, String fullName, String paymentMethod, String salesTotal, String orderStatus) {
         this.orderID = orderID;

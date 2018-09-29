@@ -91,10 +91,7 @@
                 <xsl:value-of select="orderStatus"/>
             </td>
             <td>
-                <form action="checkout.jsp" method="get"> <!--Creates the button to remove the movie.-->
-                        <input type="hidden" name="id" value="{title}"/>
-                        <input type="submit" value="Remove" name="remove"/>
-                </form>
+                <!-- input buttons -->
             </td>
         </tr>
     </xsl:template>

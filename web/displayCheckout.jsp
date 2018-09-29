@@ -5,9 +5,9 @@
 <%@page import="uts.wsd.Movie"%>
 <%@page import="java.util.ArrayList"%>
 
-<% String filePath1 = application.getRealPath("WEB-INF/movies.xml");%>
+<% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
 <jsp:useBean id="movieApp" class="uts.wsd.MovieApplication" scope="application">
-    <jsp:setProperty name="movieApp" property="filePath" value="<%=filePath1%>"/>
+    <jsp:setProperty name="movieApp" property="filePath" value="<%=filePath%>"/>
 </jsp:useBean>
 
 <% 

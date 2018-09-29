@@ -27,8 +27,19 @@ public class MoviePurchase {
     @XmlElement(name = "price")
     private String price;
     @XmlElement(name = "NoCopies")
-    private String NoCopies;
-
+    private String NoCopies;    
+    
+    //****new - testing for xml update****
+    public MoviePurchase(){}
+    //****new - testing for xml update****
+    public MoviePurchase(String title, String genre, String releaseDate, String price, String NoCopies) {
+        this.title = title;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
+        this.price = price;
+        this.NoCopies = NoCopies;
+    }
+    
     public String getGenre() {
         return genre;
     }
@@ -72,6 +83,4 @@ public class MoviePurchase {
     public boolean matchTitle(String title) {
         return this.title.equalsIgnoreCase(title.toLowerCase().trim());
     }
-
-
 }

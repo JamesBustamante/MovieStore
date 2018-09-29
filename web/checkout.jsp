@@ -24,23 +24,18 @@
             String id = request.getParameter("id");            
             History history = new History();
             history.getOrderIDMatch(id);
-        %>      
-        
-        <!--<form action="checkoutAction.jsp" method="get">
-         
-        </form>-->
+        %>
         
         <div class="content">
-            <table align ="center">
-                <tr><td><input type="button" onclick="location.href='index.jsp'" value="Choose Another Movie"></td></tr>
-                <!--<tr><td><input type="button" value="Purchase Order"></td></tr>-->
-                <tr><td><input type="button" value="Cancel Order"></td></tr>
-            </table>            
-            <!-- Display the checkout orders -->
-            <jsp:include page="displayCheckout.jsp" flush="true" />            
+            <div style="text-align: center;">
+                <table>            
+                    <tr><td><input type="button" onclick="location.href='index.jsp'" value="Choose Another Movie"></td></tr>                
+                    <tr><td><input type="button" value="Cancel Order"></td></tr>
+                </table>    
+            </div>
             
-            <!-- Display the final order -->
-            <jsp:include page="displayOrder.jsp" flush="true" />            
+            <!-- Display the checkout orders -->
+            <jsp:include page="displayCheckout.jsp" flush="true" />
         </div>
         <jsp:include page="endNote.jsp" />
     </body>

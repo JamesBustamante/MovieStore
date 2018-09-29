@@ -15,6 +15,7 @@ import javax.xml.bind.*;
 public class HistoryApplication {
     private String filePath;
     private History history;
+    private Purchases purchases;
     
      public String getFilePath() {
         return filePath;
@@ -65,6 +66,10 @@ public class HistoryApplication {
 
     public void setHistory(History history) {
         this.history = history;
+    }
+    
+    public Purchases getPurchases() {
+        return purchases;
     }
     
 }
