@@ -32,7 +32,25 @@
             <xs:pattern value="[0-9]+(\.[0-9][0-9]?)?"/>
         </xs:restriction>
     </xs:simpleType>
-     
+    
+    <xs:simpleType name="picture">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="/\A\z/"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="description">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="/\A\z/"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="availableCopies">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="^\d+$"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
   
     <!-- Insert your element declarations here -->
     
@@ -42,13 +60,13 @@
                 <xs:element name="movie" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="title" type="xs:string"/>
+                            <xs:element name="title" type="title"/>
                             <xs:element name="genre" type="genres"/>
                             <xs:element name="releaseDate" type="date"/>
                             <xs:element name="price" type="price"/>
-                            <xs:element name="picture" type="xs:string"/>
-                            <xs:element name="description" type="xs:string"/>   
-                            <xs:element name="availableCopies" type="xs:integer"/>   
+                            <xs:element name="picture" type="picture"/>
+                            <xs:element name="description" type="description"/>   
+                            <xs:element name="availableCopies" type="availableCopies"/>   
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

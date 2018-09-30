@@ -41,6 +41,12 @@
             <xs:pattern value="male|female"/> 
         </xs:restriction>
     </xs:simpleType>
+    
+    <xs:simpleType name="address">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="/\A\z/"/>
+        </xs:restriction>
+    </xs:simpleType>
      
   
  <!-- Insert your element declarations here -->
@@ -57,7 +63,7 @@
                             <xs:element name="fullName" type="fullName"/>
                            <xs:element name="phone" type="phone"/>
                              <xs:element name="gender" type="gender"/>   
-                             <xs:element name="address" type="xs:string"/>   
+                             <xs:element name="address" type="address"/>   
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
