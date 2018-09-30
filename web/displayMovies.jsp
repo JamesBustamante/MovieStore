@@ -44,22 +44,24 @@
                 if (yearsHasInput){
                      CalcYears calcYears = new CalcYears(); 
                             matches = calcYears.getYearMatches(matches,searchParam.getYears(), movies);
-                            out.print(matches.toString());
+
                 }
                 
                 if (genreHasInput && titleHasInput && yearsHasInput) {
                     matches = movies.getAllMatches(searchParam.getYears().get(0), searchParam.getTitle(), searchParam.getGenre());
+
                 } 
 
                 if (genreHasInput && !titleHasInput && yearsHasInput) {
                     CalcYears calcYears1 = new CalcYears(); 
                             matches = calcYears1.getYearMatches(matches,searchParam.getYears(), movies);
-                            matches = movies.getGenreAndYearMatches(matches, searchParam.getGenre());
+
+                            if (!searchParam.getGenre().equals("Any")) {
+                            matches = movies.getGenreAndYearMatches(matches, searchParam.getGenre()); }
                 }
-               
+
                 
             %>
-            
             <c:set var = "xmltext"> 
             <movies> 
                     <% for (Movie movie: matches) { %>
@@ -77,3 +79,19 @@
             </c:set>
 <c:import url = "movies.xsl" var = "xslt"/>
 <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
+<%! String name;%> 
+<%
+    if (matches.size() == 0) { 
+            if (titleHasInput) {
+                name = "Title: " + searchParam.getTitle() + "        ";
+            }
+            if (genreHasInput)
+            name = name + "Genre: " + searchParam.getGenre() + "        ";
+            if (yearsHasInput)
+            name = name + "Years: " + searchParam.getYears().get(0) + "-" + searchParam.getYears().get(searchParam.getYears().size()-1);
+%> 
+
+<h2 style="text-align: center; color:brown;">Error! Movie Not Found</h2>
+<p style="text-align: center; color:brown;">Parameters given <%= name %></p>
+<% name = ""; %>
+<% } %>
