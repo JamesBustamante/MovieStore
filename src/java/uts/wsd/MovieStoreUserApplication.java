@@ -6,7 +6,10 @@
 package uts.wsd;
 
 import java.io.*;
+import javax.xml.XMLConstants;
 import javax.xml.bind.*;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 /**
  *
  * @author james
@@ -31,9 +34,12 @@ public class MovieStoreUserApplication {
     
 
     public void setFilePath(String filePath) throws Exception {
+       
         // Create the unmarshaller
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Unmarshaller u = jc.createUnmarshaller();
+        
+
         this.filePath = filePath;
         FileInputStream fin = new FileInputStream(filePath);
         users = (Users)u.unmarshal(fin); // This loads the "shop" object

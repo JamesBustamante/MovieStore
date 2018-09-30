@@ -10,7 +10,10 @@ package uts.wsd;
  * @author james
  */
 import java.io.*;
+import javax.xml.XMLConstants;
 import javax.xml.bind.*;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 
 
 public class MovieApplication {

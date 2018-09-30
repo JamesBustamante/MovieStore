@@ -1,17 +1,21 @@
-<?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://www.uts.edu.au/31284/wsd-students"
-    xmlns="http://www.uts.edu.au/31284/wsd-students"
-    elementFormDefault="qualified">
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.w3schools.com/WSDassignment"
+           targetNamespace="http://www.w3schools.com/WSDassignment"
+           elementFormDefault="qualified"
+>
+    <!--        elementFormDefault="qualified"
+    xmlns="http://www.w3schools.com/WSDassignment movies.xsd"-->
  
-     <!-- Insert your type declarations here -->
-     <xs:simpleType name="title">
+    <!-- Insert your type declarations here -->
+    <xs:simpleType name="title">
         <xs:restriction base="xs:string">
             <xs:pattern value="[A-Za-z]+([A-Za-z]+)*"/>
         </xs:restriction>
     </xs:simpleType>
     
-    <xs:simpleType name="genre">
+    <xs:simpleType name="genres">
         <xs:restriction base="xs:string">
             <xs:pattern value="Sci[-]Fi|Comedy|Horror|Family|Action"/>
         </xs:restriction>
@@ -30,7 +34,7 @@
     </xs:simpleType>
      
   
- <!-- Insert your element declarations here -->
+    <!-- Insert your element declarations here -->
     
     <xs:element name="movies">
         <xs:complexType>
@@ -39,19 +43,19 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="title" type="xs:string"/>
-                            <xs:element name="genre" type="genre"/>
+                            <xs:element name="genre" type="genres"/>
                             <xs:element name="releaseDate" type="date"/>
                             <xs:element name="price" type="price"/>
-                           <xs:element name="picture" type="xs:string"/>
-                             <xs:element name="description" type="xs:string"/>   
-                             <xs:element name="availableCopies" type="xs:integer"/>   
+                            <xs:element name="picture" type="xs:string"/>
+                            <xs:element name="description" type="xs:string"/>   
+                            <xs:element name="availableCopies" type="xs:integer"/>   
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 
         
-    </xs:sequence>
-    </xs:complexType>
+            </xs:sequence>
+        </xs:complexType>
     </xs:element>
             
 
