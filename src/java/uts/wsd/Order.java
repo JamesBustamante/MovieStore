@@ -126,5 +126,9 @@ public class Order {
     public boolean matchOrderStatus(String orderStatus) {
         return this.orderStatus.equals(orderStatus.trim());
     }
+    
+    public boolean matchIDStatus(String ID) {
+        return this.ID.equals(ID.trim());
+    }
 
 }

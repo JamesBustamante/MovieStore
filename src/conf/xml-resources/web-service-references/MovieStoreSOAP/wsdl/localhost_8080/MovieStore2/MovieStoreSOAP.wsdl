@@ -4,11 +4,11 @@
 <xsd:import namespace="http://soap.wsd.uts/" schemaLocation="http://localhost:8080/MovieStore2/MovieStoreSOAP?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="removeUser">
-<part name="parameters" element="tns:removeUser"/>
+<message name="fetchUsers">
+<part name="parameters" element="tns:fetchUsers"/>
 </message>
-<message name="removeUserResponse">
-<part name="parameters" element="tns:removeUserResponse"/>
+<message name="fetchUsersResponse">
+<part name="parameters" element="tns:fetchUsersResponse"/>
 </message>
 <message name="IOException">
 <part name="fault" element="tns:IOException"/>
@@ -16,11 +16,17 @@
 <message name="Exception">
 <part name="fault" element="tns:Exception"/>
 </message>
-<message name="fetchUsers">
-<part name="parameters" element="tns:fetchUsers"/>
+<message name="removeUser">
+<part name="parameters" element="tns:removeUser"/>
 </message>
-<message name="fetchUsersResponse">
-<part name="parameters" element="tns:fetchUsersResponse"/>
+<message name="removeUserResponse">
+<part name="parameters" element="tns:removeUserResponse"/>
+</message>
+<message name="matchOrderID">
+<part name="parameters" element="tns:matchOrderID"/>
+</message>
+<message name="matchOrderIDResponse">
+<part name="parameters" element="tns:matchOrderIDResponse"/>
 </message>
 <message name="fetchLogin">
 <part name="parameters" element="tns:fetchLogin"/>
@@ -34,30 +40,54 @@
 <message name="cancelOrderResponse">
 <part name="parameters" element="tns:cancelOrderResponse"/>
 </message>
-<message name="matchOrderID">
-<part name="parameters" element="tns:matchOrderID"/>
-</message>
-<message name="matchOrderIDResponse">
-<part name="parameters" element="tns:matchOrderIDResponse"/>
-</message>
 <message name="fetchMovies">
 <part name="parameters" element="tns:fetchMovies"/>
 </message>
 <message name="fetchMoviesResponse">
 <part name="parameters" element="tns:fetchMoviesResponse"/>
 </message>
+<message name="getOrdersbyID">
+<part name="parameters" element="tns:getOrdersbyID"/>
+</message>
+<message name="getOrdersbyIDResponse">
+<part name="parameters" element="tns:getOrdersbyIDResponse"/>
+</message>
+<message name="setOrder">
+<part name="parameters" element="tns:setOrder"/>
+</message>
+<message name="setOrderResponse">
+<part name="parameters" element="tns:setOrderResponse"/>
+</message>
+<message name="getOrdersbyStatus">
+<part name="parameters" element="tns:getOrdersbyStatus"/>
+</message>
+<message name="getOrdersbyStatusResponse">
+<part name="parameters" element="tns:getOrdersbyStatusResponse"/>
+</message>
+<message name="getOrdersbyTitle">
+<part name="parameters" element="tns:getOrdersbyTitle"/>
+</message>
+<message name="getOrdersbyTitleResponse">
+<part name="parameters" element="tns:getOrdersbyTitleResponse"/>
+</message>
 <portType name="MovieStoreSOAP">
+<operation name="fetchUsers">
+<input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchUsersRequest" message="tns:fetchUsers"/>
+<output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchUsersResponse" message="tns:fetchUsersResponse"/>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchUsers/Fault/IOException"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchUsers/Fault/Exception"/>
+</operation>
 <operation name="removeUser">
 <input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/removeUserRequest" message="tns:removeUser"/>
 <output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/removeUserResponse" message="tns:removeUserResponse"/>
 <fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/removeUser/Fault/IOException"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/removeUser/Fault/Exception"/>
 </operation>
-<operation name="fetchUsers">
-<input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchUsersRequest" message="tns:fetchUsers"/>
-<output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchUsersResponse" message="tns:fetchUsersResponse"/>
-<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchUsers/Fault/IOException"/>
-<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchUsers/Fault/Exception"/>
+<operation name="matchOrderID">
+<input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/matchOrderIDRequest" message="tns:matchOrderID"/>
+<output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/matchOrderIDResponse" message="tns:matchOrderIDResponse"/>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/matchOrderID/Fault/IOException"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/matchOrderID/Fault/Exception"/>
 </operation>
 <operation name="fetchLogin">
 <input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchLoginRequest" message="tns:fetchLogin"/>
@@ -71,21 +101,54 @@
 <fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/cancelOrder/Fault/IOException"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/cancelOrder/Fault/Exception"/>
 </operation>
-<operation name="matchOrderID">
-<input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/matchOrderIDRequest" message="tns:matchOrderID"/>
-<output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/matchOrderIDResponse" message="tns:matchOrderIDResponse"/>
-<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/matchOrderID/Fault/IOException"/>
-<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/matchOrderID/Fault/Exception"/>
-</operation>
 <operation name="fetchMovies">
 <input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchMoviesRequest" message="tns:fetchMovies"/>
 <output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchMoviesResponse" message="tns:fetchMoviesResponse"/>
 <fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchMovies/Fault/IOException"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/fetchMovies/Fault/Exception"/>
 </operation>
+<operation name="getOrdersbyID">
+<input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyIDRequest" message="tns:getOrdersbyID"/>
+<output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyIDResponse" message="tns:getOrdersbyIDResponse"/>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyID/Fault/IOException"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyID/Fault/Exception"/>
+</operation>
+<operation name="setOrder">
+<input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/setOrderRequest" message="tns:setOrder"/>
+<output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/setOrderResponse" message="tns:setOrderResponse"/>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/setOrder/Fault/IOException"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/setOrder/Fault/Exception"/>
+</operation>
+<operation name="getOrdersbyStatus">
+<input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyStatusRequest" message="tns:getOrdersbyStatus"/>
+<output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyStatusResponse" message="tns:getOrdersbyStatusResponse"/>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyStatus/Fault/IOException"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyStatus/Fault/Exception"/>
+</operation>
+<operation name="getOrdersbyTitle">
+<input wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyTitleRequest" message="tns:getOrdersbyTitle"/>
+<output wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyTitleResponse" message="tns:getOrdersbyTitleResponse"/>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyTitle/Fault/IOException"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.wsd.uts/MovieStoreSOAP/getOrdersbyTitle/Fault/Exception"/>
+</operation>
 </portType>
 <binding name="MovieStoreSOAPPortBinding" type="tns:MovieStoreSOAP">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="fetchUsers">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="IOException">
+<soap:fault name="IOException" use="literal"/>
+</fault>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
 <operation name="removeUser">
 <soap:operation soapAction=""/>
 <input>
@@ -101,7 +164,7 @@
 <soap:fault name="Exception" use="literal"/>
 </fault>
 </operation>
-<operation name="fetchUsers">
+<operation name="matchOrderID">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -146,7 +209,7 @@
 <soap:fault name="Exception" use="literal"/>
 </fault>
 </operation>
-<operation name="matchOrderID">
+<operation name="fetchMovies">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -161,7 +224,52 @@
 <soap:fault name="Exception" use="literal"/>
 </fault>
 </operation>
-<operation name="fetchMovies">
+<operation name="getOrdersbyID">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="IOException">
+<soap:fault name="IOException" use="literal"/>
+</fault>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="setOrder">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="IOException">
+<soap:fault name="IOException" use="literal"/>
+</fault>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="getOrdersbyStatus">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="IOException">
+<soap:fault name="IOException" use="literal"/>
+</fault>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="getOrdersbyTitle">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

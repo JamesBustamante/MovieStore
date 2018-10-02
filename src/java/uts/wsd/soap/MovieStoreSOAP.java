@@ -137,4 +137,32 @@ private WebServiceContext context;
         historyApp.getHistory().getOrderIDMatch(OrderID).setOrderStatus("Cancelled");
         historyApp.saveHistory();
     }
+    
+    @WebMethod
+    public ArrayList<Order> getOrdersbyID(String UserID) throws IOException, Exception, NullPointerException {
+        HistoryApplication historyApp = getHistoryApp();
+        ArrayList<Order> matches = historyApp.getHistory().getUserIDMatches(UserID);
+        return matches;
+    }
+    
+    @WebMethod
+    public ArrayList<Order> getOrdersbyTitle(String UserID, String Title) throws IOException, Exception, NullPointerException {
+        HistoryApplication historyApp = getHistoryApp();
+        ArrayList<Order> matches = historyApp.getHistory().getOrdersMovieMatches(Title,UserID);
+        return matches;
+    }
+    
+    public ArrayList<Order> getOrdersbyStatus(String UserID, String status) throws IOException, Exception, NullPointerException {
+        HistoryApplication historyApp = getHistoryApp();
+        ArrayList<Order> matches = historyApp.getHistory().getOrdersStatusMatches(UserID, status);
+        return matches;
+    }
+    
+    public void setOrder(Order order) throws IOException, Exception, NullPointerException {
+        HistoryApplication historyApp = getHistoryApp();
+        historyApp.getHistory().addOrder(order);
+        historyApp.saveHistory();
+     
+    }
+    
 }

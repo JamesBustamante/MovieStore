@@ -6,9 +6,14 @@
 package uts.wsd.soap.client;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uts.wsd.Movie;
+import uts.wsd.soap.client.Order.Purchases;
+
+
 
 /**
  *
@@ -52,77 +57,114 @@ public class MovieStoreSOAPClient {
         System.out.print("Enter your Password: ");
         return In.nextLine();
     }
-    
+
     private String readOrderID() {
         System.out.print("Enter your Order ID you would like to cancel: ");
+        return In.nextLine();
+    }
+
+    private int readAmount() {
+        System.out.print("Enter No of copies: ");
+        return In.nextInt();
+    }
+
+    private String readOrderIDSearch() {
+        System.out.print("Enter your Order ID: ");
+        return In.nextLine();
+    }
+
+    private String readTitle() {
+        System.out.print("Enter title: ");
+        return In.nextLine();
+    }
+
+    private String readStatus() {
+        System.out.print("Selected Status: ");
+        System.out.print("1. Cancelled ");
+        System.out.print("2. Submitted");
         return In.nextLine();
     }
 
     private char readMenuChoice() {
         System.out.println("Select from the following: ");
         System.out.println("1. Make a movie order");
-        System.out.println("2. Place an  order");
-        System.out.println("3. View all of your orders");
-        System.out.println("4. Cancel an Order");
-        System.out.println("5. Cancel your account");
-        System.out.println("6. Logout");
+        System.out.println("2. View orders");
+        System.out.println("3. Cancel an Order");
+        System.out.println("4. Cancel your account");
+        System.out.println("5. Logout");
         System.out.print("Selection: ");
         return In.nextChar();
     }
-    
+
+    private char readContinue() {
+        System.out.print("Selection (y/n): ");
+        return In.nextChar();
+    }
+
+    private char readViewOrdersByChoice() {
+        System.out.println("View your order by: ");
+        System.out.println("1. View all orders");
+        System.out.println("2. Order ID");
+        System.out.println("3. Movie Title");
+        System.out.println("4. Order Status");
+        System.out.print("Selection: ");
+        return In.nextChar();
+    }
+
     private uts.wsd.soap.client.Movie readMovieChoice() throws Exception_Exception, IOException_Exception {
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
         int i = 0;
-        for (uts.wsd.soap.client.Movie movie:movieStore.fetchMovies()){
-            
-            System.out.println(i + ". " + movie.getTitle() + "\tGenre: " + movie.getGenre() + "\tCopies: " + movie.getAvailableCopies()) ;
+        for (uts.wsd.soap.client.Movie movie : movieStore.fetchMovies()) {
+
+            System.out.println(i + ". " + movie.getTitle() + "\tGenre: " + movie.getGenre() + "\tCopies: " + movie.getAvailableCopies());
             i++;
         }
         System.out.print("Select Movie to Order [number]: ");
-        
+
         int choice;
         while ((choice = In.nextInt()) > i) {
-        System.out.println("-------Invalid Selection------");
+            System.out.println("-------Invalid Selection------");
             readMovieChoice();
         }
         i = 0;
-         for (uts.wsd.soap.client.Movie movie:movieStore.fetchMovies()){
-            if (i == choice)
+        for (uts.wsd.soap.client.Movie movie : movieStore.fetchMovies()) {
+            if (i == choice) {
                 return movie;
+            }
             i++;
         }
-         return null;
+        return null;
     }
 
-    private void useMenu(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception  {
+    private void useMenu(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
         char choice;
         while ((choice = client.readMenuChoice()) != '6') {
             switch (choice) {
-                case '1':
-            {
-                try {
-                    orderMovie(client, user);
-                } catch (IOException_Exception ex) {
-                    Logger.getLogger(MovieStoreSOAPClient.class.getName()).log(Level.SEVERE, null, ex);
+                case '1': {
+                    try {
+                        orderMovie(client, user);
+                    } catch (IOException_Exception ex) {
+                        Logger.getLogger(MovieStoreSOAPClient.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }
-                    break;
+                break;
                 case '2':
+                    viewOrders(client, user);
                     break;
                 case '3':
-                    break;
-                case '4':
                     cancelOrder(client, user);
                     break;
-                case '5':
-            {
-                try {
-                    cancelAccount(client, user);
-                } catch (IOException_Exception ex) {
-                    Logger.getLogger(MovieStoreSOAPClient.class.getName()).log(Level.SEVERE, null, ex);
+                case '4': {
+                    try {
+                        cancelAccount(client, user);
+                    } catch (IOException_Exception ex) {
+                        Logger.getLogger(MovieStoreSOAPClient.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }
+                break;
+                case '5':
+                    logout(client, user);
                     break;
                 default:
                     System.out.println("Input is invalid. Try again ");
@@ -134,48 +176,197 @@ public class MovieStoreSOAPClient {
     private void orderMovie(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception { //1
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
-        System.out.println("Ordering Movie...");
-        uts.wsd.soap.client.Movie movieChoice = client.readMovieChoice();
-        System.out.println("Amount..");
+        boolean contin = true;
+        ArrayList<uts.wsd.soap.client.Movie> movies = new ArrayList<uts.wsd.soap.client.Movie>();
+        while (contin) {
+            System.out.println("Ordering Movie...");
+            uts.wsd.soap.client.Movie movieChoice = client.readMovieChoice();
+            
+            movies.add(movieChoice);
+            
+            System.out.println("Amount..");
+            int amount = client.readAmount();
+            System.out.println("Added to order------");
+            System.out.println("Added another movie?");
+            char choice = client.readContinue();
+            if (choice == 'y') {
+                contin = true;
+            } else {
+                contin = false;
+            }
+        }
+        System.out.println("Checkout?");
+        char choice = client.readContinue();
+        if (choice == 'y') {
+            Random random = new Random();
+            int x = random.nextInt(900) + 100;
+            ArrayList<MoviePurchase> purchases = new ArrayList<>();
+            Order newOrder = new Order();
+            //Integer.toString(x),purchases,user.getID(),user.getEmail(), user.getFullName(), "Card", "0.00", "Submitted"
+            newOrder.setID(user.getID());
+            newOrder.setEmail(user.getEmail());
+            newOrder.setFullName(user.getFullName());
+            newOrder.setOrderID(Integer.toString(x));
+            newOrder.setOrderStatus("Submitted");
+            newOrder.setPaymentMethod("Card");
+            newOrder.setSalesTotal("0.00");
+            Purchases total = new Purchases();
+            newOrder.setPurchases(total);
+            List<MoviePurchase> moviePurchases = total.moviePurchase;
+            
+            for (uts.wsd.soap.client.Movie movie: movies){
+                MoviePurchase moviePurchase = new MoviePurchase();
+                moviePurchase.setGenre(movie.getGenre());
+                moviePurchase.setNoCopies("1");
+                moviePurchase.setPrice(movie.getPrice());
+                moviePurchase.setReleaseDate(movie.getReleaseDate());
+                moviePurchase.setTitle(movie.getTitle());
+                moviePurchases.add(new MoviePurchase());
+            }
+            
+            total.getMoviePurchase().add((MoviePurchase) moviePurchases);
+            newOrder.setPurchases(total);
+           movieStore.setOrder(newOrder);
+            System.out.print("Order Confimed");
+           
+        }
     }
 
+    private void viewOrders(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
+        MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
+        MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
+        char selection = client.readViewOrdersByChoice();
+        switch (selection) {
+            case '1': {
+                ArrayList<Order> matches = (ArrayList<Order>) movieStore.getOrdersbyID(user.getID());
+                for (Order order : matches) {
+                    System.out.print("Order ID: " + order.getOrderID());
+                    System.out.print("Payment Method: " + order.getPaymentMethod());
+                    System.out.print("Order Status: " + order.getOrderStatus());
+                    System.out.print("Sales Total: " + order.getSalesTotal());
+                    System.out.print("MOVIES PRUCHASE: ++++++++");
+                    int movies = order.getPurchases().getMoviePurchase().size();
+                    for (int i = 0; i > movies; i++) {
+                        MoviePurchase purchase = order.getPurchases().getMoviePurchase().get(i);
+                        System.out.print("Title: " + purchase.getTitle());
+                        System.out.print("Price: " + purchase.getPrice());
+                        System.out.print("Copies: " + purchase.getNoCopies());
+                    }
+                    System.out.print("----------------------------------------------------------");
+                }
+            }
+            break;
+            case '2': {
+                String orderID = client.readOrderIDSearch();
+                Order order = movieStore.matchOrderID(orderID);
+                System.out.print("Order ID: " + order.getOrderID());
+                System.out.print("Payment Method: " + order.getPaymentMethod());
+                System.out.print("Order Status: " + order.getOrderStatus());
+                System.out.print("Sales Total: " + order.getSalesTotal());
+                System.out.print("MOVIES PRUCHASE: ++++++++");
+                int movies = order.getPurchases().getMoviePurchase().size();
+                for (int i = 0; i > movies; i++) {
+                    MoviePurchase purchase = order.getPurchases().getMoviePurchase().get(i);
+                    System.out.print("Title: " + purchase.getTitle());
+                    System.out.print("Price: " + purchase.getPrice());
+                    System.out.print("Copies: " + purchase.getNoCopies());
+                }
+                System.out.print("----------------------------------------------------------");
 
-    private void viewOrders(MovieStoreSOAPClient client, User user) {
+            }
+            break;
+            case '3': {
+                String title = client.readTitle();
+                ArrayList<Order> matches = (ArrayList<Order>) movieStore.getOrdersbyTitle(user.getID(), title);
+                for (Order order : matches) {
+                    System.out.print("Order ID: " + order.getOrderID());
+                    System.out.print("Payment Method: " + order.getPaymentMethod());
+                    System.out.print("Order Status: " + order.getOrderStatus());
+                    System.out.print("Sales Total: " + order.getSalesTotal());
+                    System.out.print("MOVIES PRUCHASE: ++++++++");
+                    int movies = order.getPurchases().getMoviePurchase().size();
+                    for (int i = 0; i > movies; i++) {
+                        MoviePurchase purchase = order.getPurchases().getMoviePurchase().get(i);
+                        System.out.print("Title: " + purchase.getTitle());
+                        System.out.print("Price: " + purchase.getPrice());
+                        System.out.print("Copies: " + purchase.getNoCopies());
+                    }
+                    System.out.print("----------------------------------------------------------");
+                }
 
+            }
+            break;
+            case '4': {
+                String status = client.readStatus();
+                if (status.equals("1")) {
+                    status = "Cancelled";
+                } else {
+                    status = "Submitted";
+                }
+                ArrayList<Order> matches = (ArrayList<Order>) movieStore.getOrdersbyStatus(user.getID(), status);
+                for (Order order : matches) {
+                    System.out.print("Order ID: " + order.getOrderID());
+                    System.out.print("Payment Method: " + order.getPaymentMethod());
+                    System.out.print("Order Status: " + order.getOrderStatus());
+                    System.out.print("Sales Total: " + order.getSalesTotal());
+                    System.out.print("MOVIES PRUCHASE: ++++++++");
+                    int movies = order.getPurchases().getMoviePurchase().size();
+                    for (int i = 0; i > movies; i++) {
+                        MoviePurchase purchase = order.getPurchases().getMoviePurchase().get(i);
+                        System.out.print("Title: " + purchase.getTitle());
+                        System.out.print("Price: " + purchase.getPrice());
+                        System.out.print("Copies: " + purchase.getNoCopies());
+                    }
+                    System.out.print("----------------------------------------------------------");
+                }
+            }
+            break;
+            default:
+                break;
+        }
     }
 
     private void cancelOrder(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
-        
+
         String orderID = readOrderID();
         Order order = movieStore.matchOrderID(orderID);
         System.out.println(order.getOrderID());
         if (order != null) {
             System.out.println(order.getID());
             System.out.println(user.getID());
-            if (order.getID().equals(user.getID()) &&  order.getOrderStatus().equals("Submitted")) {   
+            if (order.getID().equals(user.getID()) && order.getOrderStatus().equals("Submitted")) {
                 System.out.print("Order " + orderID + " has been cancelled.");
                 movieStore.cancelOrder(orderID);
-        } else {System.out.print("Invalid Order ID. Returning to Menu.");}
-    }
+            } else {
+                System.out.print("Invalid Order ID. Returning to Menu.");
+            }
+        }
     }
 
     private void cancelAccount(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
-        
+
         System.out.println("Are to you sure you want to close/cancel your account? (enter: 'YES') ");
         String choice = In.nextLine();
-        if (choice.endsWith("YES")){
+        if (choice.endsWith("YES")) {
             System.out.print(user.getFullName());
-           movieStore.removeUser(user);
-           System.out.println("Account has been deleted. Restarting Program");
-           String[] args = {};
+            movieStore.removeUser(user);
+            System.out.println("Account has been deleted. Restarting Program");
+            String[] args = {};
             client.main(args);
-        
-        } else {System.out.println("Invalid input. Returning you to menu");}
 
+        } else {
+            System.out.println("Invalid input. Returning you to menu");
+        }
+    }
+
+    private void logout(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
+        System.out.println("Account has been logged out. Restarting Program");
+        String[] args = {};
+        client.main(args);
     }
 
 }

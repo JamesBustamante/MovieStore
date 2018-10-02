@@ -24,9 +24,15 @@ public class Purchases implements Serializable {
 
     public Purchases() {
     }
+
     
+
     public ArrayList<MoviePurchase> getMovies() {
         return purchases;
+    }
+    
+     public void setMovies(ArrayList<MoviePurchase> purchases) {
+        this.purchases = purchases;
     }
     
 }

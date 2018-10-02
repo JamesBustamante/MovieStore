@@ -59,6 +59,28 @@ public class History implements Serializable {
         return matches;
     }
     
+    public ArrayList<Order> getOrdersStatusMatches(String userid, String orderStatus) {
+  
+        ArrayList<Order> matches = new ArrayList<>();
+        for (Order order : history) {
+            if (order.matchOrderStatus(orderStatus) && order.matchIDStatus(userid)) {
+                matches.add(order); 
+            }
+        }
+        return matches;
+    }
+    
+     public ArrayList<Order> getUserIDMatches(String id) {
+  
+        ArrayList<Order> matches = new ArrayList<>();
+        for (Order order : history) {
+            if (order.matchIDStatus(id)) {
+                matches.add(order); 
+            }
+        }
+        return matches;
+    }
+    
     public Order getOrderIDMatch(String orderID) {
 
         for (Order order : history) {
@@ -69,6 +91,7 @@ public class History implements Serializable {
         return null;
     }
     
+    
     public ArrayList<Order> getOrdersMovieMatches(String title) {
         MoviePurchase moviePurchase; 
         ArrayList<Order> matches = new ArrayList<>();
@@ -76,6 +99,20 @@ public class History implements Serializable {
             for (int i = order.getPurchases().size(); i>0; i--) { //Gets Number of purchases
                 moviePurchase = order.getPurchases().get(i-1); //Set a single movie purchase
                 if (moviePurchase.matchTitle(title)) { //Match movie purchase to a title
+                    matches.add(order); 
+            }
+            }
+        }
+        return matches;
+    }
+    
+    public ArrayList<Order> getOrdersMovieMatches(String id, String title) {
+        MoviePurchase moviePurchase; 
+        ArrayList<Order> matches = new ArrayList<>();
+        for (Order order : history) {
+            for (int i = order.getPurchases().size(); i>0; i--) { //Gets Number of purchases
+                moviePurchase = order.getPurchases().get(i-1); //Set a single movie purchase
+                if (moviePurchase.matchTitle(title) && order.matchIDStatus(id)) { //Match movie purchase to a title
                     matches.add(order); 
             }
             }
