@@ -11,7 +11,7 @@
     <!-- Insert your type declarations here -->
     <xs:simpleType name="title">
         <xs:restriction base="xs:string">
-            <xs:pattern value="[A-Za-z]+([A-Za-z]+)*"/>
+            <xs:pattern value="(.*)"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -35,19 +35,19 @@
     
     <xs:simpleType name="picture">
         <xs:restriction base="xs:string">
-            <xs:pattern value="/\A\z/"/>
+            <xs:pattern value="(.*)"/>
         </xs:restriction>
     </xs:simpleType>
     
     <xs:simpleType name="description">
         <xs:restriction base="xs:string">
-            <xs:pattern value="/\A\z/"/>
+            <xs:pattern value="[\s\S]+"/>
         </xs:restriction>
     </xs:simpleType>
     
     <xs:simpleType name="availableCopies">
         <xs:restriction base="xs:string">
-            <xs:pattern value="^\d+$"/>
+            <xs:pattern value="\d+"/>
         </xs:restriction>
     </xs:simpleType>
     

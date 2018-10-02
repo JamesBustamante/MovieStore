@@ -44,7 +44,7 @@
                 if (yearsHasInput){
                      CalcYears calcYears = new CalcYears(); 
                             matches = calcYears.getYearMatches(matches,searchParam.getYears(), movies);
-
+                            out.print(matches.toString());
                 }
                 
                 if (genreHasInput && titleHasInput && yearsHasInput) {
