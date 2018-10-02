@@ -14,12 +14,12 @@
         <title>Import</title>
     </head>
     <body>
-        <div class="header"><h1>Movie Store HQ</h1></div>
+        <div class="header"><a href="index.jsp"><h1>Movie Store HQ</h1></a></div>
         <% User user = (User)session.getAttribute("user"); 
                 if (user != null) { 
         %>
         <div class="logincontent"> 
-            <span style="text-align: center">You are logged in as <%= user.getfullName() %>  &#60;<%= user.getEmail() %>&#62;  <a href="main.jsp">My Account</a></span>
+            <span style="text-align: center">You are logged in as <%= user.getfullName() %>  &#60;<%= user.getEmail() %>&#62;  <a href="main.jsp">My Account</a> | <a href="logout.jsp"> Logout</a></span>
         </div><!-- This is the link that takes the user to their main page-->
          <% } else { %> 
             <div class="logincontent">

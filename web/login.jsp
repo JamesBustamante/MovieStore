@@ -9,10 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="CSS/main.css"> 
         <title>JSP Page</title>
     </head>
     <body>
         <jsp:include page="header.jsp" />
+        <div class="content">
         <h2>Login</h2>
         <form action="loginAction.jsp" method="post"><table>
                 <tr>
@@ -29,5 +31,7 @@
                 </tr>   
             </table>
         </form>
+        </div>
+        <jsp:include page="endNote.jsp" />
     </body>
 </html>

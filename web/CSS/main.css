@@ -93,3 +93,9 @@ background: #fff;
     font-size: 14px; 
     font-weight: 100;
 }
+
+.header a {
+    color: white;
+    text-align: left; 
+    text-decoration: none;
+}

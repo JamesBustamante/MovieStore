@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="CSS/main.css"> 
     </head>
     <body>
         <% String filePath = application.getRealPath("WEB-INF/users.xml"); %>
