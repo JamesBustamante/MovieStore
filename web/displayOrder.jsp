@@ -23,28 +23,12 @@
     %>
     
     <c:set var="xmltext">
+        <h2>WORKING</h2>
         <history>
-        <%for (Order order : matches) { %>
-                <order>
-                    <orderID><%= order.getOrderID()%></orderID>
-                    <purchases>
-                        <moviePurchase>
-                            <title><%=id%></title>
-                            <genre>genre</genre>
-                            <releaseDate>2002</releaseDate>
-                            <price>19.96</price>
-                            <NoCopies>1</NoCopies>
-                        </moviePurchase>
-                    </purchases>
-                    <ID><%=order.getID()%></ID>
-                    <email><%=order.getEmail()%></email>
-                    <fullName><%=order.getFullName()%></fullName>
-                    <paymentMethod><%=order.getPaymentMethod()%></paymentMethod>
-                    <salesTotal><%=order.getSalesTotal()%></salesTotal>
-                    <orderStatus><%=order.getOrderStatus()%></orderstatus>
-                </order>
-            <%}%>
+            <order>
+                <orderID><%= matches.get(0).getID()%></orderID>
+            </order>
         </history>
     </c:set>
 <c:import url = "orderHistory.xsl" var = "xslt"/>
-<%--<x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>--%>
+<x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>

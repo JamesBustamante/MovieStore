@@ -108,18 +108,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="matchOrderID">
-<xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="matchOrderIDResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:order" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="fetchMovies">
 <xs:sequence/>
 </xs:complexType>
@@ -142,16 +130,15 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getOrdersbyStatus">
+<xs:complexType name="matchOrderID">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"/>
-<xs:element name="arg1" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getOrdersbyStatusResponse">
+<xs:complexType name="matchOrderIDResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="tns:order" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -177,6 +164,19 @@
 <xs:element name="phone" type="xs:string" minOccurs="0"/>
 <xs:element name="address" type="xs:string" minOccurs="0"/>
 <xs:element name="gender" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOrdersbyStatus">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOrdersbyStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -206,16 +206,6 @@
 <xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="removeUser">
-<xs:sequence>
-<xs:element name="arg0" type="tns:user" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="removeUserResponse">
-<xs:sequence/>
-</xs:complexType>
-
 <xs:complexType name="cancelOrder">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"/>
@@ -223,6 +213,16 @@
 </xs:complexType>
 
 <xs:complexType name="cancelOrderResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="removeUser">
+<xs:sequence>
+<xs:element name="arg0" type="tns:user" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeUserResponse">
 <xs:sequence/>
 </xs:complexType>
 

@@ -8,7 +8,8 @@
         Purpose of transformation follows.
 -->
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" 
+xmlns="http://www.w3schools.com/WSDassignment">
     <xsl:output method="html"/>
 
     <!-- TODO customize transformation rules 
@@ -20,9 +21,29 @@
                 <title>orderHistory.xsl</title>
             </head>
             <body>
-                <h2>THIS XSL STYLESHEET IS WORKING</h2>
+                <h2 align="center">Order History</h2>
+                <xsl:apply-templates/>
             </body>
         </html>
+    </xsl:template>
+    
+    <xsl:template match="history">
+        <table align="center">
+            <thead>
+                <tr>
+                    <th>OrderID</th>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Payment Method</th>
+                    <th>Sales Total</th>
+                    <th>Order Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<xsl:apply-templates/>-->
+            </tbody>
+        </table>
     </xsl:template>
 
 </xsl:stylesheet>
