@@ -50,7 +50,6 @@
             <tbody>
                 <xsl:apply-templates select="history"/>
             </tbody>
-        </table>
     </xsl:template>
     
     <xsl:template match="order">

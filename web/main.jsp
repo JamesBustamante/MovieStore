@@ -13,20 +13,14 @@
         <link rel="stylesheet" href="CSS/main.css"> 
     </head>
     <body>
+        <div class="contet">
         <jsp:include page="header.jsp"  flush="true"/>
-        
         <form>
-            <table>
-                <tr><td><h1>Order History</h1></td>
-                <td><h1><a href="cancel.jsp">Click here to cancel an order</a></h1></td></tr>
-                <tr>
-                    <td>
-                        <div style = "text-align: center;">
-                            <jsp:include page="displayOrder.jsp" flush="true" />
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <jsp:include page="editDetails.jsp" flush="true"/>
+            <h2 style="text-align: center">Order History</h2>
+            <jsp:include page="displayOrder.jsp" flush="true" />
+            <div><a href="cancel.jsp">Click here to cancel an order</a></div>
         </form>
+        </div>
     </body>
 </html>

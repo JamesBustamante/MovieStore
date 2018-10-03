@@ -19,13 +19,14 @@
     String id = request.getParameter("id");
     ArrayList<Order> matches = history.getHistory();
 
-    int rndOrderID = (new Random()).nextInt(999); 
+    int rndOrderID = (new Random()).nextInt(999);
     %>
     
     <c:set var="xmltext">
+        <history>
         <%for (Order order : matches) { %>
                 <order>
-                    <orderID><%=rndOrderID%></orderID>
+                    <orderID><%= order.getOrderID()%></orderID>
                     <purchases>
                         <moviePurchase>
                             <title><%=id%></title>
@@ -40,14 +41,10 @@
                     <fullName><%=order.getFullName()%></fullName>
                     <paymentMethod><%=order.getPaymentMethod()%></paymentMethod>
                     <salesTotal><%=order.getSalesTotal()%></salesTotal>
-                    <orderStatus><%=order.getOrderStatus()%></orderstatus>                    
-                    
-                    <!--More information about the order needs to go here.
-                    Do we display the orders by User ID? or are we 
-                    displaying the ID based off user id?-->
+                    <orderStatus><%=order.getOrderStatus()%></orderstatus>
                 </order>
-            <%}%>      
-        <%}%>
+            <%}%>
+        </history>
     </c:set>
-<c:import url = "history.xsl" var = "xslt"/>
-<x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
+<c:import url = "orderHistory.xsl" var = "xslt"/>
+<%--<x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>--%>
