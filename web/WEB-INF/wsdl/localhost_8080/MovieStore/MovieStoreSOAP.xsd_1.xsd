@@ -20,6 +20,18 @@
 
 <xs:element name="fetchUsersResponse" type="tns:fetchUsersResponse"/>
 
+<xs:element name="getOrdersbyID" type="tns:getOrdersbyID"/>
+
+<xs:element name="getOrdersbyIDResponse" type="tns:getOrdersbyIDResponse"/>
+
+<xs:element name="getOrdersbyStatus" type="tns:getOrdersbyStatus"/>
+
+<xs:element name="getOrdersbyStatusResponse" type="tns:getOrdersbyStatusResponse"/>
+
+<xs:element name="getOrdersbyTitle" type="tns:getOrdersbyTitle"/>
+
+<xs:element name="getOrdersbyTitleResponse" type="tns:getOrdersbyTitleResponse"/>
+
 <xs:element name="matchOrderID" type="tns:matchOrderID"/>
 
 <xs:element name="matchOrderIDResponse" type="tns:matchOrderIDResponse"/>
@@ -34,53 +46,24 @@
 
 <xs:element name="removeUserResponse" type="tns:removeUserResponse"/>
 
+<xs:element name="setOrder" type="tns:setOrder"/>
+
+<xs:element name="setOrderResponse" type="tns:setOrderResponse"/>
+
 <xs:element name="user" type="tns:user"/>
 
 <xs:element name="users" type="tns:users"/>
 
-<xs:complexType name="fetchMovies">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="fetchMoviesResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:movie" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="movie">
-<xs:sequence>
-<xs:element name="title" type="xs:string" minOccurs="0"/>
-<xs:element name="genre" type="xs:string" minOccurs="0"/>
-<xs:element name="releaseDate" type="xs:string" minOccurs="0"/>
-<xs:element name="price" type="xs:string" minOccurs="0"/>
-<xs:element name="picture" type="xs:string" minOccurs="0"/>
-<xs:element name="description" type="xs:string" minOccurs="0"/>
-<xs:element name="availableCopies" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="IOException">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="Exception">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="matchOrderID">
+<xs:complexType name="getOrdersbyTitle">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="matchOrderIDResponse">
+<xs:complexType name="getOrdersbyTitleResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:order" minOccurs="0"/>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -110,6 +93,65 @@
 <xs:element name="releaseDate" type="xs:string" minOccurs="0"/>
 <xs:element name="price" type="xs:string" minOccurs="0"/>
 <xs:element name="NoCopies" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="IOException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="matchOrderID">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="matchOrderIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fetchMovies">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="fetchMoviesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:movie" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="movie">
+<xs:sequence>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="genre" type="xs:string" minOccurs="0"/>
+<xs:element name="releaseDate" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:string" minOccurs="0"/>
+<xs:element name="picture" type="xs:string" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="availableCopies" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOrdersbyStatus">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOrdersbyStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -154,6 +196,16 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="setOrder">
+<xs:sequence>
+<xs:element name="arg0" type="tns:order" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setOrderResponse">
+<xs:sequence/>
+</xs:complexType>
+
 <xs:complexType name="removeUser">
 <xs:sequence>
 <xs:element name="arg0" type="tns:user" minOccurs="0"/>
@@ -172,5 +224,17 @@
 
 <xs:complexType name="cancelOrderResponse">
 <xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getOrdersbyID">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOrdersbyIDResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
 </xs:complexType>
 </xs:schema>
