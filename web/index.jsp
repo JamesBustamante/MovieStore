@@ -67,6 +67,21 @@ and open the template in the editor.
 
 
             <jsp:include page="displayMovies.jsp" flush="true" />
+            
+            <%
+                //multiMovieOrder.emptyTitle();
+                //multiMovieOrder.setTitle("");
+                //String id = request.getParameter("id");
+                
+                               
+                //List<MultiMovieOrder> tempArrayList = new ArrayList<MultiMovieOrder>();
+                //multiMovieOrder.setTitle(id);
+                //String s = multiMovieOrder.getTitle();
+                //tempArrayList.add(s);
+                                
+                //session.setAttribute("multiOrder", tempArrayList);                
+            %>
+            
             <p></p>
 </div>
             <jsp:include page="endNote.jsp" />

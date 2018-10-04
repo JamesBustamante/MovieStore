@@ -21,9 +21,7 @@
         <jsp:include page="header.jsp" />
         
         <%
-            String id = request.getParameter("id");            
-            History history = new History();
-            history.getOrderIDMatch(id);
+            String id = request.getParameter("id");
         %>
         
         <div class="content">

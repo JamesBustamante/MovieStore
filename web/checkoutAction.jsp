@@ -26,56 +26,39 @@
         </jsp:useBean>
         
         <%  
+            //Get parameters from previous page
             User user = (User) session.getAttribute("user");            
             String id = request.getParameter("id");
-
+            String paymentMethod = request.getParameter("paymentMethod");
+            String noCopies = request.getParameter("noCopies");
+            
             Movies movies = movieApp.getMovies();
             ArrayList<Movie> matchesMovie = movies.getMovies();
             
-            //temp values
-            String tempPayment = "Credit Card";
-            String tempSalesTotal = "555";
-            String tempOrderStatus = "Submitted";
-            
-            //set String values for update          
+            //set String value for Random Order number          
             int tempRndID = (new Random()).nextInt(999);            
-            String orderID = Integer.toString(tempRndID);  
+            String orderID = Integer.toString(tempRndID);
             
-            
-            MoviePurchase moviePurchase = new MoviePurchase();
-            ArrayList<MoviePurchase> tempArrayList = new ArrayList<MoviePurchase>();
-                        
-            moviePurchase.setTitle("reeeee");
-            moviePurchase.setGenre("reeeee");
-            moviePurchase.setReleaseDate("reeeee");
-            moviePurchase.setPrice("reeeee.96");
-            moviePurchase.setNoCopies("1");            
-            tempArrayList.add(moviePurchase);
-            
-            
-            for (Movie movie : matchesMovie){
-                if (movie.getTitle().equals(id)) {
-                    //title = movie.getTitle();
-                    //genre = movie.getGenre();
-                    //releaseDate = movie.getReleaseDate();
-                    //price = movie.getPrice();
-                    //NoCopies = movie.getAvailableCopies(); //temp data for now                    
-                                       
-                    //tempArrayList.add(title = movie.getTitle());
-                    //tempArrayList.add(genre = movie.getGenre());
-                    //tempArrayList.add(releaseDate = movie.getReleaseDate());
-                    //tempArrayList.add(price = movie.getPrice());
-                   // tempArrayList.add(NoCopies = movie.getAvailableCopies());
-                }
-            }
-                    
+            //set values for User info
             String ID = user.getID();
             String email = user.getEmail();
             String fullName = user.getfullName();
-            String paymentMethod = tempPayment;
-            String salesTotal = tempSalesTotal;
-            String orderStatus = tempOrderStatus;
-
+            String salesTotal = "555";  //*******************************************temp********
+            String orderStatus = "Submitted";  //*******************************************temp********
+            
+            MoviePurchase moviePurchase = new MoviePurchase();
+            ArrayList<MoviePurchase> tempArrayList = new ArrayList<MoviePurchase>();            
+            for (Movie movie : matchesMovie){
+                if (movie.getTitle().equals(id)) {                    
+                    moviePurchase.setTitle(movie.getTitle());
+                    moviePurchase.setGenre(movie.getGenre());
+                    moviePurchase.setReleaseDate(movie.getReleaseDate());
+                    moviePurchase.setPrice(movie.getPrice());
+                }
+            }
+            moviePurchase.setNoCopies(noCopies);
+            tempArrayList.add(moviePurchase); 
+            
             Order newOrder = new Order(orderID, tempArrayList, ID, email, fullName, paymentMethod, salesTotal, orderStatus);
             History history = historyApp.getHistory();
             history.addOrder(newOrder); //Uses addOrder function to add new order.

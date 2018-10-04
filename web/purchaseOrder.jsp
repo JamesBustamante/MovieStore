@@ -24,6 +24,8 @@
         <%
             User user = (User) session.getAttribute("user");            
             String id = request.getParameter("id");
+            
+            
 
             Movies movies = movieApp.getMovies();
             ArrayList<Movie> matchesMovie = movies.getMovies();
@@ -32,23 +34,33 @@
         <div class="content">
             <h1 style="text-align: center;">Purchase Order</h1>                 
 
-            <% for (Movie movie : matchesMovie) 
-                if (movie.getTitle().equals(id)){ %>
-                    <p>Movie details:
-                    <p>Title: <%= movie.getTitle()%></p>
-                    <p>Genre: <%= movie.getGenre()%></p>
-                    <p>Price: <%= movie.getPrice()%></p>
-                    <p>No Copies: <%= movie.getAvailableCopies()%> make this a drop down SELECT</p>
-                <% } %>
-            <br>
-            <p>Your details: 
-            <p>Email: <%=user.getEmail()%></p>
-            <p>Full Name: <%=user.getfullName()%></p>                
-            <p>Sales Total: $price calculate</p>
-            <p>Payment Method: drop down</p>
-
             <form action="checkoutAction.jsp" method="get">
-                <tr><td><input type="button" onclick="location.href='purchaseConfirmation.jsp'" value="Purchase Order"></td></tr>
+                <h3>Movie details:</h3>
+                <table>
+                <% for (Movie movie : matchesMovie) 
+                    if (movie.getTitle().equals(id)){ %>                
+                    
+                    <tr><td><b>Title:</b> <%= movie.getTitle()%></tr></td>
+                    <tr><td><b>Genre:</b> <%= movie.getGenre()%></tr></td>
+                    <tr><td><b>Price:</b> <%= movie.getPrice()%></tr></td>
+                    <tr><td><b>Quantity:</b> </td><td><input type="text" name="noCopies" maxlength="3" size="3" value="1"></td></tr>                    
+                    <% } %>
+                </table>
+                <h3>Your details:</h3>
+                <table>
+                    <tr><td><b>Email:</b> <%=user.getEmail()%></tr></td>
+                    <tr><td><b>Full Name:</b> <%=user.getfullName()%></tr></td>                
+                    <tr><td><b>Order Total:</b> $22222222222</tr></td>
+                    <tr>
+                        <td><b>Payment Method:</b></td>
+                        <td><select name="paymentMethod">
+                            <option value="PayPal">PayPal</option>
+                            <option value="MasterCard">MasterCard</option>
+                            <option value="Visa">Visa</option>
+                        </select></td>
+                        <td><input type="button" onclick="location.href='purchaseConfirmation.jsp'" value="Purchase Order"></td>
+                    </tr>
+                </table>
             </form>
         </div>
         <jsp:include page="endNote.jsp"/>
