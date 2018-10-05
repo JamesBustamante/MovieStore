@@ -17,6 +17,8 @@
         <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
         <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
             </jsp:useBean>
+        
+        <jsp:include page="header.jsp"  flush="true"/>
 
         <% 
             Users users = movieStoreUserApp.getUsers();
@@ -25,16 +27,19 @@
             User user = users.login(email, password);
         %>
 
+        <div class="content">
         <%
             if (user != null) {
                 session.setAttribute("user", user);
         %>
-            <p>Login successful. Click <a href="index.jsp">here</a> to return to the main page.</p>
+            <p>Login successful. Click <a href="index.jsp">here</a> to return to the home page.</p>
         <%
             } else {
                 session.setAttribute("existErr", "user does not exist!");
         %>
             <p>Password incorrect. Click <a href="login.jsp">here</a> to try again.</p>
             <% } %>
+            </div>
+            <jsp:include page="endNote.jsp" />
     </body>
 </html>
