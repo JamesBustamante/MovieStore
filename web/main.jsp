@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="CSS/main.css"> 
     </head>
     <body>
-        <div class="contet">
+        <div class="content">
         <jsp:include page="header.jsp"  flush="true"/>
         <form>
             <jsp:include page="editDetails.jsp" flush="true"/>

@@ -14,9 +14,16 @@
     </head>
     <%
         User user = (User)session.getAttribute("user");
+        //Account page (when logged in): users can edit and update their details, 
+        //data is updated in users.xml (+2), users can cancel their account with OMS , 
+        //submitted orders by this user are cancelled but stored in history.xml, purchased movies 
+        //are returned (+4) 
+
+
     %>
+    
     <body style="text-align: center">
-        <h2 style="text-align: center">Edit Details</h2>
+        <h2 style="text-align: center">Edit Account Details</h2>
         <form action="editDetails.jsp">
             <table>
                 <tr>
