@@ -18,10 +18,9 @@
         <jsp:include page="header.jsp"  flush="true"/>
         <form>
             <jsp:include page="editDetails.jsp" flush="true"/>
-            <h2 style="text-align: center">Order History</h2>
+            <jsp:include page="displayOrder.jsp" flush="true"/>
             <div><a href="cancel.jsp">Click here to cancel an order</a></div>
         </form>
-        <jsp:include page="displayOrder.jsp" flush="true"/>
         </div>
     </body>
 </html>

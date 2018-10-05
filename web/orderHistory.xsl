@@ -22,7 +22,7 @@ xmlns="http://www.w3schools.com/WSDassignment">
             </head>
             <body>
                 <h2 align="center">Order History</h2>
-                <xsl:apply-templates/>
+                <xsl:apply-templates select="history"/>
             </body>
         </html>
     </xsl:template>
@@ -41,9 +41,38 @@ xmlns="http://www.w3schools.com/WSDassignment">
                 </tr>
             </thead>
             <tbody>
-                <!--<xsl:apply-templates/>-->
+                <xsl:apply-templates select="order"/>
             </tbody>
         </table>
+    </xsl:template>
+    
+    <xsl:template match="order">
+        <tr>
+            <td>
+                <xsl:value-of select="orderID"/>
+            </td>
+            
+            <!--Need to write xsl somewhere to display the movie purchases in each order.-->
+            
+            <td>
+                <xsl:value-of select="ID"/>
+            </td>
+            <td>
+                <xsl:value-of select="email"/>
+            </td>
+            <td>
+                <xsl:value-of select="fullName"/>
+            </td>
+            <td>
+                <xsl:value-of select="paymentMethod"/>
+            </td>
+            <td>
+                <xsl:value-of select="salesTotal"/>
+            </td> 
+            <td>
+                <xsl:value-of select="orderStatus"/>
+            </td>                                                  
+        </tr>
     </xsl:template>
 
 </xsl:stylesheet>
