@@ -14,19 +14,23 @@
         <link rel="stylesheet" href="CSS/main.css">
     </head>
     <body>        
-        <% String filePath = application.getRealPath("WEB-INF/movies.xml"); %>
+        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
         <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
-        <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
-            </jsp:useBean>        
+            <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
+        </jsp:useBean>        
         <jsp:include page="header.jsp" />
-        
+
         <div class="content">
             <div style="text-align: center;">
                 <table>   
                     <!-- Display the checkout orders -->
                     <jsp:include page="displayCheckout.jsp" flush="true" />
-                    <tr><td><input type="button" onclick="location.href='index.jsp'" value="Choose Another Movie"></td></tr>                
-                    <tr><td><input type="button" value="Cancel Order"></td></tr>                    
+                    <input type="button" onclick="location.href = 'index.jsp'" value="Choose Another Movie">              
+                    <input type="button" value="Cancel Order">
+                    <form action="purchaseOrder.jsp" method="get"> <!--Creates the button to purchase the order.-->
+                        <input type="hidden" name="id" value="{title}"/>
+                        <input type="submit" value="Purchase Order" name="purchaseOrder"/>
+                    </form>
                 </table>    
             </div>
         </div>

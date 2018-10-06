@@ -10,7 +10,6 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html"/>
-
     <!-- TODO customize transformation rules 
          syntax recommendation http://www.w3.org/TR/xslt 
     -->
@@ -74,16 +73,6 @@
                 </form>
             </td>
         </tr>        
-        <tr>
-            <td>
-                <form action="purchaseOrder.jsp" method="get"> <!--Creates the button to purchase the order.-->
-                    <input type="hidden" name="id" value="{title}"/>
-                    <input type="submit" value="Purchase Order" name="purchaseOrder"/>
-                </form>
-            </td>
-        </tr>
-        
     </xsl:template>
-
 </xsl:stylesheet>
 
