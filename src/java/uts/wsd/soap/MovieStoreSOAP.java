@@ -18,9 +18,11 @@ import javax.xml.ws.handler.MessageContext;
 import uts.wsd.HistoryApplication;
 import uts.wsd.Movie;
 import uts.wsd.MovieApplication;
+import uts.wsd.MoviePurchase;
 import uts.wsd.MovieStoreUserApplication;
 import uts.wsd.Movies;
 import uts.wsd.Order;
+//import uts.wsd.Order;
 import uts.wsd.User;
 import uts.wsd.Users;
 
@@ -55,7 +57,7 @@ private WebServiceContext context;
         }
     }
     
-     private HistoryApplication getHistoryApp() throws JAXBException, IOException, Exception {
+     public HistoryApplication getHistoryApp() throws JAXBException, IOException, Exception {
         // The web server can haprivatendle requests from different clients in parallel.
         // These are called "threads".
         //
@@ -151,17 +153,25 @@ private WebServiceContext context;
         ArrayList<Order> matches = historyApp.getHistory().getOrdersMovieMatches(Title,UserID);
         return matches;
     }
-    
+        @WebMethod
     public ArrayList<Order> getOrdersbyStatus(String UserID, String status) throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();
         ArrayList<Order> matches = historyApp.getHistory().getOrdersStatusMatches(UserID, status);
         return matches;
     }
-    
-    public void setOrder(Order order) throws IOException, Exception, NullPointerException {
+        @WebMethod
+    public void addOrder(Order order, ArrayList<uts.wsd.MoviePurchase> moviePurchases) throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();
+        order.setPurchases(moviePurchases);
         historyApp.getHistory().addOrder(order);
         historyApp.saveHistory();
+     
+    }
+    
+    @WebMethod
+    public HistoryApplication getHisApp() throws IOException, Exception, NullPointerException {
+        HistoryApplication historyApp = getHistoryApp();
+        return historyApp;
      
     }
     

@@ -21,7 +21,7 @@ import uts.wsd.soap.client.Order.Purchases;
  */
 public class MovieStoreSOAPClient {
 
-    public static void main(String[] args) throws Exception_Exception, IOException_Exception {
+    public static void main(String[] args) throws Exception_Exception, IOException_Exception, JAXBException_Exception {
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
 
@@ -137,7 +137,7 @@ public class MovieStoreSOAPClient {
         return null;
     }
 
-    private void useMenu(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
+    private void useMenu(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception, JAXBException_Exception {
         char choice;
         while ((choice = client.readMenuChoice()) != '6') {
             switch (choice) {
@@ -173,7 +173,7 @@ public class MovieStoreSOAPClient {
         }
     }
 
-    private void orderMovie(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception { //1
+    private void orderMovie(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception, JAXBException_Exception { //1
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
         boolean contin = true;
@@ -200,33 +200,49 @@ public class MovieStoreSOAPClient {
         if (choice == 'y') {
             Random random = new Random();
             int x = random.nextInt(900) + 100;
-            ArrayList<MoviePurchase> purchases = new ArrayList<>();
-            Order newOrder = new Order();
+            ArrayList<uts.wsd.MoviePurchase> purchases = new ArrayList<>();
+            uts.wsd.Order newOrder = new uts.wsd.Order(Integer.toString(x), purchases, user.getID(), user.getEmail(), user.getFullName(), "card", "0.0", "Submitted");
             //Integer.toString(x),purchases,user.getID(),user.getEmail(), user.getFullName(), "Card", "0.00", "Submitted"
-            newOrder.setID(user.getID());
-            newOrder.setEmail(user.getEmail());
-            newOrder.setFullName(user.getFullName());
-            newOrder.setOrderID(Integer.toString(x));
-            newOrder.setOrderStatus("Submitted");
-            newOrder.setPaymentMethod("Card");
-            newOrder.setSalesTotal("0.00");
-            Purchases total = new Purchases();
-            newOrder.setPurchases(total);
-            List<MoviePurchase> moviePurchases = total.moviePurchase;
-            
+//            newOrder.setID(user.getID());
+//            newOrder.setEmail(user.getEmail());
+//            newOrder.setFullName(user.getFullName());
+//            newOrder.setOrderID(Integer.toString(x));
+//            newOrder.setOrderStatus("Submitted");
+//            newOrder.setPaymentMethod("Card");
+//            newOrder.setSalesTotal("0.00");
+//            uts.wsd.Purchases total = new uts.wsd.Purchases();
+//            newOrder.setPurchases(total);
+            //List<MoviePurchase> moviePurchases = total.moviePurchase;
+            List<MoviePurchase> moviePurchases = new ArrayList<>();
+            double total = 0.00;
             for (uts.wsd.soap.client.Movie movie: movies){
-                MoviePurchase moviePurchase = new MoviePurchase();
-                moviePurchase.setGenre(movie.getGenre());
-                moviePurchase.setNoCopies("1");
-                moviePurchase.setPrice(movie.getPrice());
-                moviePurchase.setReleaseDate(movie.getReleaseDate());
-                moviePurchase.setTitle(movie.getTitle());
-                moviePurchases.add(new MoviePurchase());
+                //uts.wsd.MoviePurchase moviePurchase = new uts.wsd.MoviePurchase("d","r","d","d","d");
+                MoviePurchase moviePurchase1 = movieStore.matchOrderID("122").getPurchases().moviePurchase.get(0);
+                moviePurchase1.setGenre(movie.getGenre());
+                moviePurchase1.setNoCopies("1");
+                moviePurchase1.setPrice(movie.getPrice());
+                moviePurchase1.setReleaseDate(movie.getReleaseDate());
+                moviePurchase1.setTitle(movie.getTitle());
+                moviePurchases.add(moviePurchase1);
+                total = total + Double.parseDouble(movie.getPrice());
+                
+                 //purchases.add(moviePurchase);
             }
-            
-            total.getMoviePurchase().add((MoviePurchase) moviePurchases);
-            newOrder.setPurchases(total);
-           movieStore.setOrder(newOrder);
+           
+            //total.getMoviePurchase().add((MoviePurchase) moviePurchases);
+            //newOrder.setPurchases(purchases);
+            Order order = movieStore.matchOrderID("122");
+            order.setEmail(newOrder.getEmail());
+            order.setID(user.getID());
+            order.setEmail(user.getEmail());
+            order.setFullName(user.getFullName());
+            order.setOrderID(Integer.toString(x));
+            order.setOrderStatus("Submitted");
+            order.setPaymentMethod("PayPal");
+            order.setSalesTotal(Double.toString(total));
+           movieStore.addOrder(order, moviePurchases);
+           
+           
             System.out.print("Order Confimed");
            
         }
@@ -240,38 +256,41 @@ public class MovieStoreSOAPClient {
             case '1': {
                 ArrayList<Order> matches = (ArrayList<Order>) movieStore.getOrdersbyID(user.getID());
                 for (Order order : matches) {
-                    System.out.print("Order ID: " + order.getOrderID());
-                    System.out.print("Payment Method: " + order.getPaymentMethod());
-                    System.out.print("Order Status: " + order.getOrderStatus());
-                    System.out.print("Sales Total: " + order.getSalesTotal());
-                    System.out.print("MOVIES PRUCHASE: ++++++++");
+                    System.out.println("Order ID: " + order.getOrderID());
+                    System.out.println("Payment Method: " + order.getPaymentMethod());
+                    System.out.println("Order Status: " + order.getOrderStatus());
+                    System.out.println("Sales Total: " + order.getSalesTotal());
+                    System.out.println("MOVIES PRUCHASE: ++++++++");
                     int movies = order.getPurchases().getMoviePurchase().size();
-                    for (int i = 0; i > movies; i++) {
+                    System.out.println(order.getPurchases().getMoviePurchase().size());
+                    for (int i = 0; i < movies; i++) {
                         MoviePurchase purchase = order.getPurchases().getMoviePurchase().get(i);
-                        System.out.print("Title: " + purchase.getTitle());
-                        System.out.print("Price: " + purchase.getPrice());
-                        System.out.print("Copies: " + purchase.getNoCopies());
+                        System.out.println("Title: " + purchase.getTitle());
+                        System.out.println("Price: " + purchase.getPrice());
+                        System.out.println("Copies: " + purchase.getNoCopies());
+                        System.out.println();
                     }
-                    System.out.print("----------------------------------------------------------");
+                    System.out.println("----------------------------------------------------------");
                 }
             }
             break;
             case '2': {
                 String orderID = client.readOrderIDSearch();
                 Order order = movieStore.matchOrderID(orderID);
-                System.out.print("Order ID: " + order.getOrderID());
-                System.out.print("Payment Method: " + order.getPaymentMethod());
-                System.out.print("Order Status: " + order.getOrderStatus());
-                System.out.print("Sales Total: " + order.getSalesTotal());
-                System.out.print("MOVIES PRUCHASE: ++++++++");
+                System.out.println("Order ID: " + order.getOrderID());
+                System.out.println("Payment Method: " + order.getPaymentMethod());
+                System.out.println("Order Status: " + order.getOrderStatus());
+                System.out.println("Sales Total: " + order.getSalesTotal());
+                System.out.println("MOVIES PRUCHASE: ++++++++");
                 int movies = order.getPurchases().getMoviePurchase().size();
-                for (int i = 0; i > movies; i++) {
+                for (int i = 0; i < movies; i++) {
                     MoviePurchase purchase = order.getPurchases().getMoviePurchase().get(i);
-                    System.out.print("Title: " + purchase.getTitle());
-                    System.out.print("Price: " + purchase.getPrice());
-                    System.out.print("Copies: " + purchase.getNoCopies());
+                    System.out.println("Title: " + purchase.getTitle());
+                    System.out.println("Price: " + purchase.getPrice());
+                    System.out.println("Copies: " + purchase.getNoCopies());
+                    System.out.println();
                 }
-                System.out.print("----------------------------------------------------------");
+                System.out.println("----------------------------------------------------------");
 
             }
             break;
@@ -279,19 +298,20 @@ public class MovieStoreSOAPClient {
                 String title = client.readTitle();
                 ArrayList<Order> matches = (ArrayList<Order>) movieStore.getOrdersbyTitle(user.getID(), title);
                 for (Order order : matches) {
-                    System.out.print("Order ID: " + order.getOrderID());
-                    System.out.print("Payment Method: " + order.getPaymentMethod());
-                    System.out.print("Order Status: " + order.getOrderStatus());
-                    System.out.print("Sales Total: " + order.getSalesTotal());
-                    System.out.print("MOVIES PRUCHASE: ++++++++");
+                    System.out.println("Order ID: " + order.getOrderID());
+                    System.out.println("Payment Method: " + order.getPaymentMethod());
+                    System.out.println("Order Status: " + order.getOrderStatus());
+                    System.out.println("Sales Total: " + order.getSalesTotal());
+                    System.out.println("MOVIES PRUCHASE: ++++++++");
                     int movies = order.getPurchases().getMoviePurchase().size();
-                    for (int i = 0; i > movies; i++) {
+                    for (int i = 0; i < movies; i++) {
                         MoviePurchase purchase = order.getPurchases().getMoviePurchase().get(i);
-                        System.out.print("Title: " + purchase.getTitle());
-                        System.out.print("Price: " + purchase.getPrice());
-                        System.out.print("Copies: " + purchase.getNoCopies());
+                        System.out.println("Title: " + purchase.getTitle());
+                        System.out.println("Price: " + purchase.getPrice());
+                        System.out.println("Copies: " + purchase.getNoCopies());
+                        System.out.println();
                     }
-                    System.out.print("----------------------------------------------------------");
+                    System.out.println("----------------------------------------------------------");
                 }
 
             }
@@ -305,17 +325,18 @@ public class MovieStoreSOAPClient {
                 }
                 ArrayList<Order> matches = (ArrayList<Order>) movieStore.getOrdersbyStatus(user.getID(), status);
                 for (Order order : matches) {
-                    System.out.print("Order ID: " + order.getOrderID());
-                    System.out.print("Payment Method: " + order.getPaymentMethod());
-                    System.out.print("Order Status: " + order.getOrderStatus());
-                    System.out.print("Sales Total: " + order.getSalesTotal());
-                    System.out.print("MOVIES PRUCHASE: ++++++++");
+                    System.out.println("Order ID: " + order.getOrderID());
+                    System.out.println("Payment Method: " + order.getPaymentMethod());
+                    System.out.println("Order Status: " + order.getOrderStatus());
+                    System.out.println("Sales Total: " + order.getSalesTotal());
+                    System.out.println("MOVIES PRUCHASE: ++++++++");
                     int movies = order.getPurchases().getMoviePurchase().size();
-                    for (int i = 0; i > movies; i++) {
+                    for (int i = 0; i < movies; i++) {
                         MoviePurchase purchase = order.getPurchases().getMoviePurchase().get(i);
-                        System.out.print("Title: " + purchase.getTitle());
-                        System.out.print("Price: " + purchase.getPrice());
-                        System.out.print("Copies: " + purchase.getNoCopies());
+                        System.out.println("Title: " + purchase.getTitle());
+                        System.out.println("Price: " + purchase.getPrice());
+                        System.out.println("Copies: " + purchase.getNoCopies());
+                        System.out.println();
                     }
                     System.out.print("----------------------------------------------------------");
                 }
@@ -345,7 +366,7 @@ public class MovieStoreSOAPClient {
         }
     }
 
-    private void cancelAccount(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
+    private void cancelAccount(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception, JAXBException_Exception {
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
 
@@ -363,7 +384,7 @@ public class MovieStoreSOAPClient {
         }
     }
 
-    private void logout(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception {
+    private void logout(MovieStoreSOAPClient client, User user) throws Exception_Exception, IOException_Exception, JAXBException_Exception {
         System.out.println("Account has been logged out. Restarting Program");
         String[] args = {};
         client.main(args);

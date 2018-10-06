@@ -40,6 +40,7 @@ public class MoviePurchase {
         this.NoCopies = NoCopies;
     }
     
+    
     public String getGenre() {
         return genre;
     }
