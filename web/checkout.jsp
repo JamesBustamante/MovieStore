@@ -20,20 +20,15 @@
             </jsp:useBean>        
         <jsp:include page="header.jsp" />
         
-        <%
-            String id = request.getParameter("id");
-        %>
-        
         <div class="content">
             <div style="text-align: center;">
-                <table>            
+                <table>   
+                    <!-- Display the checkout orders -->
+                    <jsp:include page="displayCheckout.jsp" flush="true" />
                     <tr><td><input type="button" onclick="location.href='index.jsp'" value="Choose Another Movie"></td></tr>                
-                    <tr><td><input type="button" value="Cancel Order"></td></tr>
+                    <tr><td><input type="button" value="Cancel Order"></td></tr>                    
                 </table>    
             </div>
-            
-            <!-- Display the checkout orders -->
-            <jsp:include page="displayCheckout.jsp" flush="true" />
         </div>
         <jsp:include page="endNote.jsp" />
     </body>
