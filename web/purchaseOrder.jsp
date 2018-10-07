@@ -51,7 +51,7 @@
                     }
                 }
             }
-            //total order cost
+            //total order cost    &&&&&& NOT CORREECT VALUE &&&&&&
             for (String movie : multiMovieOrder.movies) {                
                 for (Movie movie1 : matches) {
                     String tempString = movie1.getPrice();
@@ -60,7 +60,8 @@
 
                     salesTotal = String.valueOf(salesTotalTemp);
                 }
-            }            
+            }
+            request.setAttribute(salesTotal, "salesTotal");
         %>
 
         <div class="content">
@@ -71,8 +72,7 @@
                 <table>
                     <% for (Movie movie : tempArrayList){
                            //if (movie.getTitle().equals(id))                     
-                    %>                
-
+                    %>
                     <tr><td><b>Title:</b> <%= movie.getTitle()%></tr></td>
                     <tr><td><b>Genre:</b> <%= movie.getGenre()%></tr></td>
                     <tr><td><b>Price:</b> <%= movie.getPrice()%></tr></td>
@@ -91,7 +91,7 @@
                             <option value="MasterCard">MasterCard</option>
                             <option value="Visa">Visa</option>
                         </select></td>
-                        <td><input type="button" onclick="location.href = 'purchaseConfirmation.jsp'" value="Purchase Order"></td>
+                        <td><input type="button" onclick="location.href='purchaseConfirmation.jsp'" value="Purchase Order"></td>
                     </tr>
                 </table>
             </form>
