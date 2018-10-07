@@ -17,7 +17,12 @@
         <jsp:useBean id="multiMovieOrder" 
                      class="uts.wsd.MultiMovieOrder" scope="session">
         </jsp:useBean>
-           <% multiMovieOrder.movies.clear(); %>
+        <jsp:useBean id="searchParam" 
+                     class="uts.wsd.SearchParam" scope="application"> <!-- This bean calculates all the  years between what the user inputs -->
+        </jsp:useBean>
+           <% multiMovieOrder.movies.clear(); 
+           searchParam.years.clear();
+           %>
         <% session.invalidate(); %>
         <jsp:include page="header.jsp" />
          <div class="content">

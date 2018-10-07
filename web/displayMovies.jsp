@@ -15,8 +15,28 @@
                      class="uts.wsd.SearchParam" scope="application">
                      </jsp:useBean>
         
+        <jsp:useBean id="multiMovieOrder" 
+                     class="uts.wsd.MultiMovieOrder" scope="session">
+        </jsp:useBean>
+        
                     <% Movies movies = movieApp.getMovies();
                     ArrayList<Movie> matches = movies.getMovies();
+                    
+                           ArrayList<Movie> moviesSelected = new ArrayList<Movie>();
+                 for (String movie : multiMovieOrder.movies) {
+                for (Movie movie1 : matches) {
+                    if (movie1.getTitle().equals(movie)) {
+                        moviesSelected.add(movie1);
+                    }
+                }
+            }
+//                 for (Movie movie: matches) { 
+//                     for (Movie movie1: moviesSelected) {
+//                         if (movie.getTitle().equals(movie1.getTitle())){
+//                             matches.remove(movie1);
+//                         }
+//                     }
+//                 }
                     
             %>
             <%//= searchParam.getGenre() %>
@@ -44,7 +64,7 @@
                 if (yearsHasInput){
                      CalcYears calcYears = new CalcYears(); 
                             matches = calcYears.getYearMatches(matches,searchParam.getYears(), movies);
-                            out.print(matches.toString());
+                            //out.print(matches.toString());
                 }
                 
                 if (genreHasInput && titleHasInput && yearsHasInput) {
@@ -58,11 +78,23 @@
 
                             if (!searchParam.getGenre().equals("Any")) {
                             matches = movies.getGenreAndYearMatches(matches, searchParam.getGenre()); }
-                }                
+                }
+                
+                    //SYMMETRIC DIFFERENCE ALGOTHM 
+                        ArrayList<Movie> union = new ArrayList<Movie>(matches);
+                        union.addAll(moviesSelected);
+                        // Prepare an intersection
+                        ArrayList<Movie> intersection = new ArrayList<Movie>(matches);
+                        intersection.retainAll(moviesSelected);
+                        // Subtract the intersection from the union
+                        union.removeAll(intersection);
+                 
+                //Movie movie: matches
             %>
             <c:set var = "xmltext"> 
             <movies> 
-                    <% for (Movie movie: matches) { %>
+                    <% for (Movie movie : union) { 
+                    %>
                     <movie>
                         <title><%= movie.getTitle() %></title>
                         <genre><%= movie.getGenre() %></genre>
@@ -72,7 +104,8 @@
                         <description><%= movie.getDescription() %></description>
                         <availableCopies><%= movie.getAvailableCopies() %></availableCopies>
                     </movie>
-                    <%}%>
+                    <%}
+%>
             </movies>
             </c:set>
 <c:import url = "movies.xsl" var = "xslt"/>

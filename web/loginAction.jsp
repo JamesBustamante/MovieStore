@@ -18,6 +18,16 @@
         <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
             </jsp:useBean>
         
+          <jsp:useBean id="multiMovieOrder" 
+                     class="uts.wsd.MultiMovieOrder" scope="session">
+        </jsp:useBean>
+        <jsp:useBean id="searchParam" 
+                     class="uts.wsd.SearchParam" scope="application"> <!-- This bean calculates all the  years between what the user inputs -->
+        </jsp:useBean>
+           <% multiMovieOrder.movies.clear(); 
+           searchParam.years.clear();
+           %>
+        
         <jsp:include page="header.jsp"  flush="true"/>
 
         <% 
