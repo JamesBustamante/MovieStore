@@ -65,10 +65,16 @@
                 <xsl:value-of select="availableCopies"/>
             </td>
             <td>
+                <xsl:choose>
+                 <xsl:when test="availableCopies != '0'">
                 <form action="checkout.jsp" method="get">   <!--Creates the button to reserve movies.-->
                         <input type="hidden" name="id" value="{title}"/>
                         <input type="submit" value="Select" name="select"/>
                 </form>
+                 </xsl:when>
+                     <xsl:otherwise>Unavailable</xsl:otherwise>
+                </xsl:choose>
+                
             </td>
         </tr>
     </xsl:template>

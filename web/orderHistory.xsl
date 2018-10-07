@@ -48,17 +48,20 @@ xmlns="http://www.w3schools.com/WSDassignment">
     </xsl:template>
     
     <xsl:template match="order">
-        <tr>
+        <tr>  
             <td>
+                <xsl:if test="orderStatus='Submitted'">
                 <form action="cancel.jsp" method="get">
+                     <input type="hidden" name="id" value="{orderID}"/>
                     <input type="submit" value="Cancel Order" name="cancel"/>
                 </form>
-            </td>              
+                </xsl:if>
+            </td>            
             <td>
                 <xsl:value-of select="orderID"/>
             </td>
             <td>
-                <xsl:value-of select="/order/orderStatus"/>
+                <xsl:value-of select="orderStatus"/>
               
             </td>                       
             <xsl:apply-templates select="purchases"/>

@@ -22,6 +22,8 @@ public class Movies implements Serializable {
     
     public Movies() {
     }
+    
+    
     public ArrayList<Movie> getMovies() {
         return movies;
     }
@@ -39,6 +41,14 @@ public class Movies implements Serializable {
             if(movie.matchTitle(title))
                 matches.add(movie);
         return matches;
+    }
+    
+    public Movie getMoviebyTitle(String title){
+
+        for(Movie movie:movies)
+            if(movie.matchTitle(title))
+                return movie;
+        return null;
     }
     
     public ArrayList<Movie> getYearMatches(String year){

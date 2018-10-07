@@ -9,15 +9,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="stylesheet" href="CSS/main.css"> 
         <title>Cancel Page</title>
     </head>
     <body>
         <jsp:include page="header.jsp"  flush="true"/>
         <div class="content">
-            <form action="main.jsp" style="text-align: center">
+            <% String id = request.getParameter("id"); %>
+            <%= id %>
+            <form action="cancelOrderAction.jsp" style="text-align: center">
                 <h2>Are you sure you want to cancel this order?</h2>
                 <input type="submit" value="Yes"/>                
                 <input type="submit" value="No"/>
+                <input type="hidden" name="id" value="<%= id%>"/>
             </form>
         </div>
         <h1></h1>

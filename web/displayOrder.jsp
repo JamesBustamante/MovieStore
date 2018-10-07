@@ -27,6 +27,7 @@
             <%if(id.equals(order.getID())) {%>
             <order>
                 <orderID><%= order.getOrderID() %></orderID>
+                <orderStatus><%= order.getOrderStatus() %></orderStatus>
                 <!--This loops through every purchase on an order and displays it-->
                 <%for(MoviePurchase purchase : order.getPurchases()){%>
                     <purchases>
