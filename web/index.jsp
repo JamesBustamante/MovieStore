@@ -35,7 +35,7 @@ and open the template in the editor.
             String exist = (String) session.getAttribute("existErr");
         %>        
         
-        <%= multiMovieOrder.movies %>
+     
 
         <div class="content">
             <h2 style ="text-align: center;">Search for Movies</h2>
