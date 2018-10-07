@@ -4,6 +4,12 @@
 
 <xs:element name="IOException" type="tns:IOException"/>
 
+<xs:element name="JAXBException" type="tns:JAXBException"/>
+
+<xs:element name="addOrder" type="tns:addOrder"/>
+
+<xs:element name="addOrderResponse" type="tns:addOrderResponse"/>
+
 <xs:element name="cancelOrder" type="tns:cancelOrder"/>
 
 <xs:element name="cancelOrderResponse" type="tns:cancelOrderResponse"/>
@@ -20,6 +26,14 @@
 
 <xs:element name="fetchUsersResponse" type="tns:fetchUsersResponse"/>
 
+<xs:element name="getHisApp" type="tns:getHisApp"/>
+
+<xs:element name="getHisAppResponse" type="tns:getHisAppResponse"/>
+
+<xs:element name="getHistoryApp" type="tns:getHistoryApp"/>
+
+<xs:element name="getHistoryAppResponse" type="tns:getHistoryAppResponse"/>
+
 <xs:element name="getOrdersbyID" type="tns:getOrdersbyID"/>
 
 <xs:element name="getOrdersbyIDResponse" type="tns:getOrdersbyIDResponse"/>
@@ -32,6 +46,8 @@
 
 <xs:element name="getOrdersbyTitleResponse" type="tns:getOrdersbyTitleResponse"/>
 
+<xs:element name="history" type="tns:history"/>
+
 <xs:element name="matchOrderID" type="tns:matchOrderID"/>
 
 <xs:element name="matchOrderIDResponse" type="tns:matchOrderIDResponse"/>
@@ -42,28 +58,53 @@
 
 <xs:element name="order" type="tns:order"/>
 
+<xs:element name="purchases" type="tns:purchases"/>
+
 <xs:element name="removeUser" type="tns:removeUser"/>
 
 <xs:element name="removeUserResponse" type="tns:removeUserResponse"/>
-
-<xs:element name="setOrder" type="tns:setOrder"/>
-
-<xs:element name="setOrderResponse" type="tns:setOrderResponse"/>
 
 <xs:element name="user" type="tns:user"/>
 
 <xs:element name="users" type="tns:users"/>
 
-<xs:complexType name="getOrdersbyTitle">
+<xs:complexType name="getHistoryApp">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getHistoryAppResponse">
 <xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0"/>
-<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+<xs:element name="return" type="tns:historyApplication" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getOrdersbyTitleResponse">
+<xs:complexType name="historyApplication">
 <xs:sequence>
-<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="filePath" type="xs:string" minOccurs="0"/>
+<xs:element name="history" type="tns:history" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="history">
+<xs:sequence>
+<xs:element name="purchases" type="tns:purchases" minOccurs="0"/>
+<xs:element name="order" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="purchases">
+<xs:sequence>
+<xs:element name="moviePurchase" type="tns:moviePurchase" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="moviePurchase">
+<xs:sequence>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="genre" type="xs:string" minOccurs="0"/>
+<xs:element name="releaseDate" type="xs:string" minOccurs="0"/>
+<xs:element name="price" type="xs:string" minOccurs="0"/>
+<xs:element name="NoCopies" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -86,14 +127,22 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="moviePurchase">
+<xs:complexType name="JAXBException">
 <xs:sequence>
-<xs:element name="title" type="xs:string" minOccurs="0"/>
-<xs:element name="genre" type="xs:string" minOccurs="0"/>
-<xs:element name="releaseDate" type="xs:string" minOccurs="0"/>
-<xs:element name="price" type="xs:string" minOccurs="0"/>
-<xs:element name="NoCopies" type="xs:string" minOccurs="0"/>
+<xs:element name="errorCode" type="xs:string" minOccurs="0"/>
+<xs:element name="linkedException" type="tns:throwable" minOccurs="0"/>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="throwable">
+<xs:sequence>
+<xs:element name="stackTrace" type="tns:stackTraceElement" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="stackTraceElement" final="extension restriction">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="IOException">
@@ -105,6 +154,40 @@
 <xs:complexType name="Exception">
 <xs:sequence>
 <xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addOrder">
+<xs:sequence>
+<xs:element name="arg0" type="tns:order" minOccurs="0"/>
+<xs:element name="arg1" type="tns:moviePurchase" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addOrderResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getHisApp">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getHisAppResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:historyApplication" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOrdersbyTitle">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getOrdersbyTitleResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -196,13 +279,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="setOrder">
+<xs:complexType name="removeUser">
 <xs:sequence>
-<xs:element name="arg0" type="tns:order" minOccurs="0"/>
+<xs:element name="arg0" type="tns:user" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="setOrderResponse">
+<xs:complexType name="removeUserResponse">
 <xs:sequence/>
 </xs:complexType>
 
@@ -213,16 +296,6 @@
 </xs:complexType>
 
 <xs:complexType name="cancelOrderResponse">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="removeUser">
-<xs:sequence>
-<xs:element name="arg0" type="tns:user" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="removeUserResponse">
 <xs:sequence/>
 </xs:complexType>
 
