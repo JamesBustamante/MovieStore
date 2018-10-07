@@ -30,7 +30,7 @@
                     <!-- Display the checkout orders -->
                     <jsp:include page="displayCheckout.jsp" flush="true" />
                     <input type="button" value="Choose Another Movie" onclick="location.href='index.jsp'">   
-                    <form action="purchaseOrder.jsp" method="get"> <!--Creates the button to purchase the order.-->
+                    <form action="purchaseOrderUserCheck.jsp" method="get"> <!--Creates the button to purchase the order.-->
                         <input type="hidden" name="id" value="{title}"/>
                         <input type="submit" value="Purchase Order" name="purchaseOrder"/>
                     </form>

@@ -48,17 +48,21 @@
                     }
                 }
             }
-            //total order cost    &&&&&& NOT CORRECT VALUE &&&&&&
+            //total order cost    &&&&&& NOT CORRECT VALUE &&&&&&]
+            double totalPrice = 0.00;
             for (String movie : multiMovieOrder.movies) {                
                 for (Movie movie1 : matches) {
-                    String tempString = movie1.getPrice();
-
-                    double salesTotalTemp = Double.parseDouble(salesTotal) + Double.parseDouble(tempString);
-
-                    salesTotal = String.valueOf(salesTotalTemp);
+                    if (movie1.getTitle().equals(movie))
+                    totalPrice = totalPrice + Double.parseDouble(movie1.getPrice());                    
+//                    
+//                    String tempString = movie1.getPrice();
+//                    
+//                    double salesTotalTemp = Double.parseDouble(salesTotal) + Double.parseDouble(tempString);
+//
+                    salesTotal = String.valueOf(totalPrice);
                 }
             }
-            request.setAttribute(salesTotal, "salesTotal");
+            //request.setAttribute(salesTotal, "salesTotal");
         %>
 
         <div class="content">
@@ -67,9 +71,7 @@
             <form action="checkoutAction.jsp" method="get">
                 <h3>Movie details:</h3>
                 <table>
-                    <% for (Movie movie : tempArrayList) {
-                           //if (movie.getTitle().equals(id))                     
-                    %>
+                    <% for (Movie movie : tempArrayList) { %>
                     <tr><td><b>Title:</b> <%= movie.getTitle()%></tr></td>
                     <tr><td><b>Genre:</b> <%= movie.getGenre()%></tr></td>
                     <tr><td><b>Price:</b> <%= movie.getPrice()%></tr></td>

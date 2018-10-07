@@ -58,9 +58,7 @@
 
                             if (!searchParam.getGenre().equals("Any")) {
                             matches = movies.getGenreAndYearMatches(matches, searchParam.getGenre()); }
-                }
-
-                
+                }                
             %>
             <c:set var = "xmltext"> 
             <movies> 
