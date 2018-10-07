@@ -53,8 +53,7 @@
             for (String movie : multiMovieOrder.movies) {                
                 for (Movie movie1 : matches) {
                     if (movie1.getTitle().equals(movie))
-                    totalPrice = totalPrice + Double.parseDouble(movie1.getPrice());
-                    
+                    totalPrice = totalPrice + Double.parseDouble(movie1.getPrice());                    
 //                    
 //                    String tempString = movie1.getPrice();
 //                    
@@ -72,9 +71,7 @@
             <form action="checkoutAction.jsp" method="get">
                 <h3>Movie details:</h3>
                 <table>
-                    <% for (Movie movie : tempArrayList) {
-                           //if (movie.getTitle().equals(id))                     
-                    %>
+                    <% for (Movie movie : tempArrayList) { %>
                     <tr><td><b>Title:</b> <%= movie.getTitle()%></tr></td>
                     <tr><td><b>Genre:</b> <%= movie.getGenre()%></tr></td>
                     <tr><td><b>Price:</b> <%= movie.getPrice()%></tr></td>

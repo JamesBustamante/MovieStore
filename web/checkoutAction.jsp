@@ -3,7 +3,6 @@
     Created on : 11/09/2018, 9:37:07 PM
     Author     : WILL
 --%>
-<%@page import="java.util.Random"%>
 <%@page import="uts.wsd.*"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,7 +34,7 @@
             User user = (User) session.getAttribute("user");            
             String id = request.getParameter("id");
             String paymentMethod = request.getParameter("paymentMethod");
-           String noCopies = "11";//need to get individual number of copies for each movie  
+            String noCopies = "11";//need to get individual number of copies for each movie  
             String salesTotal = request.getParameter("salesTotal");
             
             Movies movies = movieApp.getMovies();
@@ -69,10 +68,9 @@
                     moviePurchase.setReleaseDate(movie.getReleaseDate());
                     moviePurchase.setPrice(movie.getPrice());
                     moviePurchase.setNoCopies(noCopies);
-                     tempMoviePurchaseAL.add(moviePurchase);
+                    tempMoviePurchaseAL.add(moviePurchase);
                 }
-            //}
-           
+            //}           
             
             //====OLD CODE FOR SINGULAR MOVIE====
             //MoviePurchase moviePurchase = new MoviePurchase();
@@ -93,7 +91,6 @@
             history.addOrder(newOrder); //Uses addOrder function to add new order.
             historyApp.updateXML(history, filePath1); //Saves the order in XML.
             response.sendRedirect("purchaseConfirmation.jsp");
-        %>
-        
+        %>        
     </body>
 </html>
