@@ -13,7 +13,13 @@
     </head>
     <body>
         <jsp:include page="header.jsp"  flush="true"/>
-        
+        <div class="content">
+            <form action="main.jsp" style="text-align: center">
+                <h2>Are you sure you want to cancel this order?</h2>
+                <input type="submit" value="Yes"/>                
+                <input type="submit" value="No"/>
+            </form>
+        </div>
         <h1></h1>
     </body>
 </html>
