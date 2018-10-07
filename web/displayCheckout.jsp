@@ -34,7 +34,8 @@
 <c:set var = "xmltext"> 
     <movies> 
         <% for (Movie movie : tempArrayList)
-                if (movie.getTitle().equals(id)) {
+                //if (movie.getTitle().equals(id)) 
+        {
         %>
         <movie>
             <title><%=movie.getTitle()%></title>
