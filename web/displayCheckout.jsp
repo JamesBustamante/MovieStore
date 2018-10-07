@@ -18,7 +18,7 @@
 
     Movies movies = movieApp.getMovies();
     ArrayList<Movie> matches = movies.getMovies();
-    ArrayList<Movie> tempArrayList = new ArrayList<Movie>(); //make temp arraylist, type movie
+    ArrayList<Movie> tempArrayList = new ArrayList<Movie>();
 
     multiMovieOrder.movies.add(id);
 
@@ -33,10 +33,7 @@
 
 <c:set var = "xmltext"> 
     <movies> 
-        <% for (Movie movie : tempArrayList)
-                //if (movie.getTitle().equals(id)) 
-        {
-        %>
+        <% for (Movie movie : tempArrayList) { %>
         <movie>
             <title><%=movie.getTitle()%></title>
             <genre><%=movie.getGenre()%></genre>
