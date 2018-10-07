@@ -30,19 +30,16 @@
         <%
             User user = (User) session.getAttribute("user");
             String id = request.getParameter("id");
+            String salesTotal = "0.00";
 
             Movies movies = movieApp.getMovies();
             ArrayList<Movie> matches = movies.getMovies();
             ArrayList<Movie> tempArrayList = new ArrayList<Movie>();
             
-            //DecimalFormat df = new DecimalFormat("#.##");
+            //DecimalFormat df = new DecimalFormat("#.##");     //possibly required for formatting the double salesTotal
             //DecimalFormatSymbols dfs = new DecimalFormatSymbols();
             //dfs.setDecimalSeparator('.');
             //df.setDecimalFormatSymbols(dfs);
-            
-            String salesTotal = "0.00";
-            
-            multiMovieOrder.movies.add(id);
 
             for (String movie : multiMovieOrder.movies) {
                 for (Movie movie1 : matches) {
@@ -51,7 +48,7 @@
                     }
                 }
             }
-            //total order cost    &&&&&& NOT CORREECT VALUE &&&&&&
+            //total order cost    &&&&&& NOT CORRECT VALUE &&&&&&
             for (String movie : multiMovieOrder.movies) {                
                 for (Movie movie1 : matches) {
                     String tempString = movie1.getPrice();
@@ -70,7 +67,7 @@
             <form action="checkoutAction.jsp" method="get">
                 <h3>Movie details:</h3>
                 <table>
-                    <% for (Movie movie : tempArrayList){
+                    <% for (Movie movie : tempArrayList) {
                            //if (movie.getTitle().equals(id))                     
                     %>
                     <tr><td><b>Title:</b> <%= movie.getTitle()%></tr></td>

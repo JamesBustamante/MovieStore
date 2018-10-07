@@ -17,13 +17,13 @@
     String id = request.getParameter("id");
 
     Movies movies = movieApp.getMovies();
-    ArrayList<Movie> matches = movies.getMovies();
+    ArrayList<Movie> matchesMovie = movies.getMovies();
     ArrayList<Movie> tempArrayList = new ArrayList<Movie>();
 
     multiMovieOrder.movies.add(id);
 
     for (String movie : multiMovieOrder.movies) {
-        for (Movie movie1 : matches) {
+        for (Movie movie1 : matchesMovie) {
             if (movie1.getTitle().equals(movie)) {
                 tempArrayList.add(movie1);
             }

@@ -43,14 +43,9 @@
                 ArrayList<Order> orders = historyApp.getHistory().getHistory();
                 //ArrayList<MoviePurchase> movies = historyApp.getHistory().getHistory();
                 for (Order order : orders) {
-                    //out.print("   orderid: " + order.getOrderID());                    
-                    //out.print("   idc: " + order.getID());
-                    //out.print("   email: " + order.getEmail());
-                    //out.print("   fullname: " + order.getFullName());
-                    //out.print("   paymentmethod: " + order.getPaymentMethod());
-                    out.print("   salesTotal: " + order.getSalesTotal());
-                    //out.print("   orderStatus: " + order.getOrderStatus());
-                    //out.print(order.getPurchases());                    
+                    out.print("   orderid: " + order.getOrderID());                    
+                    out.print("   id: " + order.getFullName());
+                                      
                 }
 
                 %></p>
