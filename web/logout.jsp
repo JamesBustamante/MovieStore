@@ -11,9 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="CSS/main.css"> 
-        <% session.invalidate(); %>
+    
     </head>
     <body>
+        <jsp:useBean id="multiMovieOrder" 
+                     class="uts.wsd.MultiMovieOrder" scope="session">
+        </jsp:useBean>
+           <% multiMovieOrder.movies.clear(); %>
+        <% session.invalidate(); %>
         <jsp:include page="header.jsp" />
          <div class="content">
         <p>You have been logged out. Click  <a href="index.jsp"> here </a> to return to the main page.</p>
