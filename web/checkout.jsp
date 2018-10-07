@@ -19,6 +19,10 @@
             <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>        
         <jsp:include page="header.jsp" />
+        
+        <jsp:useBean id="multiMovieOrder" 
+                     class="uts.wsd.MultiMovieOrder" scope="session">
+        </jsp:useBean>
 
         <div class="content">
             <div style="text-align: center;">

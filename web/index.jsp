@@ -34,6 +34,8 @@ and open the template in the editor.
             String year2Err = (String) session.getAttribute("year2Err");
             String exist = (String) session.getAttribute("existErr");
         %>        
+        
+     
 
         <div class="content">
             <h2 style ="text-align: center;">Search for Movies</h2>

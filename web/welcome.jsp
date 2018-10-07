@@ -48,7 +48,6 @@
                 <p> Sorry, you must agree to the Terms of Service. </p>
                 <p>  Click <a href="register.jsp"> here </a> to go back. </p>
                 </body>
-            </body>
             <% } else if (unique == true) { %>
             <p>  Click <a href="index.jsp">here</a> to proceed to the main page. </p>
             </body>
