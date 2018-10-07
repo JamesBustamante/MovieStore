@@ -18,11 +18,12 @@
             if (user != null) {
                 response.sendRedirect("purchaseOrder.jsp");
             } else { %> 
-            <div class="content">
+            
                 <div style="text-align: center;">
                     <form action="purchaseOrder.jsp" method="get">
                         <p>
-                            <jsp:include page="login.jsp" />                            
+                            <jsp:include page="login.jsp" />           
+                            <div class="content">
                             You must be logged in before continuing with your purchase. 
                             Please log in at the top of the page.
                             <%
@@ -35,6 +36,5 @@
                 </div>
             </div>
             <% }%>  
-        <jsp:include page="endNote.jsp" />
     </body>
 </html>
