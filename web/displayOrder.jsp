@@ -18,13 +18,13 @@
     User user = (User)session.getAttribute("user");
     History history = historyApp.getHistory();
     ArrayList<Order> matches = history.getHistory();
-    String email = user.getEmail();
+    String id = user.getID();
     %>
     
     <c:set var="xmltext">
         <history>
             <% for(Order order : matches) {%>
-            <%if(email.equals(order.getEmail())) {%>
+            <%if(id.equals(order.getID())) {%>
             <order>
                 <orderID><%= order.getOrderID() %></orderID>
                 <!--This loops through every purchase on an order and displays it-->

@@ -23,20 +23,38 @@
     %>
     
     <body style="text-align: center">
-        <h2 style="text-align: center">Edit Account Details</h2>
+        <h2 style="text-align: center">Account Details</h2>
         <form action="editDetails.jsp">
-            <table>
+            <table class="content p table">
                 <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name" value="<%= user.getfullName()%>"></td>
+                    <td>Password</td>
+                    <td><input type="password" name="password" value="<%= user.getPassword()%>"></td>
+                    </tr>
+                    <tr>
                     <td>Email</td>
                     <td><input type="text" name="email" value="<%= user.getEmail()%>"></td>
+                    <td>Address</td>
+                    <td><input size="16" type="text" name="address" value="<%= user.getAddress()%>"></td>                    
+                    </tr>
+                    <tr>
+                    <td>Phone Number</td>
+                    <td><input size="16" type="text" name="phone" value="<%= user.getPhone()%>"></td>                    
                 </tr>
                 <input type="hidden" name="updated" value="updated">
             </table>
+                <div style="text-align: center">
+                <input type="submit" value="Save Changes"/>
+                </div>
         </form>
         <%
-            if(request.getParameter("update") != null){
+            if(request.getParameter("updated") != null){
                 user.setEmail(request.getParameter("email"));
+                %><p>Changes Saved</p><%                
             }
+            
+            
         %>
     </body>
 </html>
