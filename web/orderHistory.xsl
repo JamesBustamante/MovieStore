@@ -28,16 +28,17 @@ xmlns="http://www.w3schools.com/WSDassignment">
     </xsl:template>
     
     <xsl:template match="history">
-        <table align="center">
+        <table align="center" class="content p table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>OrderID</th>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Full Name</th>
-                    <th>Payment Method</th>
-                    <th>Sales Total</th>
                     <th>Order Status</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Release Date</th>
+                    <th>Price</th>
+                    <th>No. of Copies</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,14 +50,21 @@ xmlns="http://www.w3schools.com/WSDassignment">
     <xsl:template match="order">
         <tr>
             <td>
+                <form action="cancel.jsp" method="get">
+                    <input type="submit" value="Cancel Order" name="cancel"/>
+                </form>
+            </td>              
+            <td>
                 <xsl:value-of select="orderID"/>
             </td>
-            
-            <!--Need to write xsl somewhere to display the movie purchases in each order.-->
-            
             <td>
-                <xsl:value-of select="ID"/>
-            </td>
+                <xsl:value-of select="/order/orderStatus"/>
+              
+            </td>                       
+            <xsl:apply-templates select="purchases"/>
+            <!--Need to write xsl somewhere to display the movie purchases in each order.-->
+                               
+            <!--
             <td>
                 <xsl:value-of select="email"/>
             </td>
@@ -69,10 +77,36 @@ xmlns="http://www.w3schools.com/WSDassignment">
             <td>
                 <xsl:value-of select="salesTotal"/>
             </td> 
-            <td>
-                <xsl:value-of select="orderStatus"/>
-            </td>                                                  
+-->                                                
         </tr>
     </xsl:template>
-
+    
+    <xsl:template match="purchases">
+        <xsl:apply-templates select="moviePurchase"/>
+    </xsl:template>
+    
+    <xsl:template match="moviePurchase">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <xsl:value-of select="title"/>
+            </td>
+            <td>
+                <xsl:value-of select="genre"/>
+            </td>
+            <td>
+                <xsl:value-of select="releaseDate"/>
+            </td>
+            <td>
+                <xsl:value-of select="price"/>
+            </td>
+            <td>
+                <xsl:value-of select="NoCopies"/>
+            </td>               
+        </tr>                    
+    </xsl:template>
+    
+    
 </xsl:stylesheet>

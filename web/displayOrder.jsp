@@ -15,29 +15,34 @@
     </jsp:useBean>
 
     <% 
+    User user = (User)session.getAttribute("user");
     History history = historyApp.getHistory();
-    String email = request.getParameter("email");
     ArrayList<Order> matches = history.getHistory();
+    String email = user.getEmail();
     %>
     
     <c:set var="xmltext">
         <history>
             <% for(Order order : matches) {%>
-            <order>              
+            <%if(email.equals(order.getEmail())) {%>
+            <order>
                 <orderID><%= order.getOrderID() %></orderID>
                 <!--This loops through every purchase on an order and displays it-->
-                <% //for(MoviePurchase purchase : order.getPurchases()){%>
-                <% //}%>
-                <ID><%= order.getID() %></ID>
-                <email><%= order.getEmail() %></email>
-                <fullName><%= order.getFullName() %></fullName>
-                <paymentMethod><%= order.getPaymentMethod() %></paymentMethod>
-                <salesTotal><%= order.getSalesTotal()%></salesTotal>
-                <orderStatus><%= order.getOrderStatus()%></orderStatus>
+                <%for(MoviePurchase purchase : order.getPurchases()){%>
+                    <purchases>
+                        <moviePurchase>
+                            <title><%= purchase.getTitle()%></title>
+                            <genre><%= purchase.getGenre()%></genre>
+                            <releaseDate><%= purchase.getReleaseDate()%></releaseDate>
+                            <price><%= purchase.getPrice()%></price>
+                            <NoCopies><%= purchase.getNoCopies()%></NoCopies>
+                        </moviePurchase>
+                    </purchases>
+                <%}%>                                
             </order>
+            <%}%>
             <%}%>
         </history>
     </c:set>
-    <p><%= email%></p>
 <c:import url = "orderHistory.xsl" var = "xslt"/>
 <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>
