@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Concelled Order Confirmation Page</title>
+        <title>Cancelled Order Confirmation Page</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/MovieStore/CSS/main.css">
@@ -20,8 +20,7 @@
         </jsp:useBean>
 
         <div class="content">
-            <% multiMovieOrder.movies.clear(); %>
-            
+            <% multiMovieOrder.movies.clear(); %>            
             <div style="text-align: center;">
                 <h1>Order had been cancelled. </h1>
                 <p>Your order has been cancelled. Click <a href="index.jsp"> here</a> to return to the main page.</p>

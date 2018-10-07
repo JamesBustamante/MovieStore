@@ -67,9 +67,9 @@
                 <xsl:value-of select="availableCopies"/>
             </td>
             <td>
-                <form>   <!--Creates the button to remove the selected movie.-->
+                <form action="removeMovieAction.jsp" method="get">   <!--Creates the button to remove the selected movie.-->
                     <input type="hidden" name="id" value="{title}"/>
-                    <input type="reset" value="X" name="removeMovie"/>
+                    <input type="submit" value="X" name="removeMovie"/>
                 </form>
             </td>
         </tr>        
