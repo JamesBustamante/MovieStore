@@ -29,11 +29,13 @@
                 <table>   
                     <!-- Display the checkout orders -->
                     <jsp:include page="displayCheckout.jsp" flush="true" />
-                    <input type="button" onclick="location.href = 'index.jsp'" value="Choose Another Movie">              
-                    <input type="button" value="Cancel Order">
+                    <input type="button" value="Choose Another Movie" onclick="location.href='index.jsp'">   
                     <form action="purchaseOrder.jsp" method="get"> <!--Creates the button to purchase the order.-->
                         <input type="hidden" name="id" value="{title}"/>
                         <input type="submit" value="Purchase Order" name="purchaseOrder"/>
+                    </form>
+                    <form action="cancelledConfirmation.jsp" method="get">
+                        <input type="submit" value="Cancel Order">     
                     </form>
                 </table>    
             </div>

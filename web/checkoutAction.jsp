@@ -21,16 +21,22 @@
         <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
             <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath1%>"/>
         </jsp:useBean>
+        
         <jsp:useBean id="movieApp" class="uts.wsd.MovieApplication" scope="application">
             <jsp:setProperty name="movieApp" property="filePath" value="<%=filePath2%>"/>
         </jsp:useBean>
         
+        <jsp:useBean id="multiMovieOrder"
+                     class="uts.wsd.MultiMovieOrder" scope="session">
+        </jsp:useBean>
+        
         <%  
-            //Get parameters from previous page
+            //Get parameters from previous page for Order details
             User user = (User) session.getAttribute("user");            
             String id = request.getParameter("id");
             String paymentMethod = request.getParameter("paymentMethod");
             String noCopies = request.getParameter("noCopies");
+            String salesTotal = request.getParameter("salesTotal");
             
             Movies movies = movieApp.getMovies();
             ArrayList<Movie> matchesMovie = movies.getMovies();
@@ -43,8 +49,7 @@
             String ID = user.getID();
             String email = user.getEmail();
             String fullName = user.getfullName();
-            String salesTotal = "555";  //*******************************************temp********
-            String orderStatus = "Submitted";  //*******************************************temp********
+            //String salesTotal = "555";  //***********************temp********
             
             MoviePurchase moviePurchase = new MoviePurchase();
             ArrayList<MoviePurchase> tempArrayList = new ArrayList<MoviePurchase>();            
@@ -59,7 +64,7 @@
             moviePurchase.setNoCopies(noCopies);
             tempArrayList.add(moviePurchase); 
             
-            Order newOrder = new Order(orderID, tempArrayList, ID, email, fullName, paymentMethod, salesTotal, orderStatus);
+            Order newOrder = new Order(orderID, tempArrayList, ID, email, fullName, paymentMethod, salesTotal, "Submitted");
             History history = historyApp.getHistory();
             history.addOrder(newOrder); //Uses addOrder function to add new order.
             historyApp.updateXML(history, filePath1); //Saves the order in XML.

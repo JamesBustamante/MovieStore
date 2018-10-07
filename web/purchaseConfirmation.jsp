@@ -4,9 +4,9 @@
     Author     : WILL
 --%>
 
-<%@page import="uts.wsd.Order"%>
+
+<%@page import="uts.wsd.*"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="uts.wsd.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,34 +17,43 @@
     </head>
     <body>
 
-          <jsp:useBean id="multiMovieOrder" 
+        <jsp:useBean id="multiMovieOrder" 
                      class="uts.wsd.MultiMovieOrder" scope="session">
         </jsp:useBean>
-        
-         <% String filePath1 = application.getRealPath("WEB-INF/history.xml");%>
+
+        <% String filePath1 = application.getRealPath("WEB-INF/history.xml");%>
 
         <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
             <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath1%>"/>
         </jsp:useBean>
-         
-         <% String filePath = application.getRealPath("WEB-INF/users.xml");%>
+
+        <% String filePath = application.getRealPath("WEB-INF/users.xml");%>
         <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
             <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
 
+        <jsp:include page="header.jsp" />
         
-
+        <!-- code to readjust avaiable copies -->    
+        
         <div class="content">
-            <p>  <% multiMovieOrder.movies.clear(); 
-          
-            User user = (User) session.getAttribute("user");
-            out.print("test");
-              ArrayList<Order> orders = historyApp.getHistory().getHistory();
-              for (Order order : orders) {
-                  out.print(order.getOrderID() + "   " + order.getFullName());
-              }
+            <p>  <% multiMovieOrder.movies.clear();
+                MoviePurchase moviePurchase = new MoviePurchase();
+                User user = (User) session.getAttribute("user");
+                ArrayList<Order> orders = historyApp.getHistory().getHistory();
+                //ArrayList<MoviePurchase> movies = historyApp.getHistory().getHistory();
+                for (Order order : orders) {
+                    //out.print("   orderid: " + order.getOrderID());                    
+                    //out.print("   idc: " + order.getID());
+                    //out.print("   email: " + order.getEmail());
+                    //out.print("   fullname: " + order.getFullName());
+                    //out.print("   paymentmethod: " + order.getPaymentMethod());
+                    out.print("   salesTotal: " + order.getSalesTotal());
+                    //out.print("   orderStatus: " + order.getOrderStatus());
+                    //out.print(order.getPurchases());                    
+                }
 
-          %></p>
+                %></p>
             <div style="text-align: center;">
                 <h1>Order Purchase Successful!</h1>
                 <p>Your order purchase was successful. Click <a href="index.jsp"> here</a> to return to the main page.</p>
