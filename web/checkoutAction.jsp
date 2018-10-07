@@ -60,7 +60,7 @@
                 }
             }            
             
-            MoviePurchase moviePurchase = new MoviePurchase();
+            MoviePurchase moviePurchase = new MoviePurchase("t","g","r","p","n");
             ArrayList<MoviePurchase> tempMoviePurchaseAL = new ArrayList<MoviePurchase>();
             //for (String movie1 : multiMovieOrder.movies){
                 for (Movie movie : tempMultiMovieOrderAL) {
@@ -69,9 +69,10 @@
                     moviePurchase.setReleaseDate(movie.getReleaseDate());
                     moviePurchase.setPrice(movie.getPrice());
                     moviePurchase.setNoCopies(noCopies);
+                     tempMoviePurchaseAL.add(moviePurchase);
                 }
             //}
-            tempMoviePurchaseAL.add(moviePurchase);
+           
             
             //====OLD CODE FOR SINGULAR MOVIE====
             //MoviePurchase moviePurchase = new MoviePurchase();

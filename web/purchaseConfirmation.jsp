@@ -48,7 +48,8 @@
             historyApp.updateXML(history, filePath1); //Saves the order in XML.
                 for (Order order : orders) {
                     out.print("   orderid: " + order.getOrderID());                    
-                    out.print("   id: " + order.getFullName());                               
+                    out.print("   id: " + order.getFullName());  
+                    out.print("   movies " + order.getPurchases().size());        
                 }
 
                 %></p>

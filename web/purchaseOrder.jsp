@@ -48,17 +48,22 @@
                     }
                 }
             }
-            //total order cost    &&&&&& NOT CORRECT VALUE &&&&&&
+            //total order cost    &&&&&& NOT CORRECT VALUE &&&&&&]
+            double totalPrice = 0.00;
             for (String movie : multiMovieOrder.movies) {                
                 for (Movie movie1 : matches) {
-                    String tempString = movie1.getPrice();
-
-                    double salesTotalTemp = Double.parseDouble(salesTotal) + Double.parseDouble(tempString);
-
-                    salesTotal = String.valueOf(salesTotalTemp);
+                    if (movie1.getTitle().equals(movie))
+                    totalPrice = totalPrice + Double.parseDouble(movie1.getPrice());
+                    
+//                    
+//                    String tempString = movie1.getPrice();
+//                    
+//                    double salesTotalTemp = Double.parseDouble(salesTotal) + Double.parseDouble(tempString);
+//
+                    salesTotal = String.valueOf(totalPrice);
                 }
             }
-            request.setAttribute(salesTotal, "salesTotal");
+            //request.setAttribute(salesTotal, "salesTotal");
         %>
 
         <div class="content">
