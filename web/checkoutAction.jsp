@@ -91,6 +91,8 @@
             History history = historyApp.getHistory();
             history.addOrder(newOrder); //Uses addOrder function to add new order.
             historyApp.updateXML(history, filePath1); //Saves the order in XML.
+            response.sendRedirect("purchaseConfirmation.jsp");
         %>
+        
     </body>
 </html>

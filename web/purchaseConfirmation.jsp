@@ -38,14 +38,17 @@
         
         <div class="content">
             <p>  <% multiMovieOrder.movies.clear();
-                MoviePurchase moviePurchase = new MoviePurchase();
+                ArrayList<MoviePurchase> tempMoviePurchaseAL = new ArrayList<MoviePurchase>();
                 User user = (User) session.getAttribute("user");
                 ArrayList<Order> orders = historyApp.getHistory().getHistory();
                 //ArrayList<MoviePurchase> movies = historyApp.getHistory().getHistory();
+               Order newOrder = new Order("ffm", tempMoviePurchaseAL, "sd", "dd", "test", "dd", "dd", "Submitted");
+               History history = historyApp.getHistory();
+            history.addOrder(newOrder); //Uses addOrder function to add new order.
+            historyApp.updateXML(history, filePath1); //Saves the order in XML.
                 for (Order order : orders) {
                     out.print("   orderid: " + order.getOrderID());                    
-                    out.print("   id: " + order.getFullName());
-                                      
+                    out.print("   id: " + order.getFullName());                               
                 }
 
                 %></p>

@@ -88,7 +88,7 @@
                             <option value="MasterCard">MasterCard</option>
                             <option value="Visa">Visa</option>
                         </select></td>
-                        <td><input type="button" onclick="location.href='purchaseConfirmation.jsp'" value="Purchase Order"></td>
+                        <td><input type="button" onclick="location.href='checkoutAction.jsp'" value="Purchase Order"></td>
                     </tr>
                 </table>
             </form>
