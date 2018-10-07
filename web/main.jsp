@@ -17,7 +17,7 @@
         <div class="content">
         <jsp:include page="header.jsp"  flush="true"/>
         <form>
-            <%--<jsp:include page="editDetails.jsp" flush="true"/>--%>
+            <jsp:include page="editDetails.jsp" flush="true"/>
             <jsp:include page="displayOrder.jsp" flush="true"/>
         </form>
         </div>
