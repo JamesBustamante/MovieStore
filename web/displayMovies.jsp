@@ -89,7 +89,7 @@
                         // Subtract the intersection from the union
                         union.removeAll(intersection);
                  
-                //Movie movie: matches
+                //Movie movie: matc hes
             %>
             <c:set var = "xmltext"> 
             <movies> 
