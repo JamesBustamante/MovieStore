@@ -20,7 +20,6 @@
     History history = historyApp.getHistory();
     ArrayList<Order> matches = history.getHistory();
     String id = user.getID();
-    HistoryService userHistory =  getHistoryApp();
     %>
     
     <c:set var="xmltext">
