@@ -3,6 +3,7 @@
     Created on : 14/09/2018, 2:49:30 AM
     Author     : Ciaran
 --%>
+<%@page import="uts.wsd.rest.HistoryService"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 
@@ -19,6 +20,7 @@
     History history = historyApp.getHistory();
     ArrayList<Order> matches = history.getHistory();
     String id = user.getID();
+    HistoryService userHistory =  getHistoryApp();
     %>
     
     <c:set var="xmltext">
