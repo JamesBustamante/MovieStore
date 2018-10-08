@@ -34,8 +34,8 @@ and open the template in the editor.
             String year2Err = (String) session.getAttribute("year2Err");
             String exist = (String) session.getAttribute("existErr");
         %>        
-        
-     
+
+
 
         <div class="content">
             <h2 style ="text-align: center;">Search for Movies</h2>
@@ -70,6 +70,16 @@ and open the template in the editor.
 
             <jsp:include page="displayMovies.jsp" flush="true" />
             <p></p>
+            <% if (multiMovieOrder.movies.size() > 0) {%>
+            <form action="checkout.jsp">
+                <table align="center">
+                    <tr>
+                        <th><input type="submit" value="View Checkout" /> </th>
+                    </tr>
+
+                </table>
+            </form>
+            <% }%>
         </div>
         <jsp:include page="endNote.jsp" />
 

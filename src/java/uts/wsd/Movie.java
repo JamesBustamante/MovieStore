@@ -101,11 +101,11 @@ public class Movie implements Serializable {
     }
     
     public boolean matchGenre(String genre){
-        return this.genre.equalsIgnoreCase(genre.toLowerCase().trim());
+        return this.genre.equalsIgnoreCase(genre.trim());
     }
     
     public boolean matchTitle(String title){
-        return this.title.equals(title.toLowerCase().trim());
+        return this.title.equals(title.trim());
     }
     
     public boolean matchYear(String year){

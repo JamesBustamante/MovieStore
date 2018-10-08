@@ -7,6 +7,15 @@ import java.util.ArrayList;
 public class MultiMovieOrder {
     
     public ArrayList<String> movies = new ArrayList<>();
+     public ArrayList<String> numOrderSelection = new ArrayList<>();
+
+    public ArrayList<String> getNumOrderSelection() {
+        return numOrderSelection;
+    }
+
+    public void setNumOrderSelection(ArrayList<String> numOrderSelection) {
+        this.numOrderSelection = numOrderSelection;
+    }
     String title;
     
     public MultiMovieOrder() {

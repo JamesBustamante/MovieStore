@@ -68,13 +68,13 @@
         <div class="content">
             <h1 style="text-align: center;">Purchase Order</h1>                 
 
-            <form action="checkoutAction.jsp" method="get">
+            <form action="checkoutAction.jsp" method="post">
                 <h3>Movie details:</h3>
                 <table>
                     <% for (Movie movie : tempArrayList) { %>
-                    <tr><td><b>Title:</b> <%= movie.getTitle()%></tr></td>
-                    <tr><td><b>Genre:</b> <%= movie.getGenre()%></tr></td>
-                    <tr><td><b>Price:</b> <%= movie.getPrice()%></tr></td>
+                    <tr><td><b>Title:</b> <%= movie.getTitle()%></td></tr>
+                    <tr><td><b>Genre:</b> <%= movie.getGenre()%></td></tr>
+                    <tr><td><b>Price:</b> <%= movie.getPrice()%></td></tr>
                     <tr><td><b>Quantity:</b> </td><td><input type="text" name="noCopies" maxlength="3" size="3" value="1"></td></tr>                    
                     <% }%>
                 </table>
@@ -90,7 +90,7 @@
                             <option value="MasterCard">MasterCard</option>
                             <option value="Visa">Visa</option>
                         </select></td>
-                        <td><input type="button" onclick="location.href='checkoutAction.jsp'" value="Purchase Order"></td>
+                        <td><input type="submit" value="Purchase Order"></td>
                     </tr>
                 </table>
             </form>

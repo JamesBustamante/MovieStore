@@ -34,8 +34,14 @@
             User user = (User) session.getAttribute("user");            
             String id = request.getParameter("id");
             String paymentMethod = request.getParameter("paymentMethod");
-            String noCopies = "11";//need to get individual number of copies for each movie  
+//            String noCopies = "11";//need to get individual number of copies for each movie  
             String salesTotal = request.getParameter("salesTotal");
+              String[] noCopies = request.getParameterValues("noCopies");
+
+                        for (String copy : noCopies) {
+                out.print(copy);}
+            out.print(paymentMethod);
+
             
             Movies movies = movieApp.getMovies();
             ArrayList<Movie> matchesMovie = movies.getMovies();
@@ -62,14 +68,24 @@
             MoviePurchase moviePurchase = new MoviePurchase("t","g","r","p","n");
             ArrayList<MoviePurchase> tempMoviePurchaseAL = new ArrayList<MoviePurchase>();
             //for (String movie1 : multiMovieOrder.movies){
+            int i = 0;
                 for (Movie movie : tempMultiMovieOrderAL) {
                     moviePurchase.setTitle(movie.getTitle());
                     moviePurchase.setGenre(movie.getGenre());
                     moviePurchase.setReleaseDate(movie.getReleaseDate());
                     moviePurchase.setPrice(movie.getPrice());
-                    moviePurchase.setNoCopies(noCopies);
+                    moviePurchase.setNoCopies(noCopies[i]);
                     tempMoviePurchaseAL.add(moviePurchase);
+                    if (Integer.parseInt(movie.getAvailableCopies()) < Integer.parseInt(noCopies[i]))  {
+                     response.sendRedirect("purchaseOrder.jsp"); // Redirect error: too many copies
+                    } 
+                    i++;
+                    out.print(moviePurchase.getNoCopies());
+                    
                 }
+                
+                
+                
             //}           
             
             //====OLD CODE FOR SINGULAR MOVIE====
@@ -90,6 +106,22 @@
             History history = historyApp.getHistory();
             history.addOrder(newOrder); //Uses addOrder function to add new order.
             historyApp.updateXML(history, filePath1); //Saves the order in XML.
+            
+            //Decrements the amount of movies now available in movies.xml because of purchase
+            ArrayList<MoviePurchase> purchases = newOrder.getPurchases();
+            out.print(purchases);
+            ArrayList<Movie> matchMovies = movies.getMovies();
+            out.print(matchMovies);
+                for (MoviePurchase purchase : purchases ) {
+                    for (Movie movie : matchMovies) {
+                        if (purchase.getTitle().equals(movie.getTitle())){
+                            int decrement = Integer.parseInt(movie.getAvailableCopies()) - Integer.parseInt(purchase.getNoCopies());
+                            movieApp.getMovies().getMoviebyTitle(movie.getTitle()).setAvailableCopies(String.valueOf(decrement));
+                        }
+                    }
+                }//movieApp.getMovies().setMovies(matchMovies);
+                movieApp.saveMovies();
+            
             response.sendRedirect("purchaseConfirmation.jsp");
         %>        
     </body>

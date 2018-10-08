@@ -35,8 +35,8 @@
                     <th>Genre</th>
                     <th>Release Date</th>
                     <th>Price</th>
-                    <th>Available Copies</th>
                     <th>Description</th>
+                    <th>Available Copies1</th>
                     <th>Remove</th>
                 </tr>
             </thead>

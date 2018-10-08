@@ -44,7 +44,6 @@ public class Movies implements Serializable {
     }
     
     public Movie getMoviebyTitle(String title){
-
         for(Movie movie:movies)
             if(movie.matchTitle(title))
                 return movie;
