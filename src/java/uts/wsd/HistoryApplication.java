@@ -12,24 +12,45 @@ package uts.wsd;
 import java.io.*;
 import javax.xml.bind.*;
 
+/**
+ *
+ * @author james
+ */
 public class HistoryApplication {
     private String filePath;
     private History history;
     private Purchases purchases;
     
-     public String getFilePath() {
+    /**
+     *
+     * @return
+     */
+    public String getFilePath() {
         return filePath;
     }
 
+    /**
+     *
+     * @param filePath
+     * @param history
+     */
     public HistoryApplication(String filePath, History history) {
         super();
         this.filePath = filePath;
         this.history = history;
     }
 
+    /**
+     *
+     */
     public HistoryApplication() {
     }
     
+    /**
+     *
+     * @param filePath
+     * @throws Exception
+     */
     public void setFilePath(String filePath) throws Exception {
         // Create the unmarshaller
         JAXBContext jc = JAXBContext.newInstance(History.class);
@@ -40,7 +61,13 @@ public class HistoryApplication {
         fin.close();
     }
     
-        public void updateXML(History history, String filePath) throws Exception {
+    /**
+     *
+     * @param history
+     * @param filePath
+     * @throws Exception
+     */
+    public void updateXML(History history, String filePath) throws Exception {
         this.history = history;
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(History.class);
@@ -51,7 +78,12 @@ public class HistoryApplication {
         fout.close();
     }
         
-        public void saveHistory() throws JAXBException, IOException {
+    /**
+     *
+     * @throws JAXBException
+     * @throws IOException
+     */
+    public void saveHistory() throws JAXBException, IOException {
         JAXBContext jc = JAXBContext.newInstance(History.class);
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -60,14 +92,26 @@ public class HistoryApplication {
         fout.close();
     }
 
+    /**
+     *
+     * @return
+     */
     public History getHistory() {
         return history;
     }
 
+    /**
+     *
+     * @param history
+     */
     public void setHistory(History history) {
         this.history = history;
     }
     
+    /**
+     *
+     * @return
+     */
     public Purchases getPurchases() {
         return purchases;
     }

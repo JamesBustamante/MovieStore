@@ -25,18 +25,34 @@ public class History implements Serializable {
     @XmlElement(name = "order")
     private ArrayList<Order> history = new ArrayList<Order>(); 
     
+    /**
+     *
+     */
     public History() {
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Order> getHistory() {
         return history;
     }
     
+    /**
+     *
+     * @param newOrder
+     */
     public void addOrder(Order newOrder)
     {
         history.add(newOrder);
     }
     
+    /**
+     *
+     * @param email
+     * @return
+     */
     public ArrayList<Order> getOrdersEmailMatches(String email) {
   
         ArrayList<Order> matches = new ArrayList<>();
@@ -48,6 +64,11 @@ public class History implements Serializable {
         return matches;
     }
     
+    /**
+     *
+     * @param orderStatus
+     * @return
+     */
     public ArrayList<Order> getOrdersStatusMatches(String orderStatus) {
   
         ArrayList<Order> matches = new ArrayList<>();
@@ -59,6 +80,12 @@ public class History implements Serializable {
         return matches;
     }
     
+    /**
+     *
+     * @param userid
+     * @param orderStatus
+     * @return
+     */
     public ArrayList<Order> getOrdersStatusMatches(String userid, String orderStatus) {
   
         ArrayList<Order> matches = new ArrayList<>();
@@ -70,7 +97,12 @@ public class History implements Serializable {
         return matches;
     }
     
-     public ArrayList<Order> getUserIDMatches(String id) {
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public ArrayList<Order> getUserIDMatches(String id) {
   
         ArrayList<Order> matches = new ArrayList<>();
         for (Order order : history) {
@@ -81,6 +113,11 @@ public class History implements Serializable {
         return matches;
     }
     
+    /**
+     *
+     * @param orderID
+     * @return
+     */
     public Order getOrderIDMatch(String orderID) {
 
         for (Order order : history) {
@@ -91,7 +128,11 @@ public class History implements Serializable {
         return null;
     }
     
-    
+    /**
+     *
+     * @param title
+     * @return
+     */
     public ArrayList<Order> getOrdersMovieMatches(String title) {
         MoviePurchase moviePurchase; 
         ArrayList<Order> matches = new ArrayList<>();
@@ -106,6 +147,12 @@ public class History implements Serializable {
         return matches;
     }
     
+    /**
+     *
+     * @param id
+     * @param title
+     * @return
+     */
     public ArrayList<Order> getOrdersMovieMatches(String id, String title) {
         MoviePurchase moviePurchase; 
         ArrayList<Order> matches = new ArrayList<>();

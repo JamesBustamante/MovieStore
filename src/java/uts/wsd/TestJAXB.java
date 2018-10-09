@@ -13,8 +13,18 @@ import java.util.*;
 import java.io.*;
 import javax.xml.bind.*;
  
+/**
+ *
+ * @author james
+ */
 public class TestJAXB implements Serializable {
-            public static void main(String[] args) throws Exception {
+
+    /**
+     *
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
                             
  }
 }

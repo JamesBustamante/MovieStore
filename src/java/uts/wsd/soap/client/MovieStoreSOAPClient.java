@@ -21,6 +21,13 @@ import uts.wsd.soap.client.Order.Purchases;
  */
 public class MovieStoreSOAPClient {
 
+    /**
+     *
+     * @param args
+     * @throws Exception_Exception
+     * @throws IOException_Exception
+     * @throws JAXBException_Exception
+     */
     public static void main(String[] args) throws Exception_Exception, IOException_Exception, JAXBException_Exception {
         MovieStoreSOAP_Service locator = new MovieStoreSOAP_Service();
         MovieStoreSOAP movieStore = locator.getMovieStoreSOAPPort();
@@ -44,6 +51,9 @@ public class MovieStoreSOAPClient {
 
     }
 
+    /**
+     *
+     */
     public MovieStoreSOAPClient() {
 
     }

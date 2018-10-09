@@ -29,6 +29,16 @@ public class User implements Serializable {
     @XmlElement(name = "gender")
     private String gender;
 
+    /**
+     *
+     * @param ID
+     * @param email
+     * @param password
+     * @param fullName
+     * @param phone
+     * @param address
+     * @param gender
+     */
     public User(String ID, String email, String password, String fullName, String phone, String address, String gender) {
         this.ID = ID;
         this.email = email;
@@ -39,58 +49,113 @@ public class User implements Serializable {
         this.gender = gender;
     }
     
-      public User() {}
+    /**
+     *
+     */
+    public User() {}
       
-
+    /**
+     *
+     * @return
+     */
     public String getID() {
         return ID;
     }
 
+    /**
+     *
+     * @param ID
+     */
     public void setId(String ID) {
         this.ID = ID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getfullName() {
         return fullName;
     }
 
+    /**
+     *
+     * @param fullName
+     */
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPhone() {
         return phone;
     }
 
+    /**
+     *
+     * @param phone
+     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     *
+     * @param address
+     */
     public void setAddress(String address) {
         this.address = address;
     }
     
-        public boolean matchEmail(String email) {
+    /**
+     *
+     * @param email
+     * @return
+     */
+    public boolean matchEmail(String email) {
         return this.email.equals(email.trim());
     }
 

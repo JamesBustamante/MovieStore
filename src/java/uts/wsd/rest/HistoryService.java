@@ -50,6 +50,14 @@ public class HistoryService {
     }
         //http://localhost:8080/MovieStore/rest/historyApp/history
         //If no parameters are given, all available orders should be returned.
+
+    /**
+     *
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws Exception
+     */
     @Path("history")
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -59,6 +67,15 @@ public class HistoryService {
     
     //http://localhost:8080/MovieStore/rest/historyApp/history/email/"EMAIL"
     //Search via user email
+
+    /**
+     *
+     * @param email
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws Exception
+     */
     @Path("history/email/{email}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -69,6 +86,15 @@ public class HistoryService {
     
     //http://localhost:8080/MovieStore/rest/historyApp/history/orderID/"ID"
     //Search via order ID
+
+    /**
+     *
+     * @param orderID
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws Exception
+     */
     @Path("history/orderID/{orderID}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -79,6 +105,15 @@ public class HistoryService {
     
     //http://localhost:8080/MovieStore/rest/historyApp/history/orderStatus/"Cancelled||Submitted"
     //Search via order Status
+
+    /**
+     *
+     * @param orderStatus
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws Exception
+     */
     @Path("history/orderStatus/{orderStatus}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -89,6 +124,15 @@ public class HistoryService {
     
     //http://localhost:8080/MovieStore/rest/historyApp/history/movieTitle/"title"
     //Search via movie title ordered
+
+    /**
+     *
+     * @param title
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws Exception
+     */
     @Path("history/movieTitle/{title}")
     @GET
     @Produces(MediaType.APPLICATION_XML)
@@ -99,6 +143,16 @@ public class HistoryService {
     
     //http://localhost:8080/MovieStore/rest/historyApp/history/"OrderID"/"title"
     //Search via movie title ordered
+
+    /**
+     *
+     * @param orderID
+     * @param title
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws Exception
+     */
     @Path("history/{orderID}/{title}")
     @GET
     @Produces(MediaType.APPLICATION_XML)

@@ -13,11 +13,20 @@ import java.util.ArrayList;
  */
 public class CalcYears {
 
-
+    /**
+     *
+     */
     public CalcYears() {
         super();
     }
     
+    /**
+     *
+     * @param moviesList
+     * @param years
+     * @param movies
+     * @return
+     */
     public ArrayList<Movie> getYearMatches(ArrayList<Movie> moviesList,ArrayList<String> years, Movies movies){
         ArrayList<Movie> match = new ArrayList<>();
         ArrayList<Movie> matches = new ArrayList<>();
@@ -32,33 +41,7 @@ public class CalcYears {
         return matches;
     }
     
-//    public ArrayList<Movie> getAllMatches(ArrayList<Movie> moviesList,ArrayList<String> years, String title, String genre, Movies movies){
-//        boolean genreHasInput = false;
-//                boolean titleHasInput = false;
-//                boolean yearsHasInput = false;
-//                if (!genre.equals(""))
-//                    genreHasInput = true;
-//                if (!title.equals(""))
-//                    titleHasInput = true;
-//                if (!years.isEmpty())
-//                    yearsHasInput = true;
-//                
-//                if (genreHasInput && titleHasInput && yearsHasInput) {
-//                
-//                } else if (genreHasInput && titleHasInput && !yearsHasInput) {
-//                
-//                } else if (genreHasInput && !titleHasInput && !yearsHasInput) {
-//                
-//                } else if (genreHasInput && !titleHasInput && yearsHasInput) {
-//                
-//                } else if (!genreHasInput && titleHasInput && !yearsHasInput) {
-//                
-//                } else if (!genreHasInput && !titleHasInput && !yearsHasInput) {
-//                
-//                } else if (!genreHasInput && !titleHasInput && yearsHasInput) {
-//                
-//                }
-//    }
+
     
     
 }

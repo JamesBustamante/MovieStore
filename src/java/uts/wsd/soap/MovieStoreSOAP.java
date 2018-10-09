@@ -57,7 +57,14 @@ private WebServiceContext context;
         }
     }
     
-     public HistoryApplication getHistoryApp() throws JAXBException, IOException, Exception {
+    /**
+     *
+     * @return
+     * @throws JAXBException
+     * @throws IOException
+     * @throws Exception
+     */
+    public HistoryApplication getHistoryApp() throws JAXBException, IOException, Exception {
         // The web server can haprivatendle requests from different clients in parallel.
         // These are called "threads".
         //
@@ -101,17 +108,36 @@ private WebServiceContext context;
 
     /**
      * This is a sample web service operation
+     * @return 
+     * @throws java.io.IOException 
+     * @throws java.lang.Exception 
      */
         @WebMethod
     public Users fetchUsers() throws IOException, Exception, NullPointerException {
         return getUserApp().getUsers();
     }
     
+    /**
+     *
+     * @param email
+     * @param password
+     * @return
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
     @WebMethod
     public User fetchLogin(String email, String password) throws IOException, Exception, NullPointerException {
         return getUserApp().getUsers().login(email, password);
     }
     
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
     @WebMethod
     public ArrayList<Movie> fetchMovies() throws IOException, Exception, NullPointerException {
         Movies movies = getMovieApp().getMovies();
@@ -119,6 +145,13 @@ private WebServiceContext context;
         return matches;
     }
     
+    /**
+     *
+     * @param user
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
     @WebMethod
     public void removeUser(User user) throws IOException, Exception, NullPointerException {
         MovieStoreUserApplication userApp = getUserApp();
@@ -127,6 +160,14 @@ private WebServiceContext context;
         userApp.saveUsers();
     }
     
+    /**
+     *
+     * @param OrderID
+     * @return
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
     @WebMethod
     public Order matchOrderID(String OrderID) throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();
@@ -134,6 +175,13 @@ private WebServiceContext context;
         return order;
     }
     
+    /**
+     *
+     * @param OrderID
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
     @WebMethod
     public void cancelOrder(String OrderID) throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();
@@ -155,6 +203,14 @@ private WebServiceContext context;
                 historyApp.saveHistory();
     }
     
+    /**
+     *
+     * @param UserID
+     * @return
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
     @WebMethod
     public ArrayList<Order> getOrdersbyID(String UserID) throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();
@@ -162,19 +218,47 @@ private WebServiceContext context;
         return matches;
     }
     
+    /**
+     *
+     * @param UserID
+     * @param Title
+     * @return
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
     @WebMethod
     public ArrayList<Order> getOrdersbyTitle(String UserID, String Title) throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();
         ArrayList<Order> matches = historyApp.getHistory().getOrdersMovieMatches(Title,UserID);
         return matches;
     }
-        @WebMethod
+
+    /**
+     *
+     * @param UserID
+     * @param status
+     * @return
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
+    @WebMethod
     public ArrayList<Order> getOrdersbyStatus(String UserID, String status) throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();
         ArrayList<Order> matches = historyApp.getHistory().getOrdersStatusMatches(UserID, status);
         return matches;
     }
-        @WebMethod
+
+    /**
+     *
+     * @param order
+     * @param moviePurchases
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
+    @WebMethod
     public void addOrder(Order order, ArrayList<uts.wsd.MoviePurchase> moviePurchases) throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();
         order.setPurchases(moviePurchases);
@@ -183,6 +267,13 @@ private WebServiceContext context;
      
     }
     
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws Exception
+     * @throws NullPointerException
+     */
     @WebMethod
     public HistoryApplication getHisApp() throws IOException, Exception, NullPointerException {
         HistoryApplication historyApp = getHistoryApp();

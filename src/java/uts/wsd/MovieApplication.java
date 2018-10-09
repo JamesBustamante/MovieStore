@@ -15,24 +15,44 @@ import javax.xml.bind.*;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-
+/**
+ *
+ * @author james
+ */
 public class MovieApplication {
         private String filePath;
         private Movies movies;
     
-        public String getFilePath() {
+    /**
+     *
+     * @return
+     */
+    public String getFilePath() {
         return filePath;
     }
 
+    /**
+     *
+     * @param filePath
+     * @param movies
+     */
     public MovieApplication(String filePath, Movies movies) {
         super();
         this.filePath = filePath;
         this.movies = movies;
     }
         
-        public MovieApplication() {
+    /**
+     *
+     */
+    public MovieApplication() {
     }
 
+    /**
+     *
+     * @param filePath
+     * @throws Exception
+     */
     public void setFilePath(String filePath) throws Exception {
         // Create the unmarshaller
         JAXBContext jc = JAXBContext.newInstance(Movies.class);
@@ -43,7 +63,13 @@ public class MovieApplication {
         fin.close();
     }
     
-        public void updateXML(Movies movies, String filePath) throws Exception {
+    /**
+     *
+     * @param movies
+     * @param filePath
+     * @throws Exception
+     */
+    public void updateXML(Movies movies, String filePath) throws Exception {
         this.movies = movies;
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Movies.class);
@@ -54,7 +80,12 @@ public class MovieApplication {
         fout.close();
     }
         
-        public void saveMovies() throws JAXBException, IOException {
+    /**
+     *
+     * @throws JAXBException
+     * @throws IOException
+     */
+    public void saveMovies() throws JAXBException, IOException {
         JAXBContext jc = JAXBContext.newInstance(Movies.class);
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -63,10 +94,18 @@ public class MovieApplication {
         fout.close();
     }
 
+    /**
+     *
+     * @return
+     */
     public Movies getMovies() {
         return movies;
     }
 
+    /**
+     *
+     * @param movies
+     */
     public void setMovies(Movies movies) {
         this.movies = movies;
     }

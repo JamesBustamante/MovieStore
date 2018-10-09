@@ -22,16 +22,25 @@ public class Purchases implements Serializable {
     @XmlElement(name = "moviePurchase")
     private ArrayList<MoviePurchase> purchases = new ArrayList<MoviePurchase>();
 
+    /**
+     *
+     */
     public Purchases() {
     }
 
-    
-
+    /**
+     *
+     * @return
+     */
     public ArrayList<MoviePurchase> getMovies() {
         return purchases;
     }
     
-     public void setMovies(ArrayList<MoviePurchase> purchases) {
+    /**
+     *
+     * @param purchases
+     */
+    public void setMovies(ArrayList<MoviePurchase> purchases) {
         this.purchases = purchases;
     }
     
