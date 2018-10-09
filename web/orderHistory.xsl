@@ -64,23 +64,7 @@ xmlns="http://www.w3schools.com/WSDassignment">
                 <xsl:value-of select="orderStatus"/>
               
             </td>                       
-            <xsl:apply-templates select="purchases"/>
-            <!--Need to write xsl somewhere to display the movie purchases in each order.-->
-                               
-            <!--
-            <td>
-                <xsl:value-of select="email"/>
-            </td>
-            <td>
-                <xsl:value-of select="fullName"/>
-            </td>
-            <td>
-                <xsl:value-of select="paymentMethod"/>
-            </td>
-            <td>
-                <xsl:value-of select="salesTotal"/>
-            </td> 
--->                                                
+            <xsl:apply-templates select="purchases"/>                                          
         </tr>
     </xsl:template>
     
