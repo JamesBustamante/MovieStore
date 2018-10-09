@@ -3,6 +3,7 @@
     Created on : 11/09/2018, 9:37:07 PM
     Author     : William
 --%>
+<%@page import="uts.controller.Validator"%>
 <%@page import="uts.wsd.*"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -33,13 +34,20 @@
             String paymentMethod = request.getParameter("paymentMethod");
             String salesTotal = request.getParameter("salesTotal");
             String[] noCopies = request.getParameterValues("noCopies");
-
+            
+            Validator v = new Validator();
+            Boolean invalid = false;
             for (String copy : noCopies) {
-                out.print(copy);
-            }
-            out.print(paymentMethod);
-
-            Movies movies = movieApp.getMovies();
+                if (!copy.equals("1")) {
+                   invalid = true;
+                }                 
+            }   
+            
+            if (invalid) {
+                 session.setAttribute("quantityErr", "Quantity format incorrect, only numbers allowed!");
+                    response.sendRedirect("purchaseOrder.jsp");  
+            } else {
+                Movies movies = movieApp.getMovies();
             ArrayList<Movie> matchesMovie = movies.getMovies();
             ArrayList<Movie> tempMultiMovieOrderAL = new ArrayList<Movie>();
 
@@ -73,6 +81,7 @@
                 tempMoviePurchaseAL.add(moviePurchase);
                 if (Integer.parseInt(movie.getAvailableCopies()) < Integer.parseInt(noCopies[i])) {
                     response.sendRedirect("purchaseOrder.jsp"); // Redirect error: too many copies
+                    session.setAttribute("quantityErr", "Too Many Copies");
                 }
                 i++;
                 out.print(moviePurchase.getNoCopies());
@@ -99,6 +108,10 @@
             movieApp.saveMovies();
 
             response.sendRedirect("purchaseConfirmation.jsp");
+            }
+        
+            
+            
         %>        
     </body>
 </html>
