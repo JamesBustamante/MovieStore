@@ -51,6 +51,10 @@
         <%
             if(request.getParameter("updated") != null){
                 user.setEmail(request.getParameter("email"));
+                user.setFullName(request.getParameter("name"));
+                user.setPassword(request.getParameter("password"));
+                user.setAddress(request.getParameter("address"));
+                user.setPhone(request.getParameter("phone"));
                 %><p>Changes Saved</p><%                
             }
             

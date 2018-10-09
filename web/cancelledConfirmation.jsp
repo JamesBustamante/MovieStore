@@ -23,7 +23,7 @@
             <% multiMovieOrder.movies.clear(); %>            
             <div style="text-align: center;">
                 <h1>Order had been cancelled. </h1>
-                <p>Your order has been cancelled. Click <a href="index.jsp"> here</a> to return to the main page.</p>
+                <p>Your order has been cancelled. Click <a href="main.jsp">here</a> to return to the main page.</p>
             </div>
         </div>
         <jsp:include page="endNote.jsp" />

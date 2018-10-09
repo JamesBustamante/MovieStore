@@ -1,3 +1,4 @@
+<%@page import="uts.wsd.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%-- 
@@ -12,14 +13,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="CSS/main.css"> 
-    </head>
+    </head>    
     <body>
-        
-        <jsp:include page="header.jsp"  flush="true"/>
+        <jsp:include page="header.jsp"  flush="true"/> <%-- The header page which is consistent across all pages--%>
         <div class="content">
         <form>
-            <jsp:include page="editDetails.jsp" flush="true"/>
-            <jsp:include page="displayOrder.jsp" flush="true"/>
+            <jsp:include page="editDetails.jsp" flush="true"/> <%-- This JSP page allows users to edit their account or delete it--%>
+            <jsp:include page="displayOrder.jsp" flush="true"/> <%-- This JSP page displays a list of orders that the user has made--%>
+            <jsp:include page="endNote.jsp"/>
         </form>
         </div>
     </body>
