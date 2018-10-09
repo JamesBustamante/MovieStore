@@ -39,7 +39,7 @@
         
         <%
             Users users = userApp.getUsers();
-            String email = users.getList().get(0).getEmail();
+            String email = users.getList().get(0).getEmail(); //Need to fix
         %>
         <%= email%>
         

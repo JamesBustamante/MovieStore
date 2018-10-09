@@ -19,7 +19,7 @@
                 <title>selectedMovie.xsl</title>
             </head>
             <body>
-                <h1 style = "text-align: center;">HQ's Collection</h1>
+                <h1 style = "text-align: center;">Checkout Movie Page</h1>
                 <div style = "text-align: center;">
                 <xsl:apply-templates select="movies"/>  
                 </div>
@@ -36,7 +36,7 @@
                     <th>Release Date</th>
                     <th>Price</th>
                     <th>Description</th>
-                    <th>Available Copies1</th>
+                    <th>Available Copies</th>
                     <th>Remove</th>
                 </tr>
             </thead>
