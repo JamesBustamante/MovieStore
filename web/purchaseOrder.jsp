@@ -29,6 +29,7 @@
             User user = (User) session.getAttribute("user");            
             String quantityErr = (String) session.getAttribute("quantityErr");
             String salesTotal = "0.00";
+            String id = request.getParameter("id");
             
             Movies movies = movieApp.getMovies();
             ArrayList<Movie> matches = movies.getMovies();
@@ -62,10 +63,8 @@
             <h1 style="text-align: center;">Purchase Order</h1>    
             
             <!--<form action="purchaseOrderCheck.jsp" method="post">-->
+             <%= quantityErr %>
             <form action="checkoutAction.jsp" method="get">
-                
-                <%= quantityErr %>
-                
                 <h3>Movie details:</h3>
                 <table>
                     <% for (Movie movie : tempArrayList) { %>

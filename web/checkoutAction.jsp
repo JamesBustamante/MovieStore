@@ -38,7 +38,7 @@
             Validator v = new Validator();
             Boolean invalid = false;
             for (String copy : noCopies) {
-                if (!copy.equals("1")) {
+                if (!copy.matches("[0-9]+")) {
                    invalid = true;
                 }                 
             }   
@@ -69,19 +69,20 @@
                 }
             }
 
-            MoviePurchase moviePurchase = new MoviePurchase("t", "g", "r", "p", "n");
+            //MoviePurchase moviePurchase = new MoviePurchase("t", "g", "r", "p", "n");
             ArrayList<MoviePurchase> tempMoviePurchaseAL = new ArrayList<MoviePurchase>();
             int i = 0;
             for (Movie movie : tempMultiMovieOrderAL) {
-                moviePurchase.setTitle(movie.getTitle());
-                moviePurchase.setGenre(movie.getGenre());
-                moviePurchase.setReleaseDate(movie.getReleaseDate());
-                moviePurchase.setPrice(movie.getPrice());
-                moviePurchase.setNoCopies(noCopies[i]);
+                MoviePurchase moviePurchase = new MoviePurchase(movie.getTitle(), movie.getGenre(), movie.getReleaseDate(), movie.getPrice(), noCopies[i]);
+//                moviePurchase.setTitle(movie.getTitle());
+//                moviePurchase.setGenre(movie.getGenre());
+//                moviePurchase.setReleaseDate(movie.getReleaseDate());
+//                moviePurchase.setPrice(movie.getPrice());
+//                moviePurchase.setNoCopies(noCopies[i]);
                 tempMoviePurchaseAL.add(moviePurchase);
                 if (Integer.parseInt(movie.getAvailableCopies()) < Integer.parseInt(noCopies[i])) {
-                    response.sendRedirect("purchaseOrder.jsp"); // Redirect error: too many copies
-                    session.setAttribute("quantityErr", "Too Many Copies");
+                    //response.sendRedirect("purchaseOrder.jsp"); // Redirect error: too many copies
+                    //session.setAttribute("quantityErr", "Too Many Copies");
                 }
                 i++;
                 out.print(moviePurchase.getNoCopies());
@@ -106,8 +107,9 @@
                 }
             }
             movieApp.saveMovies();
-
+            session.setAttribute("quantityErr", " ");
             response.sendRedirect("purchaseConfirmation.jsp");
+            
             }
         
             
