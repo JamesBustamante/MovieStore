@@ -1,7 +1,7 @@
 <%-- 
     Document   : purchaseConfirmation
     Created on : 29/09/2018, 11:38:33 PM
-    Author     : WILL
+    Author     : William
 --%>
 
 
@@ -16,28 +16,22 @@
         <title>Import</title>
     </head>
     <body>
-
-        <jsp:useBean id="multiMovieOrder" 
-                     class="uts.wsd.MultiMovieOrder" scope="session">
-        </jsp:useBean>
-
-        <% String filePath1 = application.getRealPath("WEB-INF/history.xml");%>
-
-        <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
-            <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath1%>"/>
-        </jsp:useBean>
-
         <% String filePath = application.getRealPath("WEB-INF/users.xml");%>
+        <% String filePath1 = application.getRealPath("WEB-INF/history.xml");%>
         <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
             <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
-
-        <jsp:include page="header.jsp" />
-
-        <!-- code to readjust avaiable copies -->    
+        <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
+            <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath1%>"/>
+        </jsp:useBean>
+        <jsp:useBean id="multiMovieOrder" 
+                     class="uts.wsd.MultiMovieOrder" scope="session">
+        </jsp:useBean>
+        <jsp:include page="header.jsp" /> 
 
         <div class="content">
-            <p>  <% multiMovieOrder.movies.clear();
+            <p>  
+                <% multiMovieOrder.movies.clear();
                 ArrayList<MoviePurchase> tempMoviePurchaseAL = new ArrayList<MoviePurchase>();
                 User user = (User) session.getAttribute("user");
                 ArrayList<Order> orders = historyApp.getHistory().getHistory();
@@ -52,7 +46,8 @@
                     out.print("   movies " + order.getPurchases().size());
                 }
 
-                %></p>
+                %>
+            </p>
             <div style="text-align: center;">
                 <h1>Order Purchase Successful!</h1>
                 <p>Your order purchase was successful. Click <a href="index.jsp"> here</a> to return to the main page.</p>

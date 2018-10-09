@@ -1,14 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uts.wsd;
-
+import java.util.ArrayList;
 /**
  *
  * @author William
  */
 public class NoCopiesSelected {
-    //bean for number of copies selected.. gg
+    
+    public ArrayList<String> movies = new ArrayList();
+    String availableCopies;
+    
+    public NoCopiesSelected() {
+        availableCopies = "";
+    }
+    
+    public ArrayList<String> getMovies() { return movies; }    
+    
+    public NoCopiesSelected(String availableCopies) {
+        this.availableCopies = availableCopies;
+    }
+    
+    public void addMovie(String movie) { 
+        movies.add(movie); 
+    }
+    
+    public void emptyMovies() { 
+        movies.clear(); 
+    }
+    
+    public void emptyAvailableCopies(){ 
+        availableCopies = ""; 
+    }
+    
+    public String getAvailableCopies() { 
+        return availableCopies; 
+    }
+    public void setAvailableCopies(String availableCopies) { 
+        this.availableCopies = availableCopies; 
+    }
 }

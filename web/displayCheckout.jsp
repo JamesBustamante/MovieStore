@@ -44,7 +44,7 @@
             <availableCopies><%=movie.getAvailableCopies()%></availableCopies>
         </movie>
         <%}%>
-    </movies>        
+    </movies>
 </c:set>
 <c:import url = "selectedMovie.xsl" var = "xslt"/>
 <x:transform xml = "${xmltext}" xslt = "${xslt}"></x:transform>

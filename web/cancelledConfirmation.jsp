@@ -1,7 +1,7 @@
 <%-- 
     Document   : cancelledConfirmation
     Created on : 07/10/2018, 3:28:44 PM
-    Author     : WILL
+    Author     : William
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

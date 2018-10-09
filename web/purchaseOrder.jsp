@@ -1,7 +1,7 @@
 <%-- 
     Document   : purchaseOrder
     Created on : 26/09/2018, 11:01:29 PM
-    Author     : WILL
+    Author     : William
 --%>
 <%@page import="uts.wsd.*"%>
 <%@page import="java.util.*"%>
@@ -19,27 +19,20 @@
         <% String filePath1 = application.getRealPath("WEB-INF/movies.xml");%>
         <jsp:useBean id="movieApp" class="uts.wsd.MovieApplication" scope="application">
             <jsp:setProperty name="movieApp" property="filePath" value="<%=filePath1%>"/>
-        </jsp:useBean>        
-
+        </jsp:useBean>  
         <jsp:useBean id="multiMovieOrder"
                      class="uts.wsd.MultiMovieOrder" scope="session">
         </jsp:useBean>
-
         <jsp:include page="header.jsp" />
 
         <%
-            User user = (User) session.getAttribute("user");
-            String id = request.getParameter("id");
+            User user = (User) session.getAttribute("user");            
+            String quantityErr = (String) session.getAttribute("quantityErr");
             String salesTotal = "0.00";
-
+            
             Movies movies = movieApp.getMovies();
             ArrayList<Movie> matches = movies.getMovies();
             ArrayList<Movie> tempArrayList = new ArrayList<Movie>();
-            
-            //DecimalFormat df = new DecimalFormat("#.##");     //possibly required for formatting the double salesTotal
-            //DecimalFormatSymbols dfs = new DecimalFormatSymbols();
-            //dfs.setDecimalSeparator('.');
-            //df.setDecimalFormatSymbols(dfs);
 
             for (String movie : multiMovieOrder.movies) {
                 for (Movie movie1 : matches) {
@@ -48,7 +41,7 @@
                     }
                 }
             }
-            //total order cost    &&&&&& NOT CORRECT VALUE &&&&&&]
+            
             double totalPrice = 0.00;
             for (String movie : multiMovieOrder.movies) {                
                 for (Movie movie1 : matches) {
@@ -66,16 +59,23 @@
         %>
 
         <div class="content">
-            <h1 style="text-align: center;">Purchase Order</h1>                 
-
-            <form action="checkoutAction.jsp" method="post">
+            <h1 style="text-align: center;">Purchase Order</h1>    
+            
+            <!--<form action="purchaseOrderCheck.jsp" method="post">-->
+            <form action="checkoutAction.jsp" method="get">
+                
+                <%= quantityErr %>
+                
                 <h3>Movie details:</h3>
                 <table>
                     <% for (Movie movie : tempArrayList) { %>
                     <tr><td><b>Title:</b> <%= movie.getTitle()%></td></tr>
                     <tr><td><b>Genre:</b> <%= movie.getGenre()%></td></tr>
                     <tr><td><b>Price:</b> <%= movie.getPrice()%></td></tr>
-                    <tr><td><b>Quantity:</b> </td><td><input type="text" name="noCopies" maxlength="3" size="3" value="1"></td></tr>                    
+                    <tr>
+                        <td><b>Quantity:</b> </td>
+                        <td><input type="text" name="noCopies" maxlength="3" size="3" value="1"/></td>
+                    </tr>                    
                     <% }%>
                 </table>
                 <h3>Your details:</h3>

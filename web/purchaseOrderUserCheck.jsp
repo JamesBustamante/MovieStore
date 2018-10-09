@@ -13,28 +13,42 @@
         <title>Import</title>
     </head>
     <body>
-        
+        <% String filePath = application.getRealPath("WEB-INF/movies.xml");%>
+        <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
+            <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
+        </jsp:useBean>         
+        <jsp:useBean id="multiMovieOrder" 
+                     class="uts.wsd.MultiMovieOrder" scope="session">
+        </jsp:useBean>        
+        <jsp:include page="header.jsp" />
+
         <% User user = (User) session.getAttribute("user");
             if (user != null) {
                 response.sendRedirect("purchaseOrder.jsp");
-            } else { %> 
-            
-                <div style="text-align: center;">
-                    <form action="purchaseOrder.jsp" method="get">
-                        <p>
-                            <jsp:include page="login.jsp" />           
-                            <div class="content">
-                            You must be logged in before continuing with your purchase. 
-                            Please log in at the top of the page.
-                            <%
-                                if (user != null) {
-                                    response.sendRedirect("purchaseOrder.jsp");
-                                }
-                            %>
-                        </p>                         
-                    </form>
-                </div>
-            </div>
-            <% }%>  
+            } else { %>
+
+            <div class="content">
+                <h2>Login</h2>
+                <p>You must be logged in before continuing with your purchase. Please log in below.</p>
+
+                <form action="loginCheckoutAction.jsp" method="post">
+                    <table>
+                        <tr>
+                            <td>Email</td>
+                            <td><input name="email" type="text" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td><input name="password" type="password" value=""></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input value="Login" type="submit"></td>
+                        </tr>   
+                    </table>
+                </form> 
+            </div>            
+            <% } %>  
+        <jsp:include page="endNote.jsp" />    
     </body>
 </html>
