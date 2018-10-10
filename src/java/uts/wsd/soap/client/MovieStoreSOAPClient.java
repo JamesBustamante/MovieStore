@@ -253,6 +253,7 @@ public class MovieStoreSOAPClient {
            movieStore.addOrder(order, moviePurchases);
            
            
+           
             System.out.print("Order Confimed");
            
         }

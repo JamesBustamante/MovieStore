@@ -4,6 +4,7 @@
     Author     : Ciaran
 --%>
 
+<%@page import="uts.wsd.Users"%>
 <%@page import="uts.wsd.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,7 +23,10 @@
 
 
     %>
-    
+    <% String filePath = application.getRealPath("WEB-INF/users.xml");%>
+        <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
+            <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
+        </jsp:useBean>
     <body style="text-align: center">
         <h2 style="text-align: center">Account Details</h2>
         <%-- This form takes the information entered in to the fields and updates them--%>
@@ -62,6 +66,15 @@
                 user.setPassword(request.getParameter("password"));
                 user.setAddress(request.getParameter("address"));
                 user.setPhone(request.getParameter("phone"));
+                Users users = movieStoreUserApp.getUsers();
+                users.getIDUser(user.getID()).setEmail(request.getParameter("email"));
+                users.getIDUser(user.getID()).setFullName(request.getParameter("name"));
+                users.getIDUser(user.getID()).setPassword(request.getParameter("password"));
+                users.getIDUser(user.getID()).setAddress(request.getParameter("address"));
+                users.getIDUser(user.getID()).setPhone(request.getParameter("phone"));
+                movieStoreUserApp.updateXML(users, filePath);
+                
+
                 %><p>Changes Saved</p><%                
             }   
         %>         
