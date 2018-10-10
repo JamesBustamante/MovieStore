@@ -33,46 +33,29 @@
         <jsp:include page="header.jsp"  flush="true"/>
 
         <%
-            Users users = movieStoreUserApp.getUsers();
-            String email = request.getParameter("email");
+            Users users = movieStoreUserApp.getUsers();  //is user in the system, used below
+            String email = request.getParameter("email");  //gets email and password from login.jsp once entered by user
             String password = request.getParameter("password");
             User user = users.login(email, password);
-        %>
 
-        <%
-            if (!email.matches("([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)")) {
-                //session.removeAttribute("email");
+            if (!email.matches("([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)")) {  //if email doesn't match regex assign error
                 session.setAttribute("emailErr", "Email format incorrect");
-                response.sendRedirect("login.jsp");
-        %>
-
-        <p>Email incorrect. Click <a href="login.jsp">here</a> to try again.</p>
-
-        <% } else if (!password.matches("[a-z]{6,}[0-9]+")) {
-            request.setAttribute("passErr", "Password format incorrect");
-        %>
-
-        <p>Password incorrect. Click <a href="login.jsp">here</a> to try again.</p>
-
-        <% } else {
-            session.setAttribute("user", user);
-        %>
-
-        <p>Login successful. Click <a href="index.jsp">here</a> to return to the home page.</p>
-
-        <% }%>
-
+            } else if (!request.getParameter("password").matches("[a-z]{6,}[0-9]+")) {   //if password doesn't match regex assign error
+                session.setAttribute("passErr", "Password format incorrect");
+            } else {
+                session.setAttribute("user", user);
+            }%>
 
         <div class="content">
             <%
                 if (user != null) {
-                    session.setAttribute("user", user);
+                    session.setAttribute("user", user); //if user in the system
             %> 
 
             <p>Login successful. Click <a href="index.jsp">here</a> to return to the home page.</p>
 
             <% } else {
-                session.setAttribute("existErr", "user does not exist");
+                session.setAttribute("existErr", "user does not exist");  //user not in system
             %>
 
             <p>Login incorrect. Click <a href="login.jsp">here</a> to try again.</p>

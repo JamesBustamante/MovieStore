@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="CSS/main.css">
         <title>Register Action Page</title>
     </head>
     <body>
@@ -20,9 +21,9 @@
 
         <%
             
-             int key = (new Random()).nextInt(9999);
-            String id = "" + key;
-           String fullName = request.getParameter("fullName");
+           int key = (new Random()).nextInt(9999);
+           String id = "" + key;
+           String fullName = request.getParameter("fullName");  //get info from register.jsp
            String email = request.getParameter("email");
            String password = request.getParameter("password");
            String gender = request.getParameter("gender");
@@ -40,11 +41,12 @@
 //                    session.setAttribute("emailErr", "Email format is incorrect");
 //                    response.sendRedirect("register.jsp");
 //            } else {
-                User user = new User(id, email, password, fullName, phone, address, gender);
+                User user = new User(id, email, password, fullName, phone, address, gender); //assigns a new user
                 session.setAttribute("user", user);
                 session.setAttribute("tos", tos);
                 response.sendRedirect("welcome.jsp");
            // }
         %>
     </body>
-</html>
+</html> 
+

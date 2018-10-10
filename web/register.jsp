@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="CSS/main.css">
         <title>JSP Page</title>
          <link rel="stylesheet" href="CSS/main.css"> 
     </head>
@@ -31,4 +32,4 @@
             </form>
         </div>
     </body>
-</html>
+</html> 
