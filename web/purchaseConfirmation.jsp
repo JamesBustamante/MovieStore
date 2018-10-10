@@ -50,6 +50,9 @@
             </p>
             <div style="text-align: center;">
                 <h1>Order Purchase Successful!</h1>
+                <h2>Order ID: <%= multiMovieOrder.getOrderID() %></h2>
+                <% Order order =historyApp.getHistory().getOrderIDMatch(multiMovieOrder.getOrderID()); %>
+                Total order Price:  $ <%= order.getSalesTotal() %>
                 <p>Your order purchase was successful. Click <a href="index.jsp"> here</a> to return to the main page.</p>
             </div>
         </div>

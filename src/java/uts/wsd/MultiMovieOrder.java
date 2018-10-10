@@ -20,6 +20,17 @@ public class MultiMovieOrder {
      *
      * @return
      */
+    
+    public String OrderID = "";
+
+    public String getOrderID() {
+        return OrderID;
+    }
+
+    public void setOrderID(String OrderID) {
+        this.OrderID = OrderID;
+    }
+    
     public ArrayList<String> getNumOrderSelection() {
         return numOrderSelection;
     }

@@ -53,6 +53,7 @@
 
             //set String value for Random Order number          
             int tempRndID = (new Random()).nextInt(999);
+            multiMovieOrder.setOrderID(Integer.toString(tempRndID));
             String orderID = Integer.toString(tempRndID);
 
             //set values for User info
@@ -71,6 +72,7 @@
 
             //MoviePurchase moviePurchase = new MoviePurchase("t", "g", "r", "p", "n");
             ArrayList<MoviePurchase> tempMoviePurchaseAL = new ArrayList<MoviePurchase>();
+            Double total = 0.00;
             int i = 0;
             for (Movie movie : tempMultiMovieOrderAL) {
                 MoviePurchase moviePurchase = new MoviePurchase(movie.getTitle(), movie.getGenre(), movie.getReleaseDate(), movie.getPrice(), noCopies[i]);
@@ -80,6 +82,7 @@
 //                moviePurchase.setPrice(movie.getPrice());
 //                moviePurchase.setNoCopies(noCopies[i]);
                 tempMoviePurchaseAL.add(moviePurchase);
+                total = total + (Double.parseDouble(movie.getPrice()) * Double.parseDouble(noCopies[i]));
                 if (Integer.parseInt(movie.getAvailableCopies()) < Integer.parseInt(noCopies[i])) {
                     //response.sendRedirect("purchaseOrder.jsp"); // Redirect error: too many copies
                     //session.setAttribute("quantityErr", "Too Many Copies");
@@ -89,7 +92,7 @@
                 out.print(moviePurchase.getNoCopies());
             }
 
-            Order newOrder = new Order(orderID, tempMoviePurchaseAL, ID, email, fullName, paymentMethod, salesTotal, "Submitted");
+            Order newOrder = new Order(orderID, tempMoviePurchaseAL, ID, email, fullName, paymentMethod, Double.toString(total), "Submitted");
             History history = historyApp.getHistory();
             history.addOrder(newOrder); //Uses addOrder function to add new order.
             
@@ -106,7 +109,7 @@
                         movieApp.getMovies().getMoviebyTitle(movie.getTitle()).setAvailableCopies(String.valueOf(decrement));
                     }
                 }
-            }
+            } //historyApp.getHistory().getOrderIDMatch(orderID).setSalesTotal(salesTotal);
              if (!invalid) {
             historyApp.updateXML(history, filePath1); //Saves the order in XML.
             movieApp.saveMovies();
