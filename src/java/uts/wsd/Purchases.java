@@ -19,6 +19,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "purchases")
 public class Purchases implements Serializable {
     
+    /**
+     *  creates arrayList purchases
+     */
+    
     @XmlElement(name = "moviePurchase")
     private ArrayList<MoviePurchase> purchases = new ArrayList<MoviePurchase>();
 
@@ -29,15 +33,17 @@ public class Purchases implements Serializable {
     }
 
     /**
-     *
-     * @return
+     * method returns the arrayList purchases defined above
+     * 
+     * @return purchases
      */
     public ArrayList<MoviePurchase> getMovies() {
         return purchases;
     }
     
     /**
-     *
+     * sets parameter purchases to an instance
+     * 
      * @param purchases
      */
     public void setMovies(ArrayList<MoviePurchase> purchases) {

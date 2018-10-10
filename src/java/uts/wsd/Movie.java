@@ -31,14 +31,15 @@ public class Movie implements Serializable {
     private String availableCopies;
 
     /**
-     *
+     * calling method Movie() will execute method super()
      */
     public Movie() {
     super();
     }
 
     /**
-     *
+     * creates an instance of each of the parameters
+     * 
      * @param title
      * @param genre
      * @param releaseDate
@@ -58,15 +59,17 @@ public class Movie implements Serializable {
     }
 
     /**
-     *
-     * @return
+     * method returns genre defined above
+     * 
+     * @return picture
      */
     public String getPicture() {
         return picture;
     }
 
     /**
-     *
+     * sets parameter picture to an instance
+     * 
      * @param picture
      */
     public void setPicture(String picture) {
@@ -74,15 +77,16 @@ public class Movie implements Serializable {
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return description
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     *
+     * sets description to an instance
+     * 
      * @param description
      */
     public void setDescription(String description) {
@@ -91,14 +95,15 @@ public class Movie implements Serializable {
     
     /**
      *
-     * @return
+     * @return title
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     *
+     * sets parameter title to an instance
+     * 
      * @param title
      */
     public void setTitle(String title) {
@@ -107,14 +112,15 @@ public class Movie implements Serializable {
 
     /**
      *
-     * @return
+     * @return genre
      */
     public String getGenre() {
         return genre;
     }
 
     /**
-     *
+     * sets genre to an instance
+     * 
      * @param genre
      */
     public void setGenre(String genre) {
@@ -123,14 +129,15 @@ public class Movie implements Serializable {
 
     /**
      *
-     * @return
+     * @return releaseDate;
      */
     public String getReleaseDate() {
         return releaseDate;
     }
 
     /**
-     *
+     * creates instance of releaseDate
+     * 
      * @param releaseDate
      */
     public void setReleaseDate(String releaseDate) {
@@ -139,14 +146,15 @@ public class Movie implements Serializable {
 
     /**
      *
-     * @return
+     * @return price
      */
     public String getPrice() {
         return price;
     }
 
     /**
-     *
+     * creates instance of price
+     * 
      * @param price
      */
     public void setPrice(String price) {
@@ -155,14 +163,15 @@ public class Movie implements Serializable {
 
     /**
      *
-     * @return
+     * @return availableCopies
      */
     public String getAvailableCopies() {
         return availableCopies;
     }
 
     /**
-     *
+     * creates instance of parameter availableCopies
+     * 
      * @param availableCopies
      */
     public void setAvailableCopies(String availableCopies) {
@@ -172,57 +181,62 @@ public class Movie implements Serializable {
     /**
      *
      * @param genre
-     * @return
+     * @return boolean genre
      */
     public boolean matchGenre(String genre){
-        return this.genre.equalsIgnoreCase(genre.trim());
+        return this.genre.equalsIgnoreCase(genre.trim()); // Not case sensitive and removes whitespace
     }
     
     /**
      *
      * @param title
-     * @return
+     * @return boolean title
      */
     public boolean matchTitle(String title){
-        return this.title.equals(title.trim());
+        return this.title.equals(title.trim()); // removes whitespace
     }
     
     /**
-     *
+     * returns a boolean assigning releaseDate to year
+     * 
      * @param year
-     * @return
+     * @return boolean year
      */
     public boolean matchYear(String year){
-        return this.releaseDate.equals(year.trim());
+        return this.releaseDate.equals(year.trim()); // removes whitespace
     }
     
     /**
-     *
+     * using above methods, if all parameters are true (accepted)
+     * return true
+     * 
      * @param title
      * @param year
      * @param genre
-     * @return
+     * @return boolean
      */
     public boolean matchAll(String title, String year, String genre){        
         return matchTitle(title)&&matchYear(year)&&matchGenre(genre);
     }
     
     /**
-     *
+     * if year and genre match return true
+     * 
      * @param genre
      * @param year
-     * @return
+     * @return boolean
      */
     public boolean matchGenreAndYear(String genre, String year){        
         return matchYear(year)&&matchGenre(genre);
     }
     
     /**
-     *
+     * if any of the parameters match return true
+     * 
      * @param title
      * @param year
      * @param genre
-     * @return
+     * @return boolean
      */
     public boolean matchAny(String title, String year, String genre){ 
         return matchTitle(title)||matchYear(year)||matchGenre(genre);

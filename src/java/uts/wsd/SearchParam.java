@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class SearchParam {
 
     /**
-     * creates a new list defines two variables as strings
+     * creates a new arrayList of strings defines two variables as strings
      */
     public ArrayList<String> years = new ArrayList<>();
     String genre;
