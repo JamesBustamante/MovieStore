@@ -14,29 +14,31 @@ import java.util.ArrayList;
 public class SearchParam {
 
     /**
-     *
+     * creates a new list defines two variables as strings
      */
     public ArrayList<String> years = new ArrayList<>();
     String genre;
     String title;
 
     /**
-     *
+     * method sets both variables to empty strings
      */
     public SearchParam() {
         genre = "";
         title = "";
     }
- 
+
     /**
+     * method getYears() returns the arrayList years defined above
      *
-     * @return
+     * @return years
      */
     public ArrayList<String> getYears() {
         return years;
     }
 
     /**
+     * creates an instance for each of the parameters
      *
      * @param genre
      * @param title
@@ -47,43 +49,46 @@ public class SearchParam {
     }
 
     /**
+     * method adds year (as a string) to the arrayList years
      *
      * @param year
      */
     public void addYear(String year) {
         years.add(year);
     }
-    
+
     /**
-     *
+     * method removes all elements in arrayList years
      */
-    public void emptyYears(){
+    public void emptyYears() {
         years.clear();
     }
-    
+
     /**
-     *
+     * sets genre to empty string
      */
-    public void emptyGenre(){
+    public void emptyGenre() {
         genre = "";
     }
-    
+
     /**
-     *
+     * sets title to empty string
      */
-    public void emptyTitle(){
+    public void emptyTitle() {
         title = "";
     }
 
     /**
+     * returns variable genre
      *
-     * @return
+     * @return genre
      */
     public String getGenre() {
         return genre;
     }
 
     /**
+     * creates instance for parameter genre
      *
      * @param genre
      */
@@ -92,22 +97,21 @@ public class SearchParam {
     }
 
     /**
+     * method returns variable title
      *
-     * @return
+     * @return title
      */
     public String getTitle() {
         return title;
     }
 
     /**
+     * creates an instance for the parameter title
      *
      * @param title
      */
     public void setTitle(String title) {
         this.title = title;
     }
-    
-    
-    
-    
+
 }

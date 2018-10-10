@@ -24,7 +24,7 @@
         validPassword = "";
     } else {
         validPassword = validPassword;
-    }
+    } 
 %>
 
 <html>
