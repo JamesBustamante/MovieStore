@@ -24,15 +24,16 @@ public class MovieApplication {
         private Movies movies;
     
     /**
-     *
-     * @return
+     * getter for filePath
+     * @return filePath
      */
     public String getFilePath() {
         return filePath;
     }
 
     /**
-     *
+     * calls parent constructor
+     * creates an instance of the parameters
      * @param filePath
      * @param movies
      */
@@ -95,15 +96,16 @@ public class MovieApplication {
     }
 
     /**
-     *
-     * @return
+     * getter for movies
+     * @return movies
      */
     public Movies getMovies() {
         return movies;
     }
 
     /**
-     *
+     * creates instance of parameter movies
+     * 
      * @param movies
      */
     public void setMovies(Movies movies) {

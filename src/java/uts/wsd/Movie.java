@@ -59,7 +59,7 @@ public class Movie implements Serializable {
     }
 
     /**
-     * method returns genre defined above
+     * method getter for genre defined above
      * 
      * @return picture
      */
@@ -77,7 +77,7 @@ public class Movie implements Serializable {
     }
 
     /**
-     * 
+     * getter for description
      * @return description
      */
     public String getDescription() {
@@ -111,7 +111,7 @@ public class Movie implements Serializable {
     }
 
     /**
-     *
+     * getter for genre
      * @return genre
      */
     public String getGenre() {
@@ -128,7 +128,7 @@ public class Movie implements Serializable {
     }
 
     /**
-     *
+     * getter for releaseDate
      * @return releaseDate;
      */
     public String getReleaseDate() {
@@ -145,7 +145,7 @@ public class Movie implements Serializable {
     }
 
     /**
-     *
+     * getter for price
      * @return price
      */
     public String getPrice() {
@@ -162,7 +162,7 @@ public class Movie implements Serializable {
     }
 
     /**
-     *
+     * getter for availableCopies
      * @return availableCopies
      */
     public String getAvailableCopies() {

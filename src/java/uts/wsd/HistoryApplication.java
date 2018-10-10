@@ -23,7 +23,7 @@ public class HistoryApplication {
     private Purchases purchases;
 
     /**
-     *
+     * getter for filePath
      * @return filePath
      */
     public String getFilePath() {
@@ -96,7 +96,7 @@ public class HistoryApplication {
     }
 
     /**
-     *
+     * getter for history
      * @return history
      */
     public History getHistory() {
@@ -113,7 +113,7 @@ public class HistoryApplication {
     }
 
     /**
-     *
+     * getter for purchases
      * @return purchases
      */
     public Purchases getPurchases() {

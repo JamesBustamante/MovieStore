@@ -27,18 +27,19 @@ public class MoviePurchase {
     @XmlElement(name = "price")
     private String price;
     @XmlElement(name = "NoCopies")
-    private String NoCopies;    
-    
-    //****new - testing for xml update****
+    private String NoCopies;
 
+    //****new - testing for xml update****
     /**
      *
      */
-    public MoviePurchase(){}
+    public MoviePurchase() {
+    }
     //****new - testing for xml update****
 
     /**
-     *
+     *  creates an instance of the parameters
+     * 
      * @param title
      * @param genre
      * @param releaseDate
@@ -52,17 +53,18 @@ public class MoviePurchase {
         this.price = price;
         this.NoCopies = NoCopies;
     }
-    
+
     /**
-     *
-     * @return
+     * getter for genre
+     * @return genre
      */
     public String getGenre() {
         return genre;
     }
 
     /**
-     *
+     * creates an instance of the parameter
+     * 
      * @param genre
      */
     public void setGenre(String genre) {
@@ -70,15 +72,16 @@ public class MoviePurchase {
     }
 
     /**
-     *
-     * @return
+     * getter for NoCopies
+     * @return NoCopies
      */
     public String getNoCopies() {
         return NoCopies;
     }
 
     /**
-     *
+     * creates an instance of the parameter
+     * 
      * @param NoCopies
      */
     public void setNoCopies(String NoCopies) {
@@ -86,14 +89,15 @@ public class MoviePurchase {
     }
 
     /**
-     *
-     * @return
+     * getter for title
+     * @return title
      */
     public String getTitle() {
         return title;
     }
 
     /**
+     * creates an instance of the parameter
      *
      * @param title
      */
@@ -102,15 +106,16 @@ public class MoviePurchase {
     }
 
     /**
-     *
-     * @return
+     * getter for releaseDate
+     * @return releaseDate
      */
     public String getReleaseDate() {
         return releaseDate;
     }
 
     /**
-     *
+     * creates an instance of the parameter
+     * 
      * @param releaseDate
      */
     public void setReleaseDate(String releaseDate) {
@@ -118,25 +123,28 @@ public class MoviePurchase {
     }
 
     /**
-     *
-     * @return
+     * getter for price
+     * @return price
      */
     public String getPrice() {
         return price;
     }
 
     /**
-     *
+     * creates an instance of the parameter
+     * 
      * @param price
      */
     public void setPrice(String price) {
         this.price = price;
     }
-    
+
     /**
-     *
+     * returns a boolean for title
+     * not case sensitive and removes white space
+     * 
      * @param title
-     * @return
+     * @return title
      */
     public boolean matchTitle(String title) {
         return this.title.equalsIgnoreCase(title.toLowerCase().trim());
