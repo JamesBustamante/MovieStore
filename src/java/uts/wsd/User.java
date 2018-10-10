@@ -60,7 +60,7 @@ public class User implements Serializable {
     }
 
     /**
-     *
+     * getter for ID
      * @return ID
      */
     public String getID() {
@@ -77,7 +77,7 @@ public class User implements Serializable {
     }
 
     /**
-     *
+     * getter for email
      * @return email
      */
     public String getEmail() {
@@ -94,7 +94,7 @@ public class User implements Serializable {
     }
 
     /**
-     *
+     * getter for password
      * @return password
      */
     public String getPassword() {
@@ -111,7 +111,7 @@ public class User implements Serializable {
     }
 
     /**
-     *
+     * getter for fullName
      * @return fullName
      */
     public String getfullName() {
@@ -128,7 +128,7 @@ public class User implements Serializable {
     }
 
     /**
-     *
+     * getter for phone
      * @return phone
      */
     public String getPhone() {
@@ -145,7 +145,7 @@ public class User implements Serializable {
     }
 
     /**
-     *
+     * getter for address
      * @return address
      */
     public String getAddress() {

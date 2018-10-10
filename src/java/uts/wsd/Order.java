@@ -41,9 +41,11 @@ public class Order {
     /**
      *
      */
-    public Order() {}
+    public Order() {
+    }
 
     /**
+     * creates and instance of parameters
      *
      * @param orderID
      * @param purchases
@@ -66,14 +68,16 @@ public class Order {
     }
 
     /**
+     * getter for arrayList purchases
      *
-     * @return
+     * @return purchases
      */
     public ArrayList<MoviePurchase> getPurchases() {
         return purchases;
     }
 
     /**
+     * creates an instance of the parameter purchases
      *
      * @param purchases
      */
@@ -82,14 +86,16 @@ public class Order {
     }
 
     /**
+     * getter for orderID
      *
-     * @return
+     * @return orderID
      */
     public String getOrderID() {
         return orderID;
     }
 
     /**
+     * setter for orderID creates an instance of parameter orderID
      *
      * @param orderID
      */
@@ -98,14 +104,16 @@ public class Order {
     }
 
     /**
+     * getter for email
      *
-     * @return
+     * @return email
      */
     public String getEmail() {
         return email;
     }
 
     /**
+     * creates and instance for email
      *
      * @param email
      */
@@ -114,14 +122,16 @@ public class Order {
     }
 
     /**
+     * getter of ID
      *
-     * @return
+     * @return ID
      */
     public String getID() {
         return ID;
     }
 
     /**
+     * creates an instance for ID
      *
      * @param ID
      */
@@ -130,14 +140,16 @@ public class Order {
     }
 
     /**
+     * getter for fullName
      *
-     * @return
+     * @return fullName
      */
     public String getFullName() {
         return fullName;
     }
 
     /**
+     * creates instance for parameter fullName
      *
      * @param fullName
      */
@@ -146,14 +158,16 @@ public class Order {
     }
 
     /**
+     * getter for salesTotal
      *
-     * @return
+     * @return salesTotal
      */
     public String getSalesTotal() {
         return salesTotal;
     }
 
     /**
+     * creates an instance of salesTotal
      *
      * @param salesTotal
      */
@@ -162,14 +176,16 @@ public class Order {
     }
 
     /**
+     * getter for orderStatus
      *
-     * @return
+     * @return orderStatus
      */
     public String getOrderStatus() {
         return orderStatus;
     }
 
     /**
+     * creates an instance of orderStatus
      *
      * @param orderStatus
      */
@@ -178,14 +194,16 @@ public class Order {
     }
 
     /**
+     * getter for paymentMethod
      *
-     * @return
+     * @return paymentMethod
      */
     public String getPaymentMethod() {
         return paymentMethod;
     }
 
     /**
+     * creates an instance of paymentMethod
      *
      * @param paymentMethod
      */
@@ -194,36 +212,40 @@ public class Order {
     }
 
     /**
+     * returns a boolean for email without whitespace
      *
      * @param email
-     * @return
+     * @return boolean
      */
     public boolean matchEmail(String email) {
         return this.email.equals(email.trim());
     }
 
     /**
+     * returns a boolean for orderID without whitespace
      *
      * @param orderID
-     * @return
+     * @return boolean
      */
     public boolean matchOrderID(String orderID) {
         return this.orderID.equals(orderID.trim());
     }
 
     /**
+     * returns a boolean for orderStatus without whitespace
      *
      * @param orderStatus
-     * @return
+     * @return boolean
      */
     public boolean matchOrderStatus(String orderStatus) {
         return this.orderStatus.equals(orderStatus.trim());
     }
-    
+
     /**
+     * returns a boolean for ID without whitespace
      *
      * @param ID
-     * @return
+     * @return boolean
      */
     public boolean matchIDStatus(String ID) {
         return this.ID.equals(ID.trim());

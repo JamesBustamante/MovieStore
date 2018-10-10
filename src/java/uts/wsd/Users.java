@@ -25,15 +25,15 @@ public class Users implements Serializable {
     private ArrayList<User> list = new ArrayList<User>();
  
     /**
-     *
-     * @return
+     * getter for arrayList list
+     * @return list
      */
     public ArrayList<User> getList() {
         return list;
     }
 
     /**
-     *
+     * adds user to the arrayList list
      * @param user
      */
     public void addUser(User user) {
@@ -41,7 +41,7 @@ public class Users implements Serializable {
     }
 
     /**
-     *
+     * removes user from the arrayList list
      * @param user
      */
     public void removeUser(User user) {
@@ -64,13 +64,13 @@ public class Users implements Serializable {
     }
     
     /**
-     *
+     * checks through list of users in the list and checks email
      * @param email
-     * @return
+     * @return boolean
      */
     public boolean getUser(String email) {
         for (User user : list) {
-            if (user.matchEmail(email)) {
+            if (user.matchEmail(email)) { //if user email matches
                 return true;
             }
         }

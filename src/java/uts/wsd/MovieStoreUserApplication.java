@@ -10,22 +10,25 @@ import javax.xml.XMLConstants;
 import javax.xml.bind.*;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+
 /**
  *
  * @author james
  */
 public class MovieStoreUserApplication {
-        private String filePath;
-        private Users users;
+
+    private String filePath;
+    private Users users;
 
     /**
+     * getter for filePath
      *
-     * @return
+     * @return filePath
      */
     public String getFilePath() {
         return filePath;
     }
-    
+
     /**
      *
      */
@@ -33,6 +36,7 @@ public class MovieStoreUserApplication {
     }
 
     /**
+     * calls parent constructor creates an instance of the parameters
      *
      * @param filePath
      * @param users
@@ -42,25 +46,24 @@ public class MovieStoreUserApplication {
         this.filePath = filePath;
         this.users = users;
     }
-    
+
     /**
      *
      * @param filePath
      * @throws Exception
      */
     public void setFilePath(String filePath) throws Exception {
-       
+
         // Create the unmarshaller
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Unmarshaller u = jc.createUnmarshaller();
-        
 
         this.filePath = filePath;
         FileInputStream fin = new FileInputStream(filePath);
-        users = (Users)u.unmarshal(fin); // This loads the "shop" object
+        users = (Users) u.unmarshal(fin); // This loads the "shop" object
         fin.close();
     }
-    
+
     /**
      *
      * @param users
@@ -77,7 +80,7 @@ public class MovieStoreUserApplication {
         m.marshal(users, fout);
         fout.close();
     }
-        
+
     /**
      *
      * @throws JAXBException
@@ -93,6 +96,7 @@ public class MovieStoreUserApplication {
     }
 
     /**
+     * getter for users
      *
      * @return
      */
@@ -101,12 +105,12 @@ public class MovieStoreUserApplication {
     }
 
     /**
+     * creates an instance of users
      *
      * @param users
      */
     public void setUsers(Users users) {
         this.users = users;
     }
-        
-        
+
 }
