@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <%
+        //Gets the user object of the currently logged in user
         User user = (User)session.getAttribute("user");
         //Account page (when logged in): users can edit and update their details, 
         //data is updated in users.xml (+2), users can cancel their account with OMS , 
@@ -24,6 +25,7 @@
     
     <body style="text-align: center">
         <h2 style="text-align: center">Account Details</h2>
+        <%-- This form takes the information entered in to the fields and updates them--%>
         <form action="editDetails.jsp" method="POST">
             <table class="content p table">
                 <tr>
@@ -46,13 +48,14 @@
                 </tr>
                 <input type="hidden" name="updated" value="updated"/>
             </table>
-        </form>  
+        </form>
         <div style="text-align: left">
+            <%-- This form allows the user to remove their account from the system--%>
             <form action="cancelAccount.jsp">
                 <input type="submit" name="cancel" value="X Remove Account X"/>
             </form>
         </div>                     
-        <%
+        <% //This handles the details that are updated
             if(request.getParameter("updated") != null){
                 user.setEmail(request.getParameter("email"));
                 user.setFullName(request.getParameter("name"));

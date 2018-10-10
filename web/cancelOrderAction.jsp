@@ -17,11 +17,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+      <%-- This bean gets the information for the xml file provided in the filepath--%>
       <% String filePath1 = application.getRealPath("WEB-INF/history.xml");%>
         <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
             <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath1%>"/>
         </jsp:useBean>
         
+      <%-- This bean gets the information for the xml file provided in the filepath--%>  
         <% String filePath = application.getRealPath("WEB-INF/movies.xml"); %>
         <jsp:useBean id="movieApp" class="uts.wsd.MovieApplication" scope="application">
         <jsp:setProperty name="movieApp" property="filePath" value="<%=filePath%>"/>

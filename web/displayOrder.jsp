@@ -10,6 +10,7 @@
 <%@page import="uts.wsd.*"%>
 <%@page import="java.util.*"%>
 
+<%-- This bean takes the information from the xml file provided in the filepath--%>
 <% String filePath1 = application.getRealPath("WEB-INF/history.xml"); %>
     <jsp:useBean id="historyApp" class="uts.wsd.HistoryApplication" scope="application">
         <jsp:setProperty name="historyApp" property="filePath" value="<%=filePath1%>"/>
@@ -22,6 +23,7 @@
     String id = user.getID();
     %>
     
+    <%-- This loops through the entire xml file and uses orderHistory.xsl to transform it--%>
     <c:set var="xmltext">
         <history>
             <% for(Order order : matches) {%>

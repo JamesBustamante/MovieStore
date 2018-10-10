@@ -14,10 +14,11 @@
         <link rel="stylesheet" href="CSS/main.css">
     </head>
     <body>
-        <jsp:include page="header.jsp"  flush="true"/>
-        <div class="content" style="text-align: center">
+        <jsp:include page="header.jsp"  flush="true"/><%-- The header page which is consistent across all pages--%>
+        <div class="content" style="text-align: center"><%-- CSS class that contains all the elements of the page--%>
             <h2>Are you sure you wan't to remove your account?</h2>
-            <form action="cancelAccountAction.jsp">
+            <%-- This form checks what button user clicks and directs user to another jsp page--%>
+            <form action="cancelAccountAction.jsp" style="text-align: center">
                 <table style="text-align: center">
                     <tr>
                         <td><input type="submit" name="yes" value="Yes"</td>

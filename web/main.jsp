@@ -16,12 +16,12 @@
     </head>    
     <body>
         <jsp:include page="header.jsp"  flush="true"/> <%-- The header page which is consistent across all pages--%>
-        <div class="content">
-        <form>
-            <jsp:include page="editDetails.jsp" flush="true"/> <%-- This JSP page allows users to edit their account or delete it--%>
-            <jsp:include page="displayOrder.jsp" flush="true"/> <%-- This JSP page displays a list of orders that the user has made--%>
-            <jsp:include page="endNote.jsp"/>
-        </form>
+        <div class="content"> <%-- CSS class that contains all the elements of the page--%>
+            <form>
+                <jsp:include page="editDetails.jsp" flush="true"/> <%-- This JSP page allows users to edit their account or delete it--%>
+                <jsp:include page="displayOrder.jsp" flush="true"/> <%-- This JSP page displays a list of orders that the user has made--%>
+                <jsp:include page="endNote.jsp"/>
+            </form>
         </div>
     </body>
 </html>

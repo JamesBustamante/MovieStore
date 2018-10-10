@@ -13,9 +13,10 @@
         <title>Cancel Page</title>
     </head>
     <body>
-        <jsp:include page="header.jsp"  flush="true"/>
-        <div class="content">
+        <jsp:include page="header.jsp"  flush="true"/><%-- The header page which is consistent across all pages--%>
+        <div class="content"><%-- CSS class that contains all the elements of the page--%>
             <% String id = request.getParameter("id"); %>
+            <%-- This form checks what button user clicks and directs user to another jsp page--%>
             <form action="cancelOrderAction.jsp" style="text-align: center">
                 <h2>Are you sure you want to cancel this order?</h2>
                 <input type="submit" value="Yes"/>                
