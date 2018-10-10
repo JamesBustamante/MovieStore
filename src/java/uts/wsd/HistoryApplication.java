@@ -17,20 +17,23 @@ import javax.xml.bind.*;
  * @author james
  */
 public class HistoryApplication {
+
     private String filePath;
     private History history;
     private Purchases purchases;
-    
+
     /**
      *
-     * @return
+     * @return filePath
      */
     public String getFilePath() {
         return filePath;
     }
 
     /**
-     *
+     * calls parent constructor
+     * creates an instance of the parameters
+     * 
      * @param filePath
      * @param history
      */
@@ -45,7 +48,7 @@ public class HistoryApplication {
      */
     public HistoryApplication() {
     }
-    
+
     /**
      *
      * @param filePath
@@ -57,10 +60,10 @@ public class HistoryApplication {
         Unmarshaller u = jc.createUnmarshaller();
         this.filePath = filePath;
         FileInputStream fin = new FileInputStream(filePath);
-        history = (History)u.unmarshal(fin); // This loads the "shop" object
+        history = (History) u.unmarshal(fin); // This loads the "shop" object
         fin.close();
     }
-    
+
     /**
      *
      * @param history
@@ -77,7 +80,7 @@ public class HistoryApplication {
         m.marshal(history, fout);
         fout.close();
     }
-        
+
     /**
      *
      * @throws JAXBException
@@ -94,26 +97,27 @@ public class HistoryApplication {
 
     /**
      *
-     * @return
+     * @return history
      */
     public History getHistory() {
         return history;
     }
 
     /**
-     *
+     * creates instance of parameter
+     * 
      * @param history
      */
     public void setHistory(History history) {
         this.history = history;
     }
-    
+
     /**
      *
-     * @return
+     * @return purchases
      */
     public Purchases getPurchases() {
         return purchases;
     }
-    
+
 }

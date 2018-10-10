@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package uts.wsd;
+
 import javax.xml.bind.annotation.*;
 import java.util.*;
 import java.io.Serializable;
+
 /**
  *
  * @author james
@@ -14,6 +16,7 @@ import java.io.Serializable;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "user")
 public class User implements Serializable {
+
     @XmlElement(name = "ID")
     private String ID;
     @XmlElement(name = "email")
@@ -30,6 +33,7 @@ public class User implements Serializable {
     private String gender;
 
     /**
+     * creates an instance for each of the parameters
      *
      * @param ID
      * @param email
@@ -48,21 +52,23 @@ public class User implements Serializable {
         this.address = address;
         this.gender = gender;
     }
-    
+
     /**
      *
      */
-    public User() {}
-      
+    public User() {
+    }
+
     /**
      *
-     * @return
+     * @return ID
      */
     public String getID() {
         return ID;
     }
 
     /**
+     * creates instance of parameter
      *
      * @param ID
      */
@@ -72,13 +78,14 @@ public class User implements Serializable {
 
     /**
      *
-     * @return
+     * @return email
      */
     public String getEmail() {
         return email;
     }
 
     /**
+     * creates instance of parameter
      *
      * @param email
      */
@@ -88,13 +95,14 @@ public class User implements Serializable {
 
     /**
      *
-     * @return
+     * @return password
      */
     public String getPassword() {
         return password;
     }
 
     /**
+     * creates instance of parameter
      *
      * @param password
      */
@@ -104,13 +112,14 @@ public class User implements Serializable {
 
     /**
      *
-     * @return
+     * @return fullName
      */
     public String getfullName() {
         return fullName;
     }
 
     /**
+     * creates instance of parameter
      *
      * @param fullName
      */
@@ -120,13 +129,14 @@ public class User implements Serializable {
 
     /**
      *
-     * @return
+     * @return phone
      */
     public String getPhone() {
         return phone;
     }
 
     /**
+     * creates instance of parameter
      *
      * @param phone
      */
@@ -136,28 +146,28 @@ public class User implements Serializable {
 
     /**
      *
-     * @return
+     * @return address
      */
     public String getAddress() {
         return address;
     }
 
     /**
+     * creates instance of parameter
      *
      * @param address
      */
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
     /**
+     * creates instance of parameter and removes whitespace
      *
      * @param email
-     * @return
+     * @return email
      */
     public boolean matchEmail(String email) {
         return this.email.equals(email.trim());
     }
-
-    
 }
