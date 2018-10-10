@@ -41,7 +41,6 @@ and open the template in the editor.
             <h2 style ="text-align: center;">Search for Movies</h2>
             <form action="searchAction.jsp" method="get">
                 <table align="center">         
-                    <%=(exist != null ? exist : "")%>
                     <tr><td>Movie Title</td><td><input type="text" name="title"/></td></tr>
                     <tr><td>Genre</td><td><select name="genre">
                                 <option value="Any">Any</option>

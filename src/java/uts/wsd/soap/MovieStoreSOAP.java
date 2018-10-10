@@ -155,9 +155,30 @@ private WebServiceContext context;
     @WebMethod
     public void removeUser(User user) throws IOException, Exception, NullPointerException {
         MovieStoreUserApplication userApp = getUserApp();
-        
-        userApp.getUsers().removeUser(user);
-        userApp.saveUsers();
+             MovieApplication movieApp = getMovieApp();
+             HistoryApplication historyApp = getHistoryApp();
+            ArrayList<Order> orders = historyApp.getHistory().getOrdersEmailMatches(user.getEmail());
+            Movies movies = getMovieApp().getMovies();
+            ArrayList<Movie> allMovies = movies.getMovies();
+            for(Order order : orders){
+                ArrayList<MoviePurchase> matches = order.getPurchases();
+                for(MoviePurchase mp : matches){
+                    for(Movie movie : allMovies){
+                        if(mp.getTitle().equals(movie.getTitle())){
+                            int addBack = Integer.parseInt(movie.getAvailableCopies()) + Integer.parseInt(mp.getNoCopies());
+                            movieApp.getMovies().getMoviebyTitle(movie.getTitle()).setAvailableCopies(String.valueOf(addBack));
+                        }
+                        
+                    }
+                }
+                
+            }
+            movieApp.saveMovies();
+            orders.removeAll(historyApp.getHistory().getOrdersEmailMatches(user.getEmail()));
+            historyApp.saveHistory();
+            
+            userApp.getUsers().removeUser(user);
+            userApp.saveUsers();
     }
     
     /**

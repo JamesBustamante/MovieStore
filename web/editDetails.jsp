@@ -16,13 +16,13 @@
     </head>
     <%-- This bean takes the information from the xml file provided in the filepath--%>
     <%String filePath = application.getRealPath("WEB-INF/users.xml");%>
-    <jsp:useBean id="userApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
+    <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
         <jsp:setProperty name="userApp" property="filePath" value="<%=filePath%>"/>
     </jsp:useBean>
     <%
         //Gets the user object of the currently logged in user
         User user = (User)session.getAttribute("user");
-        Users users = userApp.getUsers();
+        //Users users = userApp.getUsers();
         //Account page (when logged in): users can edit and update their details, 
         //data is updated in users.xml (+2), users can cancel their account with OMS , 
         //submitted orders by this user are cancelled but stored in history.xml, purchased movies 
@@ -30,10 +30,6 @@
 
 
     %>
-    <% String filePath = application.getRealPath("WEB-INF/users.xml");%>
-        <jsp:useBean id="movieStoreUserApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
-            <jsp:setProperty name="movieStoreUserApp" property="filePath" value="<%=filePath%>"/>
-        </jsp:useBean>
     <body style="text-align: center">
         <h2 style="text-align: center">Account Details</h2>
         <%-- This form takes the information entered in to the fields and updates them--%>
@@ -56,8 +52,9 @@
                     <td><input size="16" type="text" name="phone" value="<%= user.getPhone()%>"></td>
                     <td><input type="hidden" name="updated" value="updated"/></td>
                     <td><input type="submit" value="Save Changes"/></td>
+                    <input type="hidden" name="updated" value="updated"/>
                 </tr>
-                <input type="hidden" name="updated" value="updated"/>
+                
             </table>
         </form>
         <div style="text-align: left">
