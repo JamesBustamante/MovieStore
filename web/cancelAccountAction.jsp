@@ -33,34 +33,43 @@
     </jsp:useBean>    
     
     <body>
-        <jsp:include page="header.jsp"  flush="true"/>
+        
         <%
             User user = (User)session.getAttribute("user");
             String id = user.getID();
-        %>
-        <%= id%> 
-        
-        <%
+            String email = user.getEmail();            
             Users users = userApp.getUsers();
-            String email = users.getList().get(0).getEmail(); //Need to fix
-        %>
-        <%= email%>
-        
-        <%
             Movies movies = movieApp.getMovies();
+            History history = historyApp.getHistory();
+            ArrayList<Order> orders = history.getOrdersEmailMatches(email);
+            ArrayList<Movie> allMovies = movies.getMovies();
+            for(Order order : orders){
+                ArrayList<MoviePurchase> matches = order.getPurchases();
+                for(MoviePurchase mp : matches){
+                    for(Movie movie : allMovies){
+                        if(mp.getTitle().equals(movie.getTitle())){
+                            int addBack = Integer.parseInt(movie.getAvailableCopies()) + Integer.parseInt(mp.getNoCopies());
+                            movieApp.getMovies().getMoviebyTitle(movie.getTitle()).setAvailableCopies(String.valueOf(addBack));
+                        }
+                        
+                    }
+                }
+                
+            }
+            movieApp.saveMovies();
+            orders.removeAll(history.getOrdersEmailMatches(email));
+            historyApp.updateXML(history, filePath2);
             
             users.removeUser(user);
             userApp.updateXML(users, filePath1);
             
         %>
         
-        <% session.invalidate();
-        response.sendRedirect("index.jsp");
+        <%
+            response.sendRedirect("index.jsp");
+            session.invalidate();
         %>
         
-        <div class="content" style="text-align: center">
-            
-        </div>
-        <jsp:include page="endNote.jsp"/>        
+               
     </body>
 </html>

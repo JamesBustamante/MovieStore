@@ -4,7 +4,7 @@
     Author     : Ciaran
 --%>
 
-<%@page import="uts.wsd.User"%>
+<%@page import="uts.wsd.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,9 +12,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <%-- This bean takes the information from the xml file provided in the filepath--%>
+    <%String filePath = application.getRealPath("WEB-INF/users.xml");%>
+    <jsp:useBean id="userApp" class="uts.wsd.MovieStoreUserApplication" scope="application">
+        <jsp:setProperty name="userApp" property="filePath" value="<%=filePath%>"/>
+    </jsp:useBean>
     <%
         //Gets the user object of the currently logged in user
         User user = (User)session.getAttribute("user");
+        Users users = userApp.getUsers();
         //Account page (when logged in): users can edit and update their details, 
         //data is updated in users.xml (+2), users can cancel their account with OMS , 
         //submitted orders by this user are cancelled but stored in history.xml, purchased movies 

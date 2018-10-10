@@ -20,8 +20,11 @@
             <form action="cancelOrderAction.jsp" style="text-align: center">
                 <h2>Are you sure you want to cancel this order?</h2>
                 <input type="submit" value="Yes"/>                
-                <input type="submit" value="No"/>
                 <input type="hidden" name="id" value="<%= id%>"/>
+            </form>
+            <br>
+            <form action="main.jsp" style="text-align: center">
+                <input type="submit" value="No"/>
             </form>
             <jsp:include page="endNote.jsp" />
         </div>

@@ -15,16 +15,15 @@
     </head>
     <body>
         <jsp:include page="header.jsp"  flush="true"/><%-- The header page which is consistent across all pages--%>
-        <div class="content" style="text-align: center"><%-- CSS class that contains all the elements of the page--%>
-            <h2>Are you sure you wan't to remove your account?</h2>
+        <div class="content"><%-- CSS class that contains all the elements of the page--%>
             <%-- This form checks what button user clicks and directs user to another jsp page--%>
             <form action="cancelAccountAction.jsp" style="text-align: center">
-                <table style="text-align: center">
-                    <tr>
-                        <td><input type="submit" name="yes" value="Yes"</td>
-                        <td><input type="submit" name="no" value="No"</td>
-                    </tr>
-                </table>
+                <h2>Are you sure you wan't to remove your account?</h2>
+                <input type="submit" name="yes" value="Yes"/>
+            </form>
+            <br>
+            <form action="main.jsp" style="text-align: center">
+                <input type="submit" name="no" value="No"/>
             </form>
         </div>
         <jsp:include page="endNote.jsp"/>
