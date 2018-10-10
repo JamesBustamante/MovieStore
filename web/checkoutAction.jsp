@@ -83,6 +83,7 @@
                 if (Integer.parseInt(movie.getAvailableCopies()) < Integer.parseInt(noCopies[i])) {
                     //response.sendRedirect("purchaseOrder.jsp"); // Redirect error: too many copies
                     //session.setAttribute("quantityErr", "Too Many Copies");
+                    invalid = true;
                 }
                 i++;
                 out.print(moviePurchase.getNoCopies());
@@ -91,7 +92,7 @@
             Order newOrder = new Order(orderID, tempMoviePurchaseAL, ID, email, fullName, paymentMethod, salesTotal, "Submitted");
             History history = historyApp.getHistory();
             history.addOrder(newOrder); //Uses addOrder function to add new order.
-            historyApp.updateXML(history, filePath1); //Saves the order in XML.
+            
 
             //Decrements the amount of movies now available in movies.xml because of purchase
             ArrayList<MoviePurchase> purchases = newOrder.getPurchases();
@@ -106,10 +107,15 @@
                     }
                 }
             }
+             if (!invalid) {
+            historyApp.updateXML(history, filePath1); //Saves the order in XML.
             movieApp.saveMovies();
             session.setAttribute("quantityErr", " ");
             response.sendRedirect("purchaseConfirmation.jsp");
-            
+             }  else {
+                 response.sendRedirect("purchaseOrder.jsp"); // Redirect error: too many copies
+                    session.setAttribute("quantityErr", "Too Many Copies");
+             }
             }
         
             

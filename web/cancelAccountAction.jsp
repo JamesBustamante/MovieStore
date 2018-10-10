@@ -51,6 +51,10 @@
             
         %>
         
+        <% session.invalidate();
+        response.sendRedirect("index.jsp");
+        %>
+        
         <div class="content" style="text-align: center">
             
         </div>
